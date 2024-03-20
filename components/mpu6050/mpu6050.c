@@ -1,0 +1,161 @@
+#include "mpu6050.h"
+
+status_t MPU6050_ReadWhoAmI(I2C_HandleTypeDef *hi2c, MPU6050_t *mpu, uint8_t is_high_addr, uint8_t *buffer)
+{
+    HAL_I2C_Mem_Read(hi2c, mpu->address, (uint8_t)MPU6050_REG_WHO_AM_I, 1, buffer, 1, MPU6050_DEFAULT_TIMEOUT);
+    return STATUS_OK;
+}
+
+status_t MPU6050_Init(I2C_HandleTypeDef *hi2c, MPU6050_t* mpu, MPU6050_Handle_t handle , uint8_t is_high_addr)
+{
+    uint8_t tmp_byte;
+    uint8_t check_buffer;
+
+    MPU6050_ReadWhoAmI(hi2c, mpu, is_high_addr, &check_buffer);
+
+    /* Check WHO_AM_I value */
+    if (check_buffer == (0x68 << is_high_addr))
+    {
+        // TODO: Implement intialization process
+
+        /* Wake-up routine */
+        tmp_byte = 0x00;
+        HAL_I2C_Mem_Write(hi2c, mpu->address, (uint8_t)MPU6050_REG_PWR_MGMT_1, 1, &tmp_byte, 1, MPU6050_DEFAULT_TIMEOUT);
+
+        /* Set the sample rate */
+        MPU6050_SetSampleRate(hi2c, mpu, handle.rate_div);
+        /* Set the gyroscope range */
+        MPU6050_SetGyroscope(hi2c, mpu, handle.gyro_range);
+        /* Set the accelerometer range */
+        MPU6050_SetAccelerometer(hi2c, mpu, handle.accel_range); 
+
+        return STATUS_OK;
+    }
+    
+    return STATUS_FAIL;
+}
+
+status_t MPU6050_SetSampleRate(I2C_HandleTypeDef *hi2c, MPU6050_t* mpu, MPU6050_SampleRateDiv_t rate_div)
+{
+    uint8_t tmp_byte = (uint8_t)rate_div;
+
+    // Write the SMPRT_DIV setting to the register
+    HAL_I2C_Mem_Write(hi2c, mpu->address, (uint8_t)MPU6050_REG_SMPRT_DIV, 1, &tmp_byte, 1, MPU6050_DEFAULT_TIMEOUT);
+
+    return STATUS_OK;
+}
+
+status_t MPU6050_SetGyroscope(I2C_HandleTypeDef *hi2c, MPU6050_t *mpu, MPU6050_GyroscopeRange_t gyro_range)
+{
+    uint8_t tmp_byte;
+
+    // Read the current register value
+    HAL_I2C_Mem_Read(hi2c, mpu->address, (uint8_t)MPU6050_REG_GYRO_CONFIG, 1, &tmp_byte, 1, MPU6050_DEFAULT_TIMEOUT);
+
+    // Bit-masking 
+    tmp_byte &= !(0x03 << 3);
+    tmp_byte |=  (uint8_t)gyro_range << 3;
+
+    // Write the FS_SEL setting to the register
+    HAL_I2C_Mem_Write(hi2c, mpu->address, (uint8_t)MPU6050_REG_GYRO_CONFIG, 1, &tmp_byte, 1, MPU6050_DEFAULT_TIMEOUT);
+
+    // Set the scaling factor for true data
+    switch (gyro_range)
+    {
+    case Gyro_Range_250s:
+        mpu->gyro_scaling_factor = 1.0 / 131.0;
+        break;
+    case Gyro_Range_500s:
+        mpu->gyro_scaling_factor = 1.0 / 65.5;
+        break;
+    case Gyro_Range_1000s:
+        mpu->gyro_scaling_factor = 1.0 / 32.8;
+        break;
+    case Gyro_Range_2000s:
+        mpu->gyro_scaling_factor = 1.0 / 16.4;
+        break;
+    default:
+        break;
+    }
+
+    return STATUS_OK;
+}
+
+status_t MPU6050_SetAccelerometer(I2C_HandleTypeDef *hi2c, MPU6050_t *mpu, MPU6050_AccelerometerRange_t accel_range)
+{
+    uint8_t tmp_byte;
+
+    // Read the current register value
+    HAL_I2C_Mem_Read(hi2c, mpu->address, (uint8_t)MPU6050_REG_ACCEL_CONFIG, 1, &tmp_byte, 1, MPU6050_DEFAULT_TIMEOUT);
+
+    // Bit-masking 
+    tmp_byte &= !(0x03 << 3);
+    tmp_byte |=  (uint8_t)accel_range << 3;
+
+    // Write the FS_SEL setting to the register
+    HAL_I2C_Mem_Write(hi2c, mpu->address, (uint8_t)MPU6050_REG_ACCEL_CONFIG, 1, &tmp_byte, 1, MPU6050_DEFAULT_TIMEOUT);
+
+    // Set the scaling factor for true data
+    switch (accel_range)
+    {
+    case Accel_Range_2g:
+        mpu->accel_scaling_factor = G / 16384.0;
+        break;
+    case Accel_Range_4g:
+        mpu->accel_scaling_factor = G / 8192.0;
+        break;
+    case Accel_Range_8g:
+        mpu->accel_scaling_factor = G / 4096.0;
+        break;
+    case Accel_Range_16g:
+        mpu->accel_scaling_factor = G / 2048.0;
+        break;
+    default:
+        break;
+    }
+
+    return STATUS_OK;
+}
+
+status_t MPU6050_Calibrate(I2C_HandleTypeDef *hi2c, MPU6050_t* mpu)
+{
+    
+}
+
+status_t MPU6050_ReadGyroscope(I2C_HandleTypeDef *hi2c, MPU6050_t *mpu)
+{
+    uint8_t data[6];
+
+    // Read 6 bytes of RAW data starting from ACCEL_XOUT_H register.
+    HAL_I2C_Mem_Read(hi2c, mpu->address, MPU6050_REG_GYRO_XOUT_H, 1, data, 6, MPU6050_DEFAULT_TIMEOUT);
+
+    mpu->gyro_raw.x_axis = (int16_t)(data[0] << 8 | data[1]);
+    mpu->gyro_raw.y_axis = (int16_t)(data[2] << 8 | data[3]);
+    mpu->gyro_raw.z_axis = (int16_t)(data[4] << 8 | data[5]);
+
+    // Convert the RAW data into angular acceleration in 'deg/s'
+    mpu->gyro_scaled.x_axis = mpu->gyro_raw.x_axis * mpu->gyro_scaling_factor;
+    mpu->gyro_scaled.y_axis = mpu->gyro_raw.y_axis * mpu->gyro_scaling_factor;
+    mpu->gyro_scaled.z_axis = mpu->gyro_raw.z_axis * mpu->gyro_scaling_factor;
+
+    return STATUS_OK;
+}
+
+status_t MPU6050_ReadAccelerometer(I2C_HandleTypeDef *hi2c, MPU6050_t *mpu)
+{
+    uint8_t data[6];
+
+    // Read 6 bytes of RAW data starting from ACCEL_XOUT_H register.
+    HAL_I2C_Mem_Read(hi2c, mpu->address, MPU6050_REG_ACCEL_XOUT_H, 1, data, 6, MPU6050_DEFAULT_TIMEOUT);
+
+    mpu->accel_raw.x_axis = (int16_t)(data[0] << 8 | data[1]);
+    mpu->accel_raw.y_axis = (int16_t)(data[2] << 8 | data[3]);
+    mpu->accel_raw.z_axis = (int16_t)(data[4] << 8 | data[5]);
+
+    // Convert the RAW data into linear acceleration in 'm/s^2'
+    mpu->accel_scaled.x_axis = mpu->accel_raw.x_axis * mpu->accel_scaling_factor;
+    mpu->accel_scaled.y_axis = mpu->accel_raw.y_axis * mpu->accel_scaling_factor;
+    mpu->accel_scaled.z_axis = mpu->accel_raw.z_axis * mpu->accel_scaling_factor;
+
+    return STATUS_OK;
+}

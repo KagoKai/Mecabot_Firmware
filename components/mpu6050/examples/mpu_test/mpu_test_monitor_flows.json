@@ -1,0 +1,868 @@
+[
+    {
+        "id": "7b9ed63e.2138f8",
+        "type": "tab",
+        "label": "Basic_Flow",
+        "disabled": false,
+        "info": "# Basic flow to start with STM32CubeMonitor."
+    },
+    {
+        "id": "1ebbb430.dac7dc",
+        "type": "ui_chartst",
+        "z": "7b9ed63e.2138f8",
+        "group": "f9c34dde.1e2f4",
+        "name": "Linear_Accel",
+        "order": 4,
+        "width": "12",
+        "height": 9,
+        "chartType": "line",
+        "curveType": "linear",
+        "duration": "10",
+        "ymin": "",
+        "ymax": "",
+        "x": 590,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "6013fb0b.5b7504",
+        "type": "acquisition out",
+        "z": "7b9ed63e.2138f8",
+        "name": "myProbe_Out",
+        "probeconfig": "ebe45484f8a018fc",
+        "x": 840,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "4a573fb0.4bc99",
+        "type": "acquisition in",
+        "z": "7b9ed63e.2138f8",
+        "name": "myProbe_In",
+        "probeconfig": "ebe45484f8a018fc",
+        "x": 90,
+        "y": 300,
+        "wires": [
+            [
+                "a7c3e070.5a6c",
+                "1c2b3aef104f1a95"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "d59587ff.cd1748",
+        "type": "variables",
+        "z": "7b9ed63e.2138f8",
+        "groupname": "Gyro_measure_var",
+        "accesspoint": 0,
+        "execonfig": "7605bb567816aafc",
+        "variablelist": [],
+        "triggerstartmode": "manual",
+        "triggername": "my_mpu.gyro_scaled.x_axis",
+        "triggerthreshold": "30000",
+        "frequency": "",
+        "frequencyType": "0",
+        "snapshotheader": "",
+        "mode": "direct",
+        "lastImportedTime": 1710672653998,
+        "openStatus": true,
+        "x": 470,
+        "y": 80,
+        "wires": [
+            [
+                "6013fb0b.5b7504"
+            ],
+            [
+                "f14d0398.f1861"
+            ]
+        ]
+    },
+    {
+        "id": "fc00295e.79ada8",
+        "type": "ui_button",
+        "z": "7b9ed63e.2138f8",
+        "name": "",
+        "group": "f9c34dde.1e2f4",
+        "order": 3,
+        "width": 5,
+        "height": 1,
+        "passthru": false,
+        "label": "Clear Lin.Accel",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "clear",
+        "topicType": "str",
+        "x": 360,
+        "y": 320,
+        "wires": [
+            [
+                "1ebbb430.dac7dc"
+            ]
+        ]
+    },
+    {
+        "id": "5fd51c96.2330e4",
+        "type": "ui_button",
+        "z": "7b9ed63e.2138f8",
+        "name": "",
+        "group": "619f4c7490285037",
+        "order": 1,
+        "width": 5,
+        "height": 1,
+        "passthru": false,
+        "label": "START Acquisition",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "start",
+        "topicType": "str",
+        "x": 110,
+        "y": 80,
+        "wires": [
+            [
+                "d59587ff.cd1748",
+                "14f2d3d2afedc6b2"
+            ]
+        ]
+    },
+    {
+        "id": "52eadfe3.2c8cc",
+        "type": "ui_button",
+        "z": "7b9ed63e.2138f8",
+        "name": "",
+        "group": "619f4c7490285037",
+        "order": 2,
+        "width": 5,
+        "height": 1,
+        "passthru": true,
+        "label": "STOP Acquisition",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "stop",
+        "topicType": "str",
+        "x": 110,
+        "y": 160,
+        "wires": [
+            [
+                "d59587ff.cd1748",
+                "14f2d3d2afedc6b2"
+            ]
+        ]
+    },
+    {
+        "id": "a7c3e070.5a6c",
+        "type": "processing",
+        "z": "7b9ed63e.2138f8",
+        "groupname": "Gyro_measure_var",
+        "groupid": "d59587ff.cd1748",
+        "expressions": [],
+        "statistics": [],
+        "logmode": "no",
+        "logformat": "csvc",
+        "x": 330,
+        "y": 260,
+        "wires": [
+            [
+                "1ebbb430.dac7dc"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "f14d0398.f1861",
+        "type": "ui_toast",
+        "z": "7b9ed63e.2138f8",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 850,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "14f2d3d2afedc6b2",
+        "type": "variables",
+        "z": "7b9ed63e.2138f8",
+        "groupname": "Accel_measure_var",
+        "accesspoint": 0,
+        "execonfig": "6ed5c53adebbabe6",
+        "variablelist": [],
+        "triggerstartmode": "manual",
+        "triggername": "my_mpu.accel_scaled.x_axis",
+        "triggerthreshold": "30000",
+        "frequency": "",
+        "frequencyType": "0",
+        "snapshotheader": "",
+        "mode": "direct",
+        "lastImportedTime": 1710672648998,
+        "openStatus": true,
+        "x": 480,
+        "y": 160,
+        "wires": [
+            [
+                "6013fb0b.5b7504"
+            ],
+            [
+                "951694aa5392be9b"
+            ]
+        ]
+    },
+    {
+        "id": "951694aa5392be9b",
+        "type": "ui_toast",
+        "z": "7b9ed63e.2138f8",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 850,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "1c2b3aef104f1a95",
+        "type": "processing",
+        "z": "7b9ed63e.2138f8",
+        "groupname": "Accel_measure_var",
+        "groupid": "14f2d3d2afedc6b2",
+        "expressions": [],
+        "statistics": [],
+        "logmode": "no",
+        "logformat": "csvc",
+        "x": 340,
+        "y": 380,
+        "wires": [
+            [
+                "e499cf799b2613b3"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "e499cf799b2613b3",
+        "type": "ui_chartst",
+        "z": "7b9ed63e.2138f8",
+        "group": "944f9c63ea1465b3",
+        "name": "Angular_Accel",
+        "order": 4,
+        "width": "12",
+        "height": 9,
+        "chartType": "line",
+        "curveType": "linear",
+        "duration": "10",
+        "ymin": "",
+        "ymax": "",
+        "x": 600,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "7bdc4955cb60a16a",
+        "type": "ui_button",
+        "z": "7b9ed63e.2138f8",
+        "name": "",
+        "group": "944f9c63ea1465b3",
+        "order": 3,
+        "width": 5,
+        "height": 1,
+        "passthru": false,
+        "label": "Clear Ang.Accel",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "clear",
+        "topicType": "str",
+        "x": 360,
+        "y": 460,
+        "wires": [
+            [
+                "e499cf799b2613b3"
+            ]
+        ]
+    },
+    {
+        "id": "f9c34dde.1e2f4",
+        "type": "ui_group",
+        "name": "Gyro",
+        "tab": "17d09b07.741a55",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "ebe45484f8a018fc",
+        "type": "probe",
+        "probeid": "260049000A000038544B524E",
+        "probename": "ST-Link v2 260049000A000038544B524E",
+        "protocol": "SWD",
+        "frequency": "1.8 MHz - Default",
+        "probeproperty": "{\"SWD\":[\"4.6 MHz\",\"1.8 MHz - Default\",\"950 kHz\",\"400 kHz\",\"150 kHz\"],\"JTAG\":[\"18 MHz\",\"9 MHz\",\"4.5 MHz\",\"2.25 MHz\",\"1.12 MHz - Default\",\"560 kHz\",\"280 kHz\",\"140 kHz\"]}",
+        "probeversion": "ST Link firmware version V2.J42",
+        "connectionType": "p2p",
+        "nickname": "myProbe"
+    },
+    {
+        "id": "7605bb567816aafc",
+        "type": "exe-config",
+        "name": "MPU6050_Monitor_Gyro",
+        "exefile": "C:\\Users\\ADMIN\\Desktop\\DATN\\Mecabot_Firmware\\components\\mpu6050\\examples\\mpu_test\\mpu_test\\Debug\\mpu_test.elf",
+        "exefolder": "C:\\Users\\ADMIN\\Desktop\\DATN\\Mecabot_Firmware\\components\\mpu6050\\examples\\mpu_test\\mpu_test\\Debug",
+        "exevariablelist": [
+            {
+                "address": "0x08002b70",
+                "name": "AHBPrescTable[0]",
+                "type": 1
+            },
+            {
+                "address": "0x08002b80",
+                "name": "APBPrescTable[0]",
+                "type": 1
+            },
+            {
+                "address": "0x200000a0",
+                "name": "hi2c1.Devaddress",
+                "type": 5
+            },
+            {
+                "address": "0x2000009c",
+                "name": "hi2c1.ErrorCode",
+                "type": 5
+            },
+            {
+                "address": "0x200000ac",
+                "name": "hi2c1.EventCount",
+                "type": 5
+            },
+            {
+                "address": "0x20000094",
+                "name": "hi2c1.hdmarx",
+                "type": 5
+            },
+            {
+                "address": "0x20000090",
+                "name": "hi2c1.hdmatx",
+                "type": 5
+            },
+            {
+                "address": "0x2000006c",
+                "name": "hi2c1.Init.AddressingMode",
+                "type": 5
+            },
+            {
+                "address": "0x20000060",
+                "name": "hi2c1.Init.ClockSpeed",
+                "type": 5
+            },
+            {
+                "address": "0x20000070",
+                "name": "hi2c1.Init.DualAddressMode",
+                "type": 5
+            },
+            {
+                "address": "0x20000064",
+                "name": "hi2c1.Init.DutyCycle",
+                "type": 5
+            },
+            {
+                "address": "0x20000078",
+                "name": "hi2c1.Init.GeneralCallMode",
+                "type": 5
+            },
+            {
+                "address": "0x2000007c",
+                "name": "hi2c1.Init.NoStretchMode",
+                "type": 5
+            },
+            {
+                "address": "0x20000068",
+                "name": "hi2c1.Init.OwnAddress1",
+                "type": 5
+            },
+            {
+                "address": "0x20000074",
+                "name": "hi2c1.Init.OwnAddress2",
+                "type": 5
+            },
+            {
+                "address": "0x2000005c",
+                "name": "hi2c1.Instance",
+                "type": 5
+            },
+            {
+                "address": "0x20000098",
+                "name": "hi2c1.Lock",
+                "type": 2
+            },
+            {
+                "address": "0x200000a4",
+                "name": "hi2c1.Memaddress",
+                "type": 5
+            },
+            {
+                "address": "0x200000a8",
+                "name": "hi2c1.MemaddSize",
+                "type": 5
+            },
+            {
+                "address": "0x2000009a",
+                "name": "hi2c1.Mode",
+                "type": 2
+            },
+            {
+                "address": "0x20000080",
+                "name": "hi2c1.pBuffPtr",
+                "type": 5
+            },
+            {
+                "address": "0x2000008c",
+                "name": "hi2c1.PreviousState",
+                "type": 5
+            },
+            {
+                "address": "0x20000099",
+                "name": "hi2c1.State",
+                "type": 2
+            },
+            {
+                "address": "0x20000086",
+                "name": "hi2c1.XferCount",
+                "type": 3
+            },
+            {
+                "address": "0x20000088",
+                "name": "hi2c1.XferOptions",
+                "type": 5
+            },
+            {
+                "address": "0x20000084",
+                "name": "hi2c1.XferSize",
+                "type": 3
+            },
+            {
+                "address": "0x20000012",
+                "name": "my_mpu.accel_raw.x_axis",
+                "type": 4
+            },
+            {
+                "address": "0x20000014",
+                "name": "my_mpu.accel_raw.y_axis",
+                "type": 4
+            },
+            {
+                "address": "0x20000016",
+                "name": "my_mpu.accel_raw.z_axis",
+                "type": 4
+            },
+            {
+                "address": "0x20000028",
+                "name": "my_mpu.accel_scaled.x_axis",
+                "type": 9,
+                "checked": false
+            },
+            {
+                "address": "0x2000002c",
+                "name": "my_mpu.accel_scaled.y_axis",
+                "type": 9,
+                "checked": false
+            },
+            {
+                "address": "0x20000030",
+                "name": "my_mpu.accel_scaled.z_axis",
+                "type": 9,
+                "checked": false
+            },
+            {
+                "address": "0x20000008",
+                "name": "my_mpu.accel_scaling_factor",
+                "type": 9
+            },
+            {
+                "address": "0x20000000",
+                "name": "my_mpu.address",
+                "type": 1
+            },
+            {
+                "address": "0x2000000c",
+                "name": "my_mpu.gyro_raw.x_axis",
+                "type": 4,
+                "checked": false
+            },
+            {
+                "address": "0x2000000e",
+                "name": "my_mpu.gyro_raw.y_axis",
+                "type": 4,
+                "checked": false
+            },
+            {
+                "address": "0x20000010",
+                "name": "my_mpu.gyro_raw.z_axis",
+                "type": 4,
+                "checked": false
+            },
+            {
+                "address": "0x2000001c",
+                "name": "my_mpu.gyro_scaled.x_axis",
+                "type": 9,
+                "checked": true
+            },
+            {
+                "address": "0x20000020",
+                "name": "my_mpu.gyro_scaled.y_axis",
+                "type": 9,
+                "checked": true
+            },
+            {
+                "address": "0x20000024",
+                "name": "my_mpu.gyro_scaled.z_axis",
+                "type": 9,
+                "checked": true
+            },
+            {
+                "address": "0x20000004",
+                "name": "my_mpu.gyro_scaling_factor",
+                "type": 9
+            },
+            {
+                "address": "0x20000018",
+                "name": "my_mpu.temp_raw",
+                "type": 9
+            },
+            {
+                "address": "0x20000034",
+                "name": "SystemCoreClock",
+                "type": 5
+            },
+            {
+                "address": "0x200000b0",
+                "name": "uwTick",
+                "type": 5
+            },
+            {
+                "address": "0x2000003c",
+                "name": "uwTickFreq",
+                "type": 2
+            },
+            {
+                "address": "0x20000038",
+                "name": "uwTickPrio",
+                "type": 5
+            }
+        ],
+        "expand": false,
+        "filename": "mpu_test.elf",
+        "exeModifiedTime": 1710669509772,
+        "configLastUpdate": 1710672618121
+    },
+    {
+        "id": "619f4c7490285037",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "17d09b07.741a55",
+        "order": 3,
+        "disp": true,
+        "width": "15",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "6ed5c53adebbabe6",
+        "type": "exe-config",
+        "name": "MPU6050_Monitor_Accel",
+        "exefile": "C:\\Users\\ADMIN\\Desktop\\DATN\\Mecabot_Firmware\\components\\mpu6050\\examples\\mpu_test\\mpu_test\\Debug\\mpu_test.elf",
+        "exefolder": "C:\\Users\\ADMIN\\Desktop\\DATN\\Mecabot_Firmware\\components\\mpu6050\\examples\\mpu_test\\mpu_test\\Debug",
+        "exevariablelist": [
+            {
+                "address": "0x08002b70",
+                "name": "AHBPrescTable[0]",
+                "type": 1
+            },
+            {
+                "address": "0x08002b80",
+                "name": "APBPrescTable[0]",
+                "type": 1
+            },
+            {
+                "address": "0x200000a0",
+                "name": "hi2c1.Devaddress",
+                "type": 5
+            },
+            {
+                "address": "0x2000009c",
+                "name": "hi2c1.ErrorCode",
+                "type": 5
+            },
+            {
+                "address": "0x200000ac",
+                "name": "hi2c1.EventCount",
+                "type": 5
+            },
+            {
+                "address": "0x20000094",
+                "name": "hi2c1.hdmarx",
+                "type": 5
+            },
+            {
+                "address": "0x20000090",
+                "name": "hi2c1.hdmatx",
+                "type": 5
+            },
+            {
+                "address": "0x2000006c",
+                "name": "hi2c1.Init.AddressingMode",
+                "type": 5
+            },
+            {
+                "address": "0x20000060",
+                "name": "hi2c1.Init.ClockSpeed",
+                "type": 5
+            },
+            {
+                "address": "0x20000070",
+                "name": "hi2c1.Init.DualAddressMode",
+                "type": 5
+            },
+            {
+                "address": "0x20000064",
+                "name": "hi2c1.Init.DutyCycle",
+                "type": 5
+            },
+            {
+                "address": "0x20000078",
+                "name": "hi2c1.Init.GeneralCallMode",
+                "type": 5
+            },
+            {
+                "address": "0x2000007c",
+                "name": "hi2c1.Init.NoStretchMode",
+                "type": 5
+            },
+            {
+                "address": "0x20000068",
+                "name": "hi2c1.Init.OwnAddress1",
+                "type": 5
+            },
+            {
+                "address": "0x20000074",
+                "name": "hi2c1.Init.OwnAddress2",
+                "type": 5
+            },
+            {
+                "address": "0x2000005c",
+                "name": "hi2c1.Instance",
+                "type": 5
+            },
+            {
+                "address": "0x20000098",
+                "name": "hi2c1.Lock",
+                "type": 2
+            },
+            {
+                "address": "0x200000a4",
+                "name": "hi2c1.Memaddress",
+                "type": 5
+            },
+            {
+                "address": "0x200000a8",
+                "name": "hi2c1.MemaddSize",
+                "type": 5
+            },
+            {
+                "address": "0x2000009a",
+                "name": "hi2c1.Mode",
+                "type": 2
+            },
+            {
+                "address": "0x20000080",
+                "name": "hi2c1.pBuffPtr",
+                "type": 5
+            },
+            {
+                "address": "0x2000008c",
+                "name": "hi2c1.PreviousState",
+                "type": 5
+            },
+            {
+                "address": "0x20000099",
+                "name": "hi2c1.State",
+                "type": 2
+            },
+            {
+                "address": "0x20000086",
+                "name": "hi2c1.XferCount",
+                "type": 3
+            },
+            {
+                "address": "0x20000088",
+                "name": "hi2c1.XferOptions",
+                "type": 5
+            },
+            {
+                "address": "0x20000084",
+                "name": "hi2c1.XferSize",
+                "type": 3
+            },
+            {
+                "address": "0x20000012",
+                "name": "my_mpu.accel_raw.x_axis",
+                "type": 4
+            },
+            {
+                "address": "0x20000014",
+                "name": "my_mpu.accel_raw.y_axis",
+                "type": 4
+            },
+            {
+                "address": "0x20000016",
+                "name": "my_mpu.accel_raw.z_axis",
+                "type": 4
+            },
+            {
+                "address": "0x20000028",
+                "name": "my_mpu.accel_scaled.x_axis",
+                "type": 9,
+                "checked": true
+            },
+            {
+                "address": "0x2000002c",
+                "name": "my_mpu.accel_scaled.y_axis",
+                "type": 9,
+                "checked": true
+            },
+            {
+                "address": "0x20000030",
+                "name": "my_mpu.accel_scaled.z_axis",
+                "type": 9,
+                "checked": true
+            },
+            {
+                "address": "0x20000008",
+                "name": "my_mpu.accel_scaling_factor",
+                "type": 9
+            },
+            {
+                "address": "0x20000000",
+                "name": "my_mpu.address",
+                "type": 1
+            },
+            {
+                "address": "0x2000000c",
+                "name": "my_mpu.gyro_raw.x_axis",
+                "type": 4
+            },
+            {
+                "address": "0x2000000e",
+                "name": "my_mpu.gyro_raw.y_axis",
+                "type": 4
+            },
+            {
+                "address": "0x20000010",
+                "name": "my_mpu.gyro_raw.z_axis",
+                "type": 4
+            },
+            {
+                "address": "0x2000001c",
+                "name": "my_mpu.gyro_scaled.x_axis",
+                "type": 9
+            },
+            {
+                "address": "0x20000020",
+                "name": "my_mpu.gyro_scaled.y_axis",
+                "type": 9
+            },
+            {
+                "address": "0x20000024",
+                "name": "my_mpu.gyro_scaled.z_axis",
+                "type": 9
+            },
+            {
+                "address": "0x20000004",
+                "name": "my_mpu.gyro_scaling_factor",
+                "type": 9
+            },
+            {
+                "address": "0x20000018",
+                "name": "my_mpu.temp_raw",
+                "type": 9
+            },
+            {
+                "address": "0x20000034",
+                "name": "SystemCoreClock",
+                "type": 5
+            },
+            {
+                "address": "0x200000b0",
+                "name": "uwTick",
+                "type": 5
+            },
+            {
+                "address": "0x2000003c",
+                "name": "uwTickFreq",
+                "type": 2
+            },
+            {
+                "address": "0x20000038",
+                "name": "uwTickPrio",
+                "type": 5
+            }
+        ],
+        "expand": false,
+        "filename": "mpu_test.elf",
+        "exeModifiedTime": 1710669509772,
+        "configLastUpdate": 1710672648630
+    },
+    {
+        "id": "944f9c63ea1465b3",
+        "type": "ui_group",
+        "name": "Accel",
+        "tab": "17d09b07.741a55",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "17d09b07.741a55",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

@@ -1,0 +1,7 @@
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/mpu6050/examples/mpu_test/mpu_test/Core/Src/mpu6050.c:3:10:MPU6050_ReadWhoAmI	24	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/mpu6050/examples/mpu_test/mpu_test/Core/Src/mpu6050.c:38:10:MPU6050_SetSampleRate	32	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/mpu6050/examples/mpu_test/mpu_test/Core/Src/mpu6050.c:48:10:MPU6050_SetGyroscope	56	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/mpu6050/examples/mpu_test/mpu_test/Core/Src/mpu6050.c:84:10:MPU6050_SetAccelerometer	56	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/mpu6050/examples/mpu_test/mpu_test/Core/Src/mpu6050.c:9:10:MPU6050_Init	48	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/mpu6050/examples/mpu_test/mpu_test/Core/Src/mpu6050.c:120:10:MPU6050_ReadGyroscope	48	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/mpu6050/examples/mpu_test/mpu_test/Core/Src/mpu6050.c:139:10:MPU6050_ReadAccelerometer	48	static
