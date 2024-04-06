@@ -1,0 +1,10 @@
+17:50:07 **** Incremental Build of configuration Debug for project rosserial_led_blink ****
+make -j8 all 
+arm-none-eabi-size  rosserial_led_blink.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20672	     92	  18780	  39544	   9a78	rosserial_led_blink.elf
+Finished building: default.size.stdout
+ 
+
+17:50:07 Build Finished. 0 errors, 0 warnings. (took 451ms)
+

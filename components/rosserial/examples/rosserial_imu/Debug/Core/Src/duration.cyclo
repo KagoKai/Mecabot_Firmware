@@ -1,0 +1,4 @@
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/rosserial/duration.cpp:40:6:void ros::normalizeSecNSecSigned(int32_t&, int32_t&)	3
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/rosserial/duration.cpp:59:11:ros::Duration& ros::Duration::operator+=(const ros::Duration&)	1
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/rosserial/duration.cpp:67:11:ros::Duration& ros::Duration::operator-=(const ros::Duration&)	1
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/rosserial/duration.cpp:75:11:ros::Duration& ros::Duration::operator*=(double)	1

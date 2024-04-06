@@ -1,0 +1,9 @@
+goal_vel
+htim_motor.Instance->CCR1
+htim_motor.Instance->CCR2
+htim_motor.Instance->ARR
+motor[0]->direction
+motor[1]->direction
+direction
+velocity_debug
+direction != motor[0]->direction

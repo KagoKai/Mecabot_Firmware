@@ -1,6 +1,0 @@
-{
-    "files.associations": {
-        "mpu6050.h": "c",
-        "operation_status.h": "c"
-    }
-}

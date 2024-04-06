@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "mpu6050.h": "c",
+        "operation_status.h": "c",
+        "stm32f1xx_hal_tim.h": "c",
+        "stm32f103xb.h": "c",
+        "dc_motor.h": "c",
+        "encoder.h": "c"
+    }
+}

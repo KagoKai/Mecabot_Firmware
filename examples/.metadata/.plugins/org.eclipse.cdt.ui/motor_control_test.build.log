@@ -1,0 +1,17 @@
+19:34:11 **** Incremental Build of configuration Debug for project motor_control_test ****
+make -j8 all 
+arm-none-eabi-g++ "../Core/Src/mainpp.cpp" -mcpu=cortex-m3 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../components/rosserial/include -I../../../components/encoder/include -I../../../components/dc_motor/include -I../../../components/common/include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mainpp.d" -MT"Core/Src/mainpp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mainpp.o"
+arm-none-eabi-g++ -o "motor_control_test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\examples\motor_control_test\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="motor_control_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: motor_control_test.elf
+ 
+arm-none-eabi-size  motor_control_test.elf 
+arm-none-eabi-objdump -h -S motor_control_test.elf  > "motor_control_test.list"
+   text	   data	    bss	    dec	    hex	filename
+  29192	     96	  18968	  48256	   bc80	motor_control_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: motor_control_test.list
+ 
+
+19:34:12 Build Finished. 0 errors, 0 warnings. (took 1s.888ms)
+

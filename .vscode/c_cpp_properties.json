@@ -3,7 +3,16 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/main/include",
+                "${workspaceFolder}/components/common/include/",
+                "${workspaceFolder}/components/dc_motor/include/",
+                "${workspaceFolder}/components/encoder/include/",
+                "${workspaceFolder}/components/mpu6050/include/",
+                "${workspaceFolder}/components/madgwick_filter/include/",
+                "${workspaceFolder}/components/rosserial/include",
+                "${workspaceFolder}/stm32/CMSIS/device/STM32F1xx/Include",
+                "${workspaceFolder}/stm32/HAL/include",
+                "${workspaceFolder}/stm32/CMSIS/include"
             ],
             "defines": [
                 "_DEBUG",

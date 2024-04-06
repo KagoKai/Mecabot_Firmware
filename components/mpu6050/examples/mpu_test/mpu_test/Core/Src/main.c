@@ -96,7 +96,11 @@ int main(void)
 		  .gyro_range = Gyro_Range_250s,
 		  .accel_range = Accel_Range_2g
   };
-  MPU6050_Init(&hi2c1, &my_mpu, handle, 0);
+  while (MPU6050_Init(&hi2c1, &my_mpu, handle, 0) != STATUS_OK);
+
+  // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);
+  // MPU6050_Calibrate(&hi2c1, &my_mpu);
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -104,7 +108,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  HAL_Delay(10);
+	  HAL_Delay(5);
 	  MPU6050_ReadAccelerometer(&hi2c1, &my_mpu);
 	  MPU6050_ReadGyroscope(&hi2c1, &my_mpu);
     /* USER CODE BEGIN 3 */
@@ -200,7 +204,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);
 
   /*Configure GPIO pin : PC13 */
   GPIO_InitStruct.Pin = GPIO_PIN_13;

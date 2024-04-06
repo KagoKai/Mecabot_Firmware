@@ -1,0 +1,124 @@
+#include <cstdint>
+#include "mainpp.h"
+#include "mecabot_hardware.h"
+#include "mecabot_ros_config.h"
+
+#define ENCODER_RESOLUTION		20
+
+uint32_t dt = 1000 / RPM_PUBLISH_FREQUENCY; // RPM publish period (in millisec).
+
+uint32_t t = 0, t_motor_control_prev = 0, t_motor_rpm_prev = 0;
+uint16_t last_tick = 0;
+
+extern Motor motor[4];
+extern Encoder encoder[4];
+
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
+{
+	comm_rosserial.set_tx_cplt();
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	comm_rosserial.reset_rbuf();
+}
+
+void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
+{
+	switch (htim->Channel)
+	{
+	case HAL_TIM_ACTIVE_CHANNEL_1:
+		encoder[front_left]->tick++;
+		break;
+	case HAL_TIM_ACTIVE_CHANNEL_2:
+		encoder[front_right]->tick++;
+		break;
+	case HAL_TIM_ACTIVE_CHANNEL_3:
+		encoder[back_left]->tick++;
+		break;
+	case HAL_TIM_ACTIVE_CHANNEL_4:
+		encoder[back_right]->tick++;
+	default:
+		break;
+	}
+}
+
+void motorSpeedCallback(const std_msgs::UInt8& motor_speed_msg)
+{
+}
+
+void commandVelocityCallback(const geometry_msgs::Twist& cmd_vel_msg)
+{
+	goal_vel[0] = cmd_vel_msg.linear.x;
+	goal_vel[1] = cmd_vel_msg.linear.y;
+	goal_vel[2] = cmd_vel_msg.angular.z;
+}
+
+void ros_setup()
+{
+	nh.initNode();
+}
+
+uint32_t millis()
+{
+	return HAL_GetTick();
+}
+
+void setup()
+{
+	ros_setup();
+
+	mecabot_encoder_init();
+
+	mecabot_motor_init();
+
+	for (int i=0; i<NUM_OF_MOTOR; i++)
+	{
+		mecabot_motor_start(motor[i]);
+	}
+}
+
+void loop()
+{
+	t = millis();
+
+	if ((t - t_motor_rpm_prev) >= dt)
+	{
+	}
+
+	nh.spinOnce();
+}
+
+uint16_t d_tick = 0;
+float data = 0;
+
+void updateRpm()
+{
+	d_tick = 0;
+
+	// Encoder_UpdateTick(my_encoder);
+
+	if (my_encoder->tick < last_tick)
+	{
+		d_tick = my_encoder->tick + (0xFFFF - last_tick);
+	}
+	else
+	{
+		d_tick = my_encoder->tick - last_tick;
+	}
+	last_tick = my_encoder->tick;
+
+	// Get the number of rotation
+	data = (float)d_tick / ENCODER_RESOLUTION;
+	// Get the rotation per second
+	data = (data * 1000) / dt;
+	// Get the rotation per minute
+	//data *= 60;
+
+	rpm_msg.data = (uint32_t)data*60;
+}
+
+void publishRpmMsg()
+{
+	pub_motor_rpm.publish(&rpm_msg);
+}

@@ -1,10 +1,10 @@
-17:24:15 **** Incremental Build of configuration Release for project mpu_test ****
+23:15:27 **** Incremental Build of configuration Debug for project mpu_test ****
 make -j8 all 
-arm-none-eabi-size   mpu_test.elf 
+arm-none-eabi-size  mpu_test.elf 
    text	   data	    bss	    dec	    hex	filename
-   6940	     72	   1656	   8668	   21dc	mpu_test.elf
+  11492	     88	   1656	  13236	   33b4	mpu_test.elf
 Finished building: default.size.stdout
  
 
-17:24:15 Build Finished. 0 errors, 0 warnings. (took 398ms)
+23:15:28 Build Finished. 0 errors, 0 warnings. (took 404ms)
 

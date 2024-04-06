@@ -1,0 +1,348 @@
+22:53:59 **** Incremental Build of configuration Debug for project encoder_read_test ****
+make -j8 all 
+arm-none-eabi-g++ "../Core/Src/mainpp.cpp" -mcpu=cortex-m3 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../components/rosserial/include -I../../../components/common/include -I../../../components/dc_motor/include -I../../../components/encoder/include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mainpp.d" -MT"Core/Src/mainpp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mainpp.o"
+In file included from ../Core/Src/mainpp.cpp:4:
+../Core/Inc/mecabot_ros_config.h:17: warning: "NUM_OF_MOTOR" redefined
+   17 | #define NUM_OF_MOTOR                2
+      | 
+In file included from ../Core/Src/mainpp.cpp:3:
+../Core/Inc/mecabot_hardware.h:15: note: this is the location of the previous definition
+   15 | #define NUM_OF_MOTOR    4
+      | 
+../Core/Inc/mecabot_hardware.h:47:1: warning: 'typedef' was ignored in this declaration
+   47 | typedef enum
+      | ^~~~~~~
+In file included from ../../../components/rosserial/include/tf/transform_broadcaster.h:39,
+                 from ../Core/Inc/mecabot_ros_config.h:14:
+../../../components/rosserial/include/tf/tfMessage.h: In member function 'virtual int tf::tfMessage::deserialize(unsigned char*)':
+../../../components/rosserial/include/tf/tfMessage.h:49:69: warning: 'void* realloc(void*, size_t)' moving an object of non-trivially copyable type 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'}; use 'new' and 'delete' instead [-Wclass-memaccess]
+   49 |         this->transforms = (geometry_msgs::TransformStamped*)realloc(this->transforms, transforms_lengthT * sizeof(geometry_msgs::TransformStamped));
+      |                                                              ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Core/Inc/mecabot_ros_config.h:12:
+../../../components/rosserial/include/geometry_msgs/TransformStamped.h:14:9: note: 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'} declared here
+   14 |   class TransformStamped : public ros::Msg
+      |         ^~~~~~~~~~~~~~~~
+../../../components/rosserial/include/tf/tfMessage.h:53:15: warning: 'void* memcpy(void*, const void*, size_t)' writing to an object of type 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'} with no trivial copy-assignment; use copy-assignment or copy-initialization instead [-Wclass-memaccess]
+   53 |         memcpy( &(this->transforms[i]), &(this->st_transforms), sizeof(geometry_msgs::TransformStamped));
+      |         ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../components/rosserial/include/geometry_msgs/TransformStamped.h:14:9: note: 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'} declared here
+   14 |   class TransformStamped : public ros::Msg
+      |         ^~~~~~~~~~~~~~~~
+../Core/Inc/mecabot_ros_config.h: At global scope:
+../Core/Inc/mecabot_ros_config.h:23:1: warning: 'typedef' was ignored in this declaration
+   23 | typedef enum
+      | ^~~~~~~
+arm-none-eabi-g++ -o "encoder_read_test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\examples\encoder_read_test\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="encoder_read_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: encoder_read_test.elf
+ 
+arm-none-eabi-size  encoder_read_test.elf 
+arm-none-eabi-objdump -h -S encoder_read_test.elf  > "encoder_read_test.list"
+   text	   data	    bss	    dec	    hex	filename
+  52296	    104	   8448	  60848	   edb0	encoder_read_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: encoder_read_test.list
+ 
+22:55:05 **** Incremental Build of configuration Debug for project encoder_read_test ****
+make -j8 all 
+arm-none-eabi-size  encoder_read_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  52296	    104	   8448	  60848	   edb0	encoder_read_test.elf
+Finished building: default.size.stdout
+ 
+23:00:21 **** Incremental Build of configuration Debug for project encoder_read_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../components/rosserial/include -I../../../components/common/include -I../../../components/dc_motor/include -I../../../components/encoder/include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-g++ "../Core/Src/mainpp.cpp" -mcpu=cortex-m3 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../components/rosserial/include -I../../../components/common/include -I../../../components/dc_motor/include -I../../../components/encoder/include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mainpp.d" -MT"Core/Src/mainpp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mainpp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../components/rosserial/include -I../../../components/common/include -I../../../components/dc_motor/include -I../../../components/encoder/include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../components/rosserial/include -I../../../components/common/include -I../../../components/dc_motor/include -I../../../components/encoder/include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
+In file included from ../Core/Src/mainpp.cpp:4:
+../Core/Inc/mecabot_ros_config.h:17: warning: "NUM_OF_MOTOR" redefined
+   17 | #define NUM_OF_MOTOR                2
+      | 
+In file included from ../Core/Src/mainpp.cpp:3:
+../Core/Inc/mecabot_hardware.h:15: note: this is the location of the previous definition
+   15 | #define NUM_OF_MOTOR    4
+      | 
+../Core/Inc/mecabot_hardware.h:47:1: warning: 'typedef' was ignored in this declaration
+   47 | typedef enum
+      | ^~~~~~~
+In file included from ../../../components/rosserial/include/tf/transform_broadcaster.h:39,
+                 from ../Core/Inc/mecabot_ros_config.h:14:
+../../../components/rosserial/include/tf/tfMessage.h: In member function 'virtual int tf::tfMessage::deserialize(unsigned char*)':
+../../../components/rosserial/include/tf/tfMessage.h:49:69: warning: 'void* realloc(void*, size_t)' moving an object of non-trivially copyable type 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'}; use 'new' and 'delete' instead [-Wclass-memaccess]
+   49 |         this->transforms = (geometry_msgs::TransformStamped*)realloc(this->transforms, transforms_lengthT * sizeof(geometry_msgs::TransformStamped));
+      |                                                              ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Core/Inc/mecabot_ros_config.h:12:
+../../../components/rosserial/include/geometry_msgs/TransformStamped.h:14:9: note: 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'} declared here
+   14 |   class TransformStamped : public ros::Msg
+      |         ^~~~~~~~~~~~~~~~
+../../../components/rosserial/include/tf/tfMessage.h:53:15: warning: 'void* memcpy(void*, const void*, size_t)' writing to an object of type 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'} with no trivial copy-assignment; use copy-assignment or copy-initialization instead [-Wclass-memaccess]
+   53 |         memcpy( &(this->transforms[i]), &(this->st_transforms), sizeof(geometry_msgs::TransformStamped));
+      |         ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../components/rosserial/include/geometry_msgs/TransformStamped.h:14:9: note: 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'} declared here
+   14 |   class TransformStamped : public ros::Msg
+      |         ^~~~~~~~~~~~~~~~
+../Core/Inc/mecabot_ros_config.h: At global scope:
+../Core/Inc/mecabot_ros_config.h:23:1: warning: 'typedef' was ignored in this declaration
+   23 | typedef enum
+      | ^~~~~~~
+arm-none-eabi-g++ -o "encoder_read_test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\examples\encoder_read_test\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="encoder_read_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: encoder_read_test.elf
+ 
+arm-none-eabi-size  encoder_read_test.elf 
+arm-none-eabi-objdump -h -S encoder_read_test.elf  > "encoder_read_test.list"
+   text	   data	    bss	    dec	    hex	filename
+  54768	    104	   8448	  63320	   f758	encoder_read_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: encoder_read_test.list
+ 
+23:19:35 **** Incremental Build of configuration Debug for project encoder_read_test ****
+make -j8 all 
+arm-none-eabi-size  encoder_read_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54768	    104	   8448	  63320	   f758	encoder_read_test.elf
+Finished building: default.size.stdout
+ 
+23:33:14 **** Incremental Build of configuration Debug for project encoder_read_test ****
+make -j8 all 
+arm-none-eabi-size  encoder_read_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54768	    104	   8448	  63320	   f758	encoder_read_test.elf
+Finished building: default.size.stdout
+ 
+23:36:51 **** Incremental Build of configuration Debug for project encoder_read_test ****
+make -j8 all 
+arm-none-eabi-size  encoder_read_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54768	    104	   8448	  63320	   f758	encoder_read_test.elf
+Finished building: default.size.stdout
+ 
+23:43:17 **** Incremental Build of configuration Debug for project encoder_read_test ****
+make -j8 all 
+arm-none-eabi-g++ "../Core/Src/mainpp.cpp" -mcpu=cortex-m3 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../components/rosserial/include -I../../../components/common/include -I../../../components/dc_motor/include -I../../../components/encoder/include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mainpp.d" -MT"Core/Src/mainpp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mainpp.o"
+arm-none-eabi-gcc "../Core/Src/mecabot_hardware.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../components/rosserial/include -I../../../components/common/include -I../../../components/dc_motor/include -I../../../components/encoder/include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mecabot_hardware.d" -MT"Core/Src/mecabot_hardware.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mecabot_hardware.o"
+In file included from ../Core/Src/mecabot_hardware.c:1:
+../Core/Inc/mecabot_hardware.h:53:1: warning: useless storage class specifier in empty declaration
+   53 | };
+      | ^
+In file included from ../Core/Src/mainpp.cpp:4:
+../Core/Inc/mecabot_ros_config.h:17: warning: "NUM_OF_MOTOR" redefined
+   17 | #define NUM_OF_MOTOR                2
+      | 
+In file included from ../Core/Src/mainpp.cpp:3:
+../Core/Inc/mecabot_hardware.h:15: note: this is the location of the previous definition
+   15 | #define NUM_OF_MOTOR    4
+      | 
+../Core/Inc/mecabot_hardware.h:47:1: warning: 'typedef' was ignored in this declaration
+   47 | typedef enum
+      | ^~~~~~~
+In file included from ../../../components/rosserial/include/tf/transform_broadcaster.h:39,
+                 from ../Core/Inc/mecabot_ros_config.h:14:
+../../../components/rosserial/include/tf/tfMessage.h: In member function 'virtual int tf::tfMessage::deserialize(unsigned char*)':
+../../../components/rosserial/include/tf/tfMessage.h:49:69: warning: 'void* realloc(void*, size_t)' moving an object of non-trivially copyable type 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'}; use 'new' and 'delete' instead [-Wclass-memaccess]
+   49 |         this->transforms = (geometry_msgs::TransformStamped*)realloc(this->transforms, transforms_lengthT * sizeof(geometry_msgs::TransformStamped));
+      |                                                              ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Core/Inc/mecabot_ros_config.h:12:
+../../../components/rosserial/include/geometry_msgs/TransformStamped.h:14:9: note: 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'} declared here
+   14 |   class TransformStamped : public ros::Msg
+      |         ^~~~~~~~~~~~~~~~
+../../../components/rosserial/include/tf/tfMessage.h:53:15: warning: 'void* memcpy(void*, const void*, size_t)' writing to an object of type 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'} with no trivial copy-assignment; use copy-assignment or copy-initialization instead [-Wclass-memaccess]
+   53 |         memcpy( &(this->transforms[i]), &(this->st_transforms), sizeof(geometry_msgs::TransformStamped));
+      |         ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../components/rosserial/include/geometry_msgs/TransformStamped.h:14:9: note: 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'} declared here
+   14 |   class TransformStamped : public ros::Msg
+      |         ^~~~~~~~~~~~~~~~
+../Core/Inc/mecabot_ros_config.h: At global scope:
+../Core/Inc/mecabot_ros_config.h:23:1: warning: 'typedef' was ignored in this declaration
+   23 | typedef enum
+      | ^~~~~~~
+arm-none-eabi-g++ -o "encoder_read_test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\examples\encoder_read_test\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="encoder_read_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: encoder_read_test.elf
+ 
+arm-none-eabi-size  encoder_read_test.elf 
+arm-none-eabi-objdump -h -S encoder_read_test.elf  > "encoder_read_test.list"
+   text	   data	    bss	    dec	    hex	filename
+  54840	    104	   8448	  63392	   f7a0	encoder_read_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: encoder_read_test.list
+ 
+23:43:49 **** Incremental Build of configuration Debug for project encoder_read_test ****
+make -j8 all 
+arm-none-eabi-g++ "../Core/Src/mainpp.cpp" -mcpu=cortex-m3 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../components/rosserial/include -I../../../components/common/include -I../../../components/dc_motor/include -I../../../components/encoder/include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mainpp.d" -MT"Core/Src/mainpp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mainpp.o"
+In file included from ../Core/Src/mainpp.cpp:4:
+../Core/Inc/mecabot_ros_config.h:17: warning: "NUM_OF_MOTOR" redefined
+   17 | #define NUM_OF_MOTOR                2
+      | 
+In file included from ../Core/Src/mainpp.cpp:3:
+../Core/Inc/mecabot_hardware.h:15: note: this is the location of the previous definition
+   15 | #define NUM_OF_MOTOR    4
+      | 
+../Core/Inc/mecabot_hardware.h:47:1: warning: 'typedef' was ignored in this declaration
+   47 | typedef enum
+      | ^~~~~~~
+In file included from ../../../components/rosserial/include/tf/transform_broadcaster.h:39,
+                 from ../Core/Inc/mecabot_ros_config.h:14:
+../../../components/rosserial/include/tf/tfMessage.h: In member function 'virtual int tf::tfMessage::deserialize(unsigned char*)':
+../../../components/rosserial/include/tf/tfMessage.h:49:69: warning: 'void* realloc(void*, size_t)' moving an object of non-trivially copyable type 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'}; use 'new' and 'delete' instead [-Wclass-memaccess]
+   49 |         this->transforms = (geometry_msgs::TransformStamped*)realloc(this->transforms, transforms_lengthT * sizeof(geometry_msgs::TransformStamped));
+      |                                                              ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Core/Inc/mecabot_ros_config.h:12:
+../../../components/rosserial/include/geometry_msgs/TransformStamped.h:14:9: note: 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'} declared here
+   14 |   class TransformStamped : public ros::Msg
+      |         ^~~~~~~~~~~~~~~~
+../../../components/rosserial/include/tf/tfMessage.h:53:15: warning: 'void* memcpy(void*, const void*, size_t)' writing to an object of type 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'} with no trivial copy-assignment; use copy-assignment or copy-initialization instead [-Wclass-memaccess]
+   53 |         memcpy( &(this->transforms[i]), &(this->st_transforms), sizeof(geometry_msgs::TransformStamped));
+      |         ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../components/rosserial/include/geometry_msgs/TransformStamped.h:14:9: note: 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'} declared here
+   14 |   class TransformStamped : public ros::Msg
+      |         ^~~~~~~~~~~~~~~~
+../Core/Inc/mecabot_ros_config.h: At global scope:
+../Core/Inc/mecabot_ros_config.h:23:1: warning: 'typedef' was ignored in this declaration
+   23 | typedef enum
+      | ^~~~~~~
+arm-none-eabi-g++ -o "encoder_read_test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\examples\encoder_read_test\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="encoder_read_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: encoder_read_test.elf
+ 
+arm-none-eabi-size  encoder_read_test.elf 
+arm-none-eabi-objdump -h -S encoder_read_test.elf  > "encoder_read_test.list"
+   text	   data	    bss	    dec	    hex	filename
+  54712	    104	   8448	  63264	   f720	encoder_read_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: encoder_read_test.list
+ 
+23:47:51 **** Incremental Build of configuration Debug for project encoder_read_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../components/rosserial/include -I../../../components/common/include -I../../../components/dc_motor/include -I../../../components/encoder/include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-g++ -o "encoder_read_test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\examples\encoder_read_test\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="encoder_read_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: encoder_read_test.elf
+ 
+arm-none-eabi-size  encoder_read_test.elf 
+arm-none-eabi-objdump -h -S encoder_read_test.elf  > "encoder_read_test.list"
+   text	   data	    bss	    dec	    hex	filename
+  54712	    104	   8448	  63264	   f720	encoder_read_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: encoder_read_test.list
+ 
+23:49:23 **** Incremental Build of configuration Debug for project encoder_read_test ****
+make -j8 all 
+arm-none-eabi-size  encoder_read_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54712	    104	   8448	  63264	   f720	encoder_read_test.elf
+Finished building: default.size.stdout
+ 
+23:53:31 **** Incremental Build of configuration Debug for project encoder_read_test ****
+make -j8 all 
+arm-none-eabi-size  encoder_read_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54712	    104	   8448	  63264	   f720	encoder_read_test.elf
+Finished building: default.size.stdout
+ 
+23:56:20 **** Incremental Build of configuration Debug for project encoder_read_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/mecabot_hardware.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../components/rosserial/include -I../../../components/common/include -I../../../components/dc_motor/include -I../../../components/encoder/include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mecabot_hardware.d" -MT"Core/Src/mecabot_hardware.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mecabot_hardware.o"
+In file included from ../Core/Src/mecabot_hardware.c:1:
+../Core/Inc/mecabot_hardware.h:53:1: warning: useless storage class specifier in empty declaration
+   53 | };
+      | ^
+arm-none-eabi-g++ -o "encoder_read_test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\examples\encoder_read_test\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="encoder_read_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: encoder_read_test.elf
+ 
+arm-none-eabi-size  encoder_read_test.elf 
+arm-none-eabi-objdump -h -S encoder_read_test.elf  > "encoder_read_test.list"
+   text	   data	    bss	    dec	    hex	filename
+  54704	    104	   8448	  63256	   f718	encoder_read_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: encoder_read_test.list
+ 
+00:06:18 **** Incremental Build of configuration Debug for project encoder_read_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/mecabot_hardware.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../components/rosserial/include -I../../../components/common/include -I../../../components/dc_motor/include -I../../../components/encoder/include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mecabot_hardware.d" -MT"Core/Src/mecabot_hardware.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mecabot_hardware.o"
+In file included from ../Core/Src/mecabot_hardware.c:1:
+../Core/Inc/mecabot_hardware.h:53:1: warning: useless storage class specifier in empty declaration
+   53 | };
+      | ^
+arm-none-eabi-g++ -o "encoder_read_test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\examples\encoder_read_test\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="encoder_read_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: encoder_read_test.elf
+ 
+arm-none-eabi-size  encoder_read_test.elf 
+arm-none-eabi-objdump -h -S encoder_read_test.elf  > "encoder_read_test.list"
+   text	   data	    bss	    dec	    hex	filename
+  54720	    104	   8448	  63272	   f728	encoder_read_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: encoder_read_test.list
+ 
+00:10:02 **** Incremental Build of configuration Debug for project encoder_read_test ****
+make -j8 all 
+arm-none-eabi-size  encoder_read_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54720	    104	   8448	  63272	   f728	encoder_read_test.elf
+Finished building: default.size.stdout
+ 
+00:10:25 **** Incremental Build of configuration Debug for project encoder_read_test ****
+make -j8 all 
+arm-none-eabi-size  encoder_read_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54720	    104	   8448	  63272	   f728	encoder_read_test.elf
+Finished building: default.size.stdout
+ 
+00:11:56 **** Incremental Build of configuration Debug for project encoder_read_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/mecabot_hardware.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../components/rosserial/include -I../../../components/common/include -I../../../components/dc_motor/include -I../../../components/encoder/include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mecabot_hardware.d" -MT"Core/Src/mecabot_hardware.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mecabot_hardware.o"
+In file included from ../Core/Src/mecabot_hardware.c:1:
+../Core/Inc/mecabot_hardware.h:53:1: warning: useless storage class specifier in empty declaration
+   53 | };
+      | ^
+arm-none-eabi-g++ -o "encoder_read_test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\examples\encoder_read_test\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="encoder_read_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: encoder_read_test.elf
+ 
+arm-none-eabi-size  encoder_read_test.elf 
+arm-none-eabi-objdump -h -S encoder_read_test.elf  > "encoder_read_test.list"
+   text	   data	    bss	    dec	    hex	filename
+  54736	    104	   8456	  63296	   f740	encoder_read_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: encoder_read_test.list
+ 
+00:13:44 **** Incremental Build of configuration Debug for project encoder_read_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/mecabot_hardware.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../components/rosserial/include -I../../../components/common/include -I../../../components/dc_motor/include -I../../../components/encoder/include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mecabot_hardware.d" -MT"Core/Src/mecabot_hardware.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mecabot_hardware.o"
+In file included from ../Core/Src/mecabot_hardware.c:1:
+../Core/Inc/mecabot_hardware.h:53:1: warning: useless storage class specifier in empty declaration
+   53 | };
+      | ^
+arm-none-eabi-g++ -o "encoder_read_test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\examples\encoder_read_test\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="encoder_read_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: encoder_read_test.elf
+ 
+arm-none-eabi-size  encoder_read_test.elf 
+arm-none-eabi-objdump -h -S encoder_read_test.elf  > "encoder_read_test.list"
+   text	   data	    bss	    dec	    hex	filename
+  54736	    104	   8456	  63296	   f740	encoder_read_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: encoder_read_test.list
+ 
+00:15:51 **** Incremental Build of configuration Debug for project encoder_read_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/mecabot_hardware.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../components/rosserial/include -I../../../components/common/include -I../../../components/dc_motor/include -I../../../components/encoder/include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mecabot_hardware.d" -MT"Core/Src/mecabot_hardware.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mecabot_hardware.o"
+In file included from ../Core/Src/mecabot_hardware.c:1:
+../Core/Inc/mecabot_hardware.h:53:1: warning: useless storage class specifier in empty declaration
+   53 | };
+      | ^
+arm-none-eabi-g++ -o "encoder_read_test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\examples\encoder_read_test\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="encoder_read_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: encoder_read_test.elf
+ 
+arm-none-eabi-size  encoder_read_test.elf 
+arm-none-eabi-objdump -h -S encoder_read_test.elf  > "encoder_read_test.list"
+   text	   data	    bss	    dec	    hex	filename
+  54744	    104	   8456	  63304	   f748	encoder_read_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: encoder_read_test.list
+ 

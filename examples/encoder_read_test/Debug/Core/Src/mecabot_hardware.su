@@ -1,0 +1,6 @@
+../Core/Src/mecabot_hardware.c:6:10:mecabot_motor_init	48	static
+../Core/Src/mecabot_hardware.c:49:10:mecabot_encoder_init	16	static
+../Core/Src/mecabot_hardware.c:71:10:mecabot_motor_start	16	static
+../Core/Src/mecabot_hardware.c:77:10:mecabot_motor_stop	16	static
+../Core/Src/mecabot_hardware.c:86:10:mecabot_motor_set_velocity	24	static
+../Core/Src/mecabot_hardware.c:102:10:mecabot_encoder_read	16	static

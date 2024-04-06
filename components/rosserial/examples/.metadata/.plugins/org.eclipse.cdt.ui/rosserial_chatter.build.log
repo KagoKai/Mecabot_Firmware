@@ -1,0 +1,18 @@
+17:47:34 **** Build of configuration Debug for project rosserial_chatter ****
+make -j8 all 
+arm-none-eabi-g++ "../Core/Src/mainpp.cpp" -mcpu=cortex-m3 -std=gnu++14 -g -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../include -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/rosserial/examples/rosserial_chatter/Core/Src" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mainpp.d" -MT"Core/Src/mainpp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mainpp.o"
+arm-none-eabi-g++ -o "rosserial_chatter.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\components\rosserial\examples\rosserial_chatter\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rosserial_chatter.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+C:/ST/STM32CubeIDE_1.12.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: rosserial_chatter.elf has a LOAD segment with RWX permissions
+Finished building target: rosserial_chatter.elf
+ 
+arm-none-eabi-size  rosserial_chatter.elf 
+arm-none-eabi-objdump -h -S rosserial_chatter.elf  > "rosserial_chatter.list"
+   text	   data	    bss	    dec	    hex	filename
+  20024	    104	  18756	  38884	   97e4	rosserial_chatter.elf
+Finished building: default.size.stdout
+ 
+Finished building: rosserial_chatter.list
+ 
+
+17:47:35 Build Finished. 0 errors, 1 warnings. (took 1s.561ms)
+

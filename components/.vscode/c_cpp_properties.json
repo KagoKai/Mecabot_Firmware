@@ -3,7 +3,10 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**",
+                "${workspaceFolder}/common/include",
+                "${workspaceFolder}/mpu6050/include",
+                "${workspaceFolder}/madgwick_imu/include",
+                "${workspaceFolder}/rosserial/**",
                 "${workspaceFolder}/../stm32/**"
             ],
             "defines": [

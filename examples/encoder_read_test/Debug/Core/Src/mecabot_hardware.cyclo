@@ -1,0 +1,6 @@
+../Core/Src/mecabot_hardware.c:6:10:mecabot_motor_init	1
+../Core/Src/mecabot_hardware.c:49:10:mecabot_encoder_init	1
+../Core/Src/mecabot_hardware.c:71:10:mecabot_motor_start	1
+../Core/Src/mecabot_hardware.c:77:10:mecabot_motor_stop	1
+../Core/Src/mecabot_hardware.c:86:10:mecabot_motor_set_velocity	3
+../Core/Src/mecabot_hardware.c:102:10:mecabot_encoder_read	1

@@ -1,0 +1,21 @@
+00:15:51 **** Incremental Build of configuration Debug for project encoder_read_test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/mecabot_hardware.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../components/rosserial/include -I../../../components/common/include -I../../../components/dc_motor/include -I../../../components/encoder/include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mecabot_hardware.d" -MT"Core/Src/mecabot_hardware.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mecabot_hardware.o"
+In file included from ../Core/Src/mecabot_hardware.c:1:
+../Core/Inc/mecabot_hardware.h:53:1: warning: useless storage class specifier in empty declaration
+   53 | };
+      | ^
+arm-none-eabi-g++ -o "encoder_read_test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\examples\encoder_read_test\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="encoder_read_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: encoder_read_test.elf
+ 
+arm-none-eabi-size  encoder_read_test.elf 
+arm-none-eabi-objdump -h -S encoder_read_test.elf  > "encoder_read_test.list"
+   text	   data	    bss	    dec	    hex	filename
+  54744	    104	   8456	  63304	   f748	encoder_read_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: encoder_read_test.list
+ 
+
+00:15:53 Build Finished. 0 errors, 1 warnings. (took 1s.855ms)
+
