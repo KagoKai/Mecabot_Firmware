@@ -1,6 +1,6 @@
 #include "mecabot_hardware.h"
 
-Motor motor[NUM_OF_MOTOR];
+Motor mecabot_motor[NUM_OF_MOTOR];
 Encoder encoder[NUM_OF_MOTOR];
 
 status_t mecabot_motor_init(void)
@@ -12,7 +12,7 @@ status_t mecabot_motor_init(void)
 	  .direction_pin_B = GPIO_PIN_12,
 	  .pwm_frequency = 1000
     };
-    motor[front_left] = Motor_Init(handle_FL);
+    mecabot_motor[front_left] = Motor_Init(handle_FL);
 
     Motor_Handle_t handle_FR = {
 	  .pwm_channel = TIM_CHANNEL_2,
@@ -21,7 +21,7 @@ status_t mecabot_motor_init(void)
 	  .direction_pin_B = GPIO_PIN_13,
 	  .pwm_frequency = 1000
     };
-    motor[front_right] = Motor_Init(handle_FR);
+    mecabot_motor[front_right] = Motor_Init(handle_FR);
 
     /*
     Motor_Handle_t handle_BL = {
@@ -31,7 +31,7 @@ status_t mecabot_motor_init(void)
 	  .direction_pin_B = GPIO_PIN_0,
 	  .pwm_frequency = 1000
     };
-    motor[back_left] = Motor_Init(handle_BL);
+    mecabot_motor[back_left] = Motor_Init(handle_BL);
 
     Motor_Handle_t handle_BR = {
 	  .pwm_channel = TIM_CHANNEL_4,
@@ -40,7 +40,7 @@ status_t mecabot_motor_init(void)
 	  .direction_pin_B = GPIO_PIN_1,
 	  .pwm_frequency = 1000
     };
-    motor[back_right] = Motor_Init(handle_BR);
+    mecabot_motor[back_right] = Motor_Init(handle_BR);
     */
 
     return STATUS_OK;

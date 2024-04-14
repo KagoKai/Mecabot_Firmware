@@ -126,8 +126,8 @@ typedef struct
 
     float temp_raw;
 
-    MPU6050_DataScaled_t gyro_scaled;
-    MPU6050_DataScaled_t accel_scaled;
+    MPU6050_DataScaled_t gyro_scaled;       /*!> Actual angular velocity values (deg/s)*/
+    MPU6050_DataScaled_t accel_scaled;      /*!> Actual linear acceleration values (m/s^2)*/
 
 }MPU6050_t;
 

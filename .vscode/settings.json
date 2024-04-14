@@ -5,6 +5,9 @@
         "stm32f1xx_hal_tim.h": "c",
         "stm32f103xb.h": "c",
         "dc_motor.h": "c",
-        "encoder.h": "c"
-    }
+        "encoder.h": "c",
+        "mecabot_ros_config.h": "c",
+        "cmath": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "enabled"
 }

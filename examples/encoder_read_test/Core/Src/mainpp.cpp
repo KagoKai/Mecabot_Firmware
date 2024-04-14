@@ -18,7 +18,7 @@ float constraint(float var, float min, float max)
 uint32_t t;
 uint16_t last_tick[NUM_OF_MOTOR] = { 0 };
 
-extern Motor motor[NUM_OF_MOTOR];
+extern Motor mecabot_motor[NUM_OF_MOTOR];
 extern Encoder encoder[NUM_OF_MOTOR];
 
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
@@ -86,13 +86,13 @@ void setup()
 	/*
 	for (int i=0; i<NUM_OF_MOTOR; i++)
 	{
-		mecabot_motor_start(motor[i]);
+		mecabot_motor_start(mecabot_motor[i]);
 	}
 	*/
-	Motor_SetDirection(motor[front_left], motor[front_left]->direction);
-	Motor_SetDirection(motor[front_right], motor[front_right]->direction);
-	HAL_TIM_PWM_Start(&htim_motor, motor[front_left]->pwm_channel);
-	HAL_TIM_PWM_Start(&htim_motor, motor[front_right]->pwm_channel);
+	Motor_SetDirection(mecabot_motor[front_left], mecabot_motor[front_left]->direction);
+	Motor_SetDirection(mecabot_motor[front_right], mecabot_motor[front_right]->direction);
+	HAL_TIM_PWM_Start(&htim_motor, mecabot_motor[front_left]->pwm_channel);
+	HAL_TIM_PWM_Start(&htim_motor, mecabot_motor[front_right]->pwm_channel);
 
 	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
 }
@@ -167,6 +167,6 @@ void calculateMotorSpeed()
 	left_motor_vel = constraint(left_motor_vel, -WHEEL_MAX_VELOCITY, WHEEL_MAX_VELOCITY);
 	right_motor_vel = constraint(right_motor_vel, -WHEEL_MAX_VELOCITY, WHEEL_MAX_VELOCITY);
 
-	mecabot_motor_set_velocity(motor[front_left], left_motor_vel);
-	mecabot_motor_set_velocity(motor[front_right], right_motor_vel);
+	mecabot_motor_set_velocity(mecabot_motor[front_left], left_motor_vel);
+	mecabot_motor_set_velocity(mecabot_motor[front_right], right_motor_vel);
 }

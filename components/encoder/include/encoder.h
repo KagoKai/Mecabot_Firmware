@@ -24,6 +24,8 @@ typedef struct
     uint32_t tick_read_channel;
 }Encoder_t;
 
+typedef Encoder_t* Encoder;
+
 typedef struct 
 {
     uint32_t max_count;

@@ -118,7 +118,10 @@ static void quat_Normalize(Quaternion_t *q)
     q -> q3 /= norm;
 }
 
-
+static float quat_getYaw(Quaternion_t q)
+{
+    return atan2(2.0 * (q.q3 * q.q0 + q.q1 * q.q2) , - 1.0 + 2.0 * (q.q0 * q.q0 + q.q1 * q.q1));
+}
 
 #ifdef __cplusplus
 }

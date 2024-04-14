@@ -12,7 +12,7 @@ extern "C" {
 #include "stm32f1xx_hal_tim.h"
 #include "operation_status.h"
 
-#define DEFAULT_CLOCK_FREQ  8000000U
+#define DEFAULT_CLOCK_FREQ       8000000U
 #define DIRECTION_FORWARD        (int8_t)1
 #define DIRECTION_BACKWARD       (int8_t)(-1)
 
@@ -27,17 +27,17 @@ typedef struct
      /* Motor pin setting */
     uint32_t pwm_channel;
     GPIO_TypeDef *direction_port;
-    uint16_t direction_pin_A;
-    uint16_t direction_pin_B;
+    uint16_t direction_pin;
 }Motor_t;
+
+typedef Motor_t* Motor;
 
 typedef struct 
 {
     /* Motor pin setting */
     uint32_t pwm_channel;
     GPIO_TypeDef *direction_port;
-    uint16_t direction_pin_A;
-    uint16_t direction_pin_B;
+    uint16_t direction_pin;
     /* data */
     uint32_t pwm_frequency;
 }Motor_Handle_t;

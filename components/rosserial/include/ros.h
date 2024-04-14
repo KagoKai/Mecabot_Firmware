@@ -40,7 +40,7 @@
 
 namespace ros
 {
-  typedef NodeHandle_<STM32Hardware, 15, 15, buffer_size, buffer_size> NodeHandle; // default 25, 25, 512, 512
+  typedef NodeHandle_<STM32Hardware, 10, 10, buffer_size, buffer_size> NodeHandle; // default 25, 25, 512, 512
 }
 
 #endif

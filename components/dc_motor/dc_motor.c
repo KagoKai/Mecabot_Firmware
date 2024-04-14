@@ -11,8 +11,7 @@ Motor_t* Motor_Init(Motor_Handle_t handle)
 
     object->pwm_channel = handle.pwm_channel;
     object->direction_port = handle.direction_port;
-    object->direction_pin_A = handle.direction_pin_A;
-    object->direction_pin_B = handle.direction_pin_B;
+    object->direction_pin = handle.direction_pin;
 
     pwm_freq = handle.pwm_frequency;
 
@@ -79,15 +78,9 @@ status_t Motor_SetDirection(Motor_t *motor, int8_t direction)
 {
     motor->direction = direction;
     if (direction == DIRECTION_FORWARD)
-    {
-        HAL_GPIO_WritePin(motor->direction_port, motor->direction_pin_A, GPIO_PIN_RESET);
-        // HAL_GPIO_WritePin(motor->direction_port, motor->direction_pin_B, GPIO_PIN_RESET);
-    }
+        HAL_GPIO_WritePin(motor->direction_port, motor->direction_pin, GPIO_PIN_RESET);
     if (direction == DIRECTION_BACKWARD)
-    {
-        HAL_GPIO_WritePin(motor->direction_port, motor->direction_pin_A, GPIO_PIN_SET);
-        // HAL_GPIO_WritePin(motor->direction_port, motor->direction_pin_B, GPIO_PIN_SET);
-    }
+        HAL_GPIO_WritePin(motor->direction_port, motor->direction_pin, GPIO_PIN_SET);
 
     return STATUS_OK;
 }
