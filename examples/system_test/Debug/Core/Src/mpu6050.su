@@ -1,0 +1,9 @@
+../Core/Src/mpu6050.c:15:10:MPU6050_ReadWhoAmI	40	static
+../Core/Src/mpu6050.c:21:10:MPU6050_Init	48	static
+../Core/Src/mpu6050.c:53:10:MPU6050_ConfigSampleRate	48	static
+../Core/Src/mpu6050.c:63:10:MPU6050_ConfigGyroscope	48	static
+../Core/Src/mpu6050.c:99:10:MPU6050_ConfigAccelerometer	48	static
+../Core/Src/mpu6050.c:154:10:MPU6050_SetGyroscopeOffset	24	static
+../Core/Src/mpu6050.c:163:10:MPU6050_SetAccelerometerOffset	24	static
+../Core/Src/mpu6050.c:258:10:MPU6050_ReadGyroscope	40	static
+../Core/Src/mpu6050.c:277:10:MPU6050_ReadAccelerometer	40	static
