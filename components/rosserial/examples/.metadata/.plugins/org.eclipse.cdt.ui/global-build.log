@@ -1,68 +1,48 @@
-10:48:13 **** Incremental Build of configuration Debug for project rosserial_imu ****
+16:36:30 **** Incremental Build of configuration Debug for project rosserial_chatter ****
 make -j8 all 
-arm-none-eabi-g++ "../Core/Src/mainpp.cpp" -mcpu=cortex-m3 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../include -I../../../../mpu6050/include -I../../../../madgwick_filter/include -I../../../../common/include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mainpp.d" -MT"Core/Src/mainpp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mainpp.o"
-In file included from ../../../include/tf/transform_broadcaster.h:39,
-                 from ../Core/Src/mainpp.cpp:31:
-../../../include/tf/tfMessage.h: In member function 'virtual int tf::tfMessage::deserialize(unsigned char*)':
-../../../include/tf/tfMessage.h:49:69: warning: 'void* realloc(void*, size_t)' moving an object of non-trivially copyable type 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'}; use 'new' and 'delete' instead [-Wclass-memaccess]
-   49 |         this->transforms = (geometry_msgs::TransformStamped*)realloc(this->transforms, transforms_lengthT * sizeof(geometry_msgs::TransformStamped));
-      |                                                              ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In file included from ../Core/Src/mainpp.cpp:30:
-../../../include/geometry_msgs/TransformStamped.h:14:9: note: 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'} declared here
-   14 |   class TransformStamped : public ros::Msg
-      |         ^~~~~~~~~~~~~~~~
-../../../include/tf/tfMessage.h:53:15: warning: 'void* memcpy(void*, const void*, size_t)' writing to an object of type 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'} with no trivial copy-assignment; use copy-assignment or copy-initialization instead [-Wclass-memaccess]
-   53 |         memcpy( &(this->transforms[i]), &(this->st_transforms), sizeof(geometry_msgs::TransformStamped));
-      |         ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../../../include/geometry_msgs/TransformStamped.h:14:9: note: 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'} declared here
-   14 |   class TransformStamped : public ros::Msg
-      |         ^~~~~~~~~~~~~~~~
-In file included from ../Core/Src/mainpp.cpp:26:
-../../../../madgwick_filter/include/madgwick_filter.h: At global scope:
-../../../../madgwick_filter/include/madgwick_filter.h:112:13: warning: 'void quat_Normalize(Quaternion_t*)' defined but not used [-Wunused-function]
-  112 | static void quat_Normalize(Quaternion_t *q)
-      |             ^~~~~~~~~~~~~~
-../../../../madgwick_filter/include/madgwick_filter.h:97:21: warning: 'Quaternion_t quat_conjugate(Quaternion_t)' defined but not used [-Wunused-function]
-   97 | static Quaternion_t quat_conjugate(Quaternion_t q)
-      |                     ^~~~~~~~~~~~~~
-../../../../madgwick_filter/include/madgwick_filter.h:85:21: warning: 'Quaternion_t quat_sub(Quaternion_t, Quaternion_t)' defined but not used [-Wunused-function]
-   85 | static Quaternion_t quat_sub(Quaternion_t L, Quaternion_t R)
-      |                     ^~~~~~~~
-../../../../madgwick_filter/include/madgwick_filter.h:73:21: warning: 'Quaternion_t quat_add(Quaternion_t, Quaternion_t)' defined but not used [-Wunused-function]
-   73 | static Quaternion_t quat_add(Quaternion_t L, Quaternion_t R)
-      |                     ^~~~~~~~
-../../../../madgwick_filter/include/madgwick_filter.h:62:21: warning: 'Quaternion_t quat_scalar(Quaternion_t, float)' defined but not used [-Wunused-function]
-   62 | static Quaternion_t quat_scalar(Quaternion_t q, float scalar)
-      |                     ^~~~~~~~~~~
-../../../../madgwick_filter/include/madgwick_filter.h:50:21: warning: 'Quaternion_t quat_mult(Quaternion_t, Quaternion_t)' defined but not used [-Wunused-function]
-   50 | static Quaternion_t quat_mult(Quaternion_t L, Quaternion_t R)
-      |                     ^~~~~~~~~
-arm-none-eabi-g++ -o "rosserial_imu.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\components\rosserial\examples\rosserial_imu\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rosserial_imu.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: rosserial_imu.elf
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../include -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/rosserial/examples/rosserial_chatter/Core/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../include -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/rosserial/examples/rosserial_chatter/Core/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
+arm-none-eabi-g++ -o "rosserial_chatter.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\components\rosserial\examples\rosserial_chatter\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rosserial_chatter.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+C:/ST/STM32CubeIDE_1.12.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: rosserial_chatter.elf has a LOAD segment with RWX permissions
+Finished building target: rosserial_chatter.elf
  
-arm-none-eabi-size  rosserial_imu.elf 
-arm-none-eabi-objdump -h -S rosserial_imu.elf  > "rosserial_imu.list"
+arm-none-eabi-size  rosserial_chatter.elf 
+arm-none-eabi-objdump -h -S rosserial_chatter.elf  > "rosserial_chatter.list"
    text	   data	    bss	    dec	    hex	filename
-  45128	    176	  19472	  64776	   fd08	rosserial_imu.elf
+  19440	    104	   6428	  25972	   6574	rosserial_chatter.elf
 Finished building: default.size.stdout
  
-Finished building: rosserial_imu.list
+Finished building: rosserial_chatter.list
  
-17:42:54 **** Build of configuration Debug for project rosserial_led_blink ****
+16:36:57 **** Incremental Build of configuration Debug for project rosserial_chatter ****
 make -j8 all 
-arm-none-eabi-g++ "../Core/Src/mainpp.cpp" -mcpu=cortex-m3 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mainpp.d" -MT"Core/Src/mainpp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mainpp.o"
-arm-none-eabi-g++ -o "rosserial_led_blink.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\components\rosserial\examples\rosserial_led_blink\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rosserial_led_blink.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: rosserial_led_blink.elf
- 
-arm-none-eabi-size  rosserial_led_blink.elf 
-arm-none-eabi-objdump -h -S rosserial_led_blink.elf  > "rosserial_led_blink.list"
+arm-none-eabi-size  rosserial_chatter.elf 
    text	   data	    bss	    dec	    hex	filename
-  20672	     92	  18780	  39544	   9a78	rosserial_led_blink.elf
+  19440	    104	   6428	  25972	   6574	rosserial_chatter.elf
 Finished building: default.size.stdout
  
-Finished building: rosserial_led_blink.list
+17:09:02 **** Incremental Build of configuration Debug for project rosserial_chatter ****
+make -j8 all 
+arm-none-eabi-size  rosserial_chatter.elf 
+   text	   data	    bss	    dec	    hex	filename
+  19440	    104	   6428	  25972	   6574	rosserial_chatter.elf
+Finished building: default.size.stdout
  
-17:47:34 **** Build of configuration Debug for project rosserial_chatter ****
+12:34:59 **** Incremental Build of configuration Debug for project control_board_chatter ****
+make -j8 all 
+arm-none-eabi-g++ "../Core/Src/mainpp.cpp" -mcpu=cortex-m3 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xE -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/rosserial/examples../../include" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mainpp.d" -MT"Core/Src/mainpp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mainpp.o"
+arm-none-eabi-g++ -o "control_board_chatter.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\components\rosserial\examples\control_board_chatter\STM32F103RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="control_board_chatter.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: control_board_chatter.elf
+ 
+arm-none-eabi-size  control_board_chatter.elf 
+arm-none-eabi-objdump -h -S control_board_chatter.elf  > "control_board_chatter.list"
+   text	   data	    bss	    dec	    hex	filename
+  20720	     92	   6428	  27240	   6a68	control_board_chatter.elf
+Finished building: default.size.stdout
+ 
+Finished building: control_board_chatter.list
+ 
+10:28:43 **** Build of configuration Debug for project rosserial_chatter ****
 make -j8 all 
 arm-none-eabi-g++ "../Core/Src/mainpp.cpp" -mcpu=cortex-m3 -std=gnu++14 -g -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../include -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/rosserial/examples/rosserial_chatter/Core/Src" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mainpp.d" -MT"Core/Src/mainpp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mainpp.o"
 arm-none-eabi-g++ -o "rosserial_chatter.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\components\rosserial\examples\rosserial_chatter\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rosserial_chatter.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
@@ -72,15 +52,43 @@ Finished building target: rosserial_chatter.elf
 arm-none-eabi-size  rosserial_chatter.elf 
 arm-none-eabi-objdump -h -S rosserial_chatter.elf  > "rosserial_chatter.list"
    text	   data	    bss	    dec	    hex	filename
-  20024	    104	  18756	  38884	   97e4	rosserial_chatter.elf
+  19816	    104	  18716	  38636	   96ec	rosserial_chatter.elf
 Finished building: default.size.stdout
  
 Finished building: rosserial_chatter.list
  
-17:50:07 **** Incremental Build of configuration Debug for project rosserial_led_blink ****
+14:01:58 **** Build of configuration Debug for project control_board_chatter ****
 make -j8 all 
-arm-none-eabi-size  rosserial_led_blink.elf 
+arm-none-eabi-g++ "../Core/Src/mainpp.cpp" -mcpu=cortex-m3 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xE -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/rosserial/examples../../include" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mainpp.d" -MT"Core/Src/mainpp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mainpp.o"
+arm-none-eabi-g++ -o "control_board_chatter.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\components\rosserial\examples\control_board_chatter\STM32F103RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="control_board_chatter.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: control_board_chatter.elf
+ 
+arm-none-eabi-size  control_board_chatter.elf 
+arm-none-eabi-objdump -h -S control_board_chatter.elf  > "control_board_chatter.list"
    text	   data	    bss	    dec	    hex	filename
-  20672	     92	  18780	  39544	   9a78	rosserial_led_blink.elf
+  21128	     92	  18724	  39944	   9c08	control_board_chatter.elf
 Finished building: default.size.stdout
+ 
+Finished building: control_board_chatter.list
+ 
+14:03:36 **** Incremental Build of configuration Debug for project control_board_chatter ****
+make -j8 all 
+arm-none-eabi-size  control_board_chatter.elf 
+   text	   data	    bss	    dec	    hex	filename
+  21128	     92	  18724	  39944	   9c08	control_board_chatter.elf
+Finished building: default.size.stdout
+ 
+16:54:36 **** Incremental Build of configuration Debug for project control_board_chatter ****
+make -j8 all 
+arm-none-eabi-g++ "../Core/Src/mainpp.cpp" -mcpu=cortex-m3 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xE -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/rosserial/examples../../include" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mainpp.d" -MT"Core/Src/mainpp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mainpp.o"
+arm-none-eabi-g++ -o "control_board_chatter.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\components\rosserial\examples\control_board_chatter\STM32F103RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="control_board_chatter.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: control_board_chatter.elf
+ 
+arm-none-eabi-size  control_board_chatter.elf 
+arm-none-eabi-objdump -h -S control_board_chatter.elf  > "control_board_chatter.list"
+   text	   data	    bss	    dec	    hex	filename
+  21164	     92	  35108	  56364	   dc2c	control_board_chatter.elf
+Finished building: default.size.stdout
+ 
+Finished building: control_board_chatter.list
  

@@ -1,0 +1,10 @@
+13:40:33 **** Incremental Build of configuration Debug for project control_board_system_test ****
+make -j8 all 
+arm-none-eabi-size  control_board_system_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  35460	    100	  19160	  54720	   d5c0	control_board_system_test.elf
+Finished building: default.size.stdout
+ 
+
+13:40:34 Build Finished. 0 errors, 0 warnings. (took 455ms)
+

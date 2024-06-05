@@ -1,0 +1,10 @@
+17:07:10 **** Incremental Build of configuration Debug for project f4_chatter_test ****
+make -j8 all 
+arm-none-eabi-size  f4_chatter_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  22304	     92	   6484	  28880	   70d0	f4_chatter_test.elf
+Finished building: default.size.stdout
+ 
+
+17:07:10 Build Finished. 0 errors, 0 warnings. (took 410ms)
+

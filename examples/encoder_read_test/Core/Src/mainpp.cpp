@@ -51,7 +51,7 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 	}
 }
 
-void motorSpeedCallback(const std_msgs::UInt8& motor_speed_msg)
+void motorVelCallback(const std_msgs::UInt8& motor_speed_msg)
 {
 }
 

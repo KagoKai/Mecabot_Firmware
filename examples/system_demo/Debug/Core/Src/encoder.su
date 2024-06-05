@@ -1,0 +1,6 @@
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/encoder/encoder.c:3:12:Encoder_Init	24	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/encoder/encoder.c:14:10:Encoder_Start	24	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/encoder/encoder.c:23:10:Encoder_Stop	24	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/encoder/encoder.c:32:10:Encoder_GetTick	24	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/encoder/encoder.c:44:10:Encoder_UpdateTick	24	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/encoder/encoder.c:56:10:Encoder_Destroy	16	static

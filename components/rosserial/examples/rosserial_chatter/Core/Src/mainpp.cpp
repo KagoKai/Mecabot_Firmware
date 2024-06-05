@@ -12,23 +12,18 @@
 ros::NodeHandle nh;
 
 std_msgs::String str_msg;
-ros::Publisher chatter("chatter", &str_msg);
+ros::Publisher chatter("/chatter", &str_msg);
 
 char data[] = "Hello world!";
 
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 {
-	//if (huart->Instance == comm_rosserial.get_handle()->Instance)
-	//{
 	comm_rosserial.set_tx_cplt();
-	//}
-	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
 }
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	comm_rosserial.reset_rbuf();
-	//HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
 }
 
 void setup()
@@ -37,12 +32,17 @@ void setup()
 	nh.advertise(chatter);
 }
 
+uint32_t millis()
+{
+	return HAL_GetTick();
+}
+
 void loop()
 {
 	str_msg.data = "hello";
 	chatter.publish(&str_msg);
 
-	nh.spinOnce();
+	HAL_Delay(500);
 
-	HAL_Delay(1000);
+	nh.spinOnce();
 }

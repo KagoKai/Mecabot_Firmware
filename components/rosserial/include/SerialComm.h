@@ -25,7 +25,7 @@
 
 extern UART_HandleTypeDef huart_rosserial;
 
-static constexpr uint16_t buffer_size = 512;
+static constexpr uint16_t buffer_size = 8192;
 
 class SerialComm
 {

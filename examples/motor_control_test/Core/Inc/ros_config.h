@@ -18,7 +18,7 @@
 #define RPM_PUBLISH_FREQUENCY		5
 
 /* CALLBACK FUNCTIONS START */
-void motorSpeedCallback(const std_msgs::UInt8& motor_speed_msg);
+void motorVelCallback(const std_msgs::UInt8& motor_speed_msg);
 /* CALLBACK FUNCTIONS END */
 
 /* MSG INITIALIZATION FUNCTIONS START */
@@ -52,7 +52,7 @@ uint32_t current_offset;
 /*
  * Subscribers
  */
-ros::Subscriber<std_msgs::UInt8> sub_motor_speed("/motor_speed", &motorSpeedCallback);
+ros::Subscriber<std_msgs::UInt8> sub_motor_speed("/motor_speed", &motorVelCallback);
 
 /*
  * Publishers

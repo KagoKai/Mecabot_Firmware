@@ -8,6 +8,7 @@ Core/Src/mainpp.o: ../Core/Src/mainpp.cpp ../Core/Inc/mainpp.h \
  ../../../include/ros/publisher.h ../../../include/ros/node_handle.h \
  ../../../include/ros/subscriber.h ../../../include/ros/service_server.h \
  ../../../include/ros/service_client.h ../../../include/STM32Hardware.h \
+ ../../../include/SerialComm.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
@@ -31,7 +32,7 @@ Core/Src/mainpp.o: ../Core/Src/mainpp.cpp ../Core/Inc/mainpp.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
- ../../../include/SerialComm.h ../../../include/std_msgs/String.h
+ ../../../include/std_msgs/String.h
 ../Core/Inc/mainpp.h:
 ../../../include/ros.h:
 ../../../include/ros/node_handle.h:
@@ -48,6 +49,7 @@ Core/Src/mainpp.o: ../Core/Src/mainpp.cpp ../Core/Inc/mainpp.h \
 ../../../include/ros/service_server.h:
 ../../../include/ros/service_client.h:
 ../../../include/STM32Hardware.h:
+../../../include/SerialComm.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 ../Core/Inc/stm32f1xx_hal_conf.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:
@@ -71,5 +73,4 @@ Core/Src/mainpp.o: ../Core/Src/mainpp.cpp ../Core/Inc/mainpp.h \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
-../../../include/SerialComm.h:
 ../../../include/std_msgs/String.h:

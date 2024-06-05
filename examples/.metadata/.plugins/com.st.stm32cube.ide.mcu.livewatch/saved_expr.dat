@@ -1,9 +1,10 @@
 goal_vel
-htim_motor.Instance->CCR1
-htim_motor.Instance->CCR2
-htim_motor.Instance->ARR
-motor[0]->direction
-motor[1]->direction
-direction
-velocity_debug
-direction != motor[0]->direction
+wheel_angular_vel[0]
+mecabot_motor[0]->pwm_duty
+wheel_angular_vel[1]
+mecabot_motor[1]->pwm_duty
+wheel_angular_vel[2]
+mecabot_motor[2]->pwm_duty
+wheel_angular_vel[3]
+mecabot_motor[3]->pwm_duty
+mecabot_motor

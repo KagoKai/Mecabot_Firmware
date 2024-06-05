@@ -5,14 +5,24 @@
 extern "C" {
 #endif
 
+#define STM32F103RCT6 // Change to BLUEPILL for Module Test
+
 #include <stdlib.h>
+
+#ifdef STM32F103RCT6
+#include "stm32f103xe.h"
+#endif /* Control Board */
+#ifdef BLUEPILL
 #include "stm32f103xb.h"
+#endif /* Bluepill Module */
+
 #include "stm32f1xx_hal.h"
 #include "stm32f1xx_hal_gpio.h"
 #include "stm32f1xx_hal_tim.h"
 #include "operation_status.h"
 
-#define DEFAULT_CLOCK_FREQ       8000000U
+//#define DEFAULT_CLOCK_FREQ       8000000U
+#define DEFAULT_CLOCK_FREQ       32000000U
 #define DIRECTION_FORWARD        (int8_t)1
 #define DIRECTION_BACKWARD       (int8_t)(-1)
 

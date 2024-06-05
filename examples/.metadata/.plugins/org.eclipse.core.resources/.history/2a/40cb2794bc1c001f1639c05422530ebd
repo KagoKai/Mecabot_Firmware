@@ -1,0 +1,15 @@
+/*
+ * mecabot_ros_config.h
+ *
+ *  Created on: May 28, 2024
+ *      Author: ADMIN
+ */
+
+#ifndef INC_MECABOT_ROS_CONFIG_H_
+#define INC_MECABOT_ROS_CONFIG_H_
+
+
+
+
+
+#endif /* INC_MECABOT_ROS_CONFIG_H_ */

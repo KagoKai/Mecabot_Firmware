@@ -1,0 +1,104 @@
+/*
+ * mainpp.cpp
+ *
+ *  Created on: May 25, 2024
+ *      Author: ADMIN
+ */
+
+#include <cstdint>
+#include <stdlib.h>
+#include "mainpp.h"
+#include "mecabot_hardware.h"
+#include "mecabot_ros_config.h"
+
+#define MAX(x, y) (((x) > (y)) ? (x) : (y))
+#define MIN(x, y) (((x) < (y)) ? (x) : (y))
+
+float constraint(float var, float min, float max)
+{
+	if (var < min)	return min;
+	if (var > max) 	return max;
+	else 			return var;
+}
+
+uint32_t t = 0; // Elapsed system time
+
+extern Motor mecabot_motor[NUM_OF_MOTOR];
+extern Encoder encoder[NUM_OF_MOTOR];
+extern FO_IIR_Filter_t filter[NUM_OF_MOTOR];
+
+uint16_t prev_tick[NUM_OF_MOTOR] = { 0 };
+float rpm[NUM_OF_MOTOR] = { 0.0f };
+
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
+{
+	comm_rosserial.set_tx_cplt();
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	comm_rosserial.reset_rbuf();
+}
+
+void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
+{
+	switch (htim->Channel)
+	{
+	case HAL_TIM_ACTIVE_CHANNEL_3:
+		encoder[front_left]->tick++;
+		break;
+	case HAL_TIM_ACTIVE_CHANNEL_1:
+		encoder[front_right]->tick++;
+		break;
+	case HAL_TIM_ACTIVE_CHANNEL_4:
+		encoder[back_left]->tick++;
+		break;
+	case HAL_TIM_ACTIVE_CHANNEL_2:
+		encoder[back_right]->tick++;
+	default:
+		break;
+	}
+}
+
+/* CALLBACK FUNCTIONS START */
+void commandVelocityCallback(const geometry_msgs::Twist& cmd_vel_msg)
+{
+	goal_vel[linear_x] = cmd_vel_msg.linear.x;
+	goal_vel[linear_y] = cmd_vel_msg.linear.y;
+	goal_vel[angular_z] = cmd_vel_msg.angular.z;
+}
+/* CALLBACK FUNCTIONS END */
+
+void ros_setup()
+{
+	nh.initNode();
+}
+
+void setup()
+{
+	ros_setup();
+
+	nh.subscribe(sub_cmd_vel);
+	nh.advertise(pub_FL_rpm);
+	nh.advertise(pub_FR_rpm);
+	nh.advertise(pub_BL_rpm);
+	nh.advertise(pub_BR_rpm);
+}
+
+void loop()
+{
+	t = static_cast<double>(millis());
+
+	/* Motor control */
+	mecabot_motor_init();
+	//mecabot_encoder_init();
+
+	for (int i=0; i<NUM_OF_MOTOR; i++)
+	{
+		mecabot_motor_start(mecabot_motor[i]);
+	}
+
+	nh.spinOnce();
+}
+
+/* DATA HANDLE FUNCTIONS START */

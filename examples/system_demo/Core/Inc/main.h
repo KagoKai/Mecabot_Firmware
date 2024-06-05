@@ -59,6 +59,30 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define MOTOR_BL_DIR_Pin GPIO_PIN_0
+#define MOTOR_BL_DIR_GPIO_Port GPIOC
+#define MOTOR_BR_DIR_Pin GPIO_PIN_1
+#define MOTOR_BR_DIR_GPIO_Port GPIOC
+#define MOTOR_FL_DIR_Pin GPIO_PIN_2
+#define MOTOR_FL_DIR_GPIO_Port GPIOC
+#define MOTOR_FR_DIR_Pin GPIO_PIN_3
+#define MOTOR_FR_DIR_GPIO_Port GPIOC
+#define ENCODER_FR_TICK_Pin GPIO_PIN_6
+#define ENCODER_FR_TICK_GPIO_Port GPIOC
+#define ENCODER_BR_TICK_Pin GPIO_PIN_7
+#define ENCODER_BR_TICK_GPIO_Port GPIOC
+#define ENCODER_FL_TICK_Pin GPIO_PIN_8
+#define ENCODER_FL_TICK_GPIO_Port GPIOC
+#define ENCODER_BL_TICK_Pin GPIO_PIN_9
+#define ENCODER_BL_TICK_GPIO_Port GPIOC
+#define MOTOR_FR_PWM_Pin GPIO_PIN_8
+#define MOTOR_FR_PWM_GPIO_Port GPIOA
+#define MOTOR_BR_PWM_Pin GPIO_PIN_9
+#define MOTOR_BR_PWM_GPIO_Port GPIOA
+#define MOTOR_FL_PWM_Pin GPIO_PIN_10
+#define MOTOR_FL_PWM_GPIO_Port GPIOA
+#define MOTOR_BL_PWM_Pin GPIO_PIN_11
+#define MOTOR_BL_PWM_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
 

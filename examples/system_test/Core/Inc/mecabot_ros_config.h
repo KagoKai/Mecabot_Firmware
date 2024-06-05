@@ -21,13 +21,13 @@ extern "C" {
 #define NUM_OF_MOTOR                4
 
 #define MOTOR_CONTROL_FREQUENCY		    100
-#define MOTOR_FEEDBACK_FREQUENCY        5
+#define VEL_FEEDBACK_FREQUENCY        5
 #define IMU_PUBLISH_FREQUENCY           10
 #define ROBOT_INFO_PUBLISH_FREQUENCY    5
 #define RPM_PUBLISH_FREQUENCY		    5
 
 /* CALLBACK FUNCTIONS START */
-void motorSpeedCallback(const std_msgs::UInt8& motor_speed_msg);
+void motorVelCallback(const std_msgs::UInt8& motor_speed_msg);
 void commandVelocityCallback(const geometry_msgs::Twist& cmd_vel_msg);
 /* CALLBACK FUNCTIONS END */
 
@@ -131,7 +131,7 @@ typedef enum
     robot_info_publish_event
 }time_index_t;
 uint32_t t_previous[4] = { 0 };
-uint32_t dt[4] = { 1 / MOTOR_CONTROL_FREQUENCY, 1 / MOTOR_FEEDBACK_FREQUENCY, 1 / IMU_PUBLISH_FREQUENCY, 1 / ROBOT_INFO_PUBLISH_FREQUENCY };
+uint32_t dt[4] = { 1 / MOTOR_CONTROL_FREQUENCY, 1 / VEL_FEEDBACK_FREQUENCY, 1 / IMU_PUBLISH_FREQUENCY, 1 / ROBOT_INFO_PUBLISH_FREQUENCY };
 
 /* GLOBAL VARIABLES END */
 #ifdef __cplusplus

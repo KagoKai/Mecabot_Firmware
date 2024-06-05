@@ -1,17 +1,29 @@
-19:34:11 **** Incremental Build of configuration Debug for project motor_control_test ****
+10:27:54 **** Build of configuration Debug for project motor_control_test ****
 make -j8 all 
+arm-none-eabi-gcc "C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/dc_motor/dc_motor.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../components/rosserial/include -I../../../components/encoder/include -I../../../components/dc_motor/include -I../../../components/common/include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/dc_motor.d" -MT"Core/Src/dc_motor.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/dc_motor.o"
+arm-none-eabi-gcc "C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/encoder/encoder.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../components/rosserial/include -I../../../components/encoder/include -I../../../components/dc_motor/include -I../../../components/common/include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/encoder.d" -MT"Core/Src/encoder.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/encoder.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../components/rosserial/include -I../../../components/encoder/include -I../../../components/dc_motor/include -I../../../components/common/include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
 arm-none-eabi-g++ "../Core/Src/mainpp.cpp" -mcpu=cortex-m3 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../components/rosserial/include -I../../../components/encoder/include -I../../../components/dc_motor/include -I../../../components/common/include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mainpp.d" -MT"Core/Src/mainpp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mainpp.o"
-arm-none-eabi-g++ -o "motor_control_test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\examples\motor_control_test\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="motor_control_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: motor_control_test.elf
- 
-arm-none-eabi-size  motor_control_test.elf 
-arm-none-eabi-objdump -h -S motor_control_test.elf  > "motor_control_test.list"
-   text	   data	    bss	    dec	    hex	filename
-  29192	     96	  18968	  48256	   bc80	motor_control_test.elf
-Finished building: default.size.stdout
- 
-Finished building: motor_control_test.list
- 
+In file included from C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/dc_motor/dc_motor.c:1:
+../../../components/dc_motor/include/dc_motor.h:13:10: fatal error: stm32f103xe.h: No such file or directory
+   13 | #include "stm32f103xe.h"
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+In file included from C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/encoder/encoder.c:1:
+../../../components/encoder/include/encoder.h:14:10: fatal error: stm32f103xe.h: No such file or directory
+   14 | #include "stm32f103xe.h"
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Core/Src/subdir.mk:53: Core/Src/dc_motor.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Core/Src/subdir.mk:57: Core/Src/encoder.o] Error 1
+In file included from ../Core/Src/mainpp.cpp:11:
+../../../components/encoder/include/encoder.h:14:10: fatal error: stm32f103xe.h: No such file or directory
+   14 | #include "stm32f103xe.h"
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Core/Src/subdir.mk:61: Core/Src/mainpp.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
 
-19:34:12 Build Finished. 0 errors, 0 warnings. (took 1s.888ms)
+10:27:55 Build Failed. 7 errors, 0 warnings. (took 1s.138ms)
 

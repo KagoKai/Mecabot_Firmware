@@ -28,7 +28,7 @@ typedef enum
 };
 
 /* CALLBACK FUNCTIONS START */
-void motorSpeedCallback(const std_msgs::UInt8& motor_speed_msg);
+void motorVelCallback(const std_msgs::UInt8& motor_speed_msg);
 void commandVelocityCallback(const geometry_msgs::Twist& cmd_vel_msg);
 /* CALLBACK FUNCTIONS END */
 

@@ -35,7 +35,8 @@
 #ifndef ROS_STM32_HARDWARE_H_
 #define ROS_STM32_HARDWARE_H_
 
-#define STM32F1xx  // Change for your device
+#include <stdint.h>
+#include "SerialComm.h"
 
 #ifdef STM32F1xx
 #include "stm32f1xx_hal.h"
@@ -53,11 +54,6 @@
 #include "stm32f7xx_hal.h"
 #include "stm32f7xx_hal_uart.h"
 #endif /* STM32F7xx */
-
-#include <stdint.h>
-#include "SerialComm.h"
-
-//extern SerialComm comm_rosserial;
 
 class STM32Hardware {
   protected:

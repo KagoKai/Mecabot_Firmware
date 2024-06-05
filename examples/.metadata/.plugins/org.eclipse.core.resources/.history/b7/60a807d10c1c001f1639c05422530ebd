@@ -1,0 +1,94 @@
+/*
+ * mecabot_ros_config.h
+ *
+ *  Created on: May 25, 2024
+ *      Author: ADMIN
+ */
+
+#ifndef INC_MECABOT_ROS_CONFIG_H_
+#define INC_MECABOT_ROS_CONFIG_H_
+
+#include "ros.h"
+#include "ros/time.h"
+#include "std_msgs/UInt8.h"
+#include "std_msgs/UInt16.h"
+#include "geometry_msgs/Twist.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#define NUM_OF_MOTOR                	4
+#define MOTOR_CONTROL_FREQUENCY		    100
+#define MOTOR_FEEDBACK_FREQUENCY        50
+
+/* CALLBACK FUNCTIONS START */
+void commandVelocityCallback(const geometry_msgs::Twist& cmd_vel_msg);
+/* CALLBACK FUNCTIONS END */
+
+/* SETUP FUNCTIONS START */
+void ros_setup(void);
+/* SETUP FUNCTIONS END */
+
+/* GLOBAL VARIABLES START */
+
+/*
+ * ROS NodeHandle
+ */
+ros::NodeHandle nh;
+
+/*
+ * ROS parameters
+ */
+char *joint_states_name[NUM_OF_MOTOR] {"front_left_wheel_joint", "front_right_wheel_joint",
+                 	 	 	 	 	   "back_left_wheel_joint" , "back_right_wheel_joint"};
+
+/*
+ * Subscribers
+ */
+ros::Subscriber<geometry_msgs::Twist> sub_cmd_vel("/cmd_vel", &commandVelocityCallback);
+
+/*
+ * Publishers
+ */
+std_msgs::UInt16 rpm_LPF[NUM_OF_MOTOR] = { 0 };
+ros::Publisher
+
+/*
+* TF broadcaster
+*/
+
+/*
+* Control variables
+*/
+typedef enum
+{
+    linear_x = 0,
+    linear_y,
+    angular_z
+}odom_component_t;
+
+float goal_vel[3] = { 0.0 };						   	// Robot velocity received from cmd_vel (m/s)
+float wheel_angular_vel[NUM_OF_MOTOR] = { 0.0f };      	// Calculated from goal velocity (rad/s)
+float meas_wheel_angular_vel[NUM_OF_MOTOR] = { 0.0f }; 	// Actual speed calculated from encoder ticks
+
+uint8_t motor_duty[NUM_OF_MOTOR] = { 0 };
+
+/*
+* Time-related variables
+*/
+typedef enum
+{
+    motor_control_event = 0,
+    wheel_velocity_feedback_event,
+}time_index_t;
+float t_previous[2] = { 0 };
+float dt[2] = { 1000.0f / MOTOR_CONTROL_FREQUENCY, 1000.0f / MOTOR_FEEDBACK_FREQUENCY };
+
+/* GLOBAL VARIABLES END */
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* INC_MECABOT_ROS_CONFIG_H_ */

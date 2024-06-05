@@ -39,7 +39,7 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 	}
 }
 
-void motorSpeedCallback(const std_msgs::UInt8& motor_speed_msg)
+void motorVelCallback(const std_msgs::UInt8& motor_speed_msg)
 {
 	uint8_t duty_val = motor_speed_msg.data;
 	Motor_Set_PWM_Duty(my_motor, duty_val);

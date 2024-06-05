@@ -1,0 +1,12 @@
+../Core/Src/mpu6050.c:15:10:MPU6050_ReadWhoAmI	1
+../Core/Src/mpu6050.c:21:10:MPU6050_Init	2
+../Core/Src/mpu6050.c:53:10:MPU6050_ConfigSampleRate	1
+../Core/Src/mpu6050.c:63:10:MPU6050_ConfigGyroscope	5
+../Core/Src/mpu6050.c:99:10:MPU6050_ConfigAccelerometer	5
+../Core/Src/mpu6050.c:139:10:MPU6050_Calibrate	1
+../Core/Src/mpu6050.c:152:10:MPU6050_SetGyroscopeOffset	1
+../Core/Src/mpu6050.c:161:10:MPU6050_SetAccelerometerOffset	1
+../Core/Src/mpu6050.c:170:10:MPU6050_MeanSensor	4
+../Core/Src/mpu6050.c:211:10:MPU6050_CalculateOffset	8
+../Core/Src/mpu6050.c:254:10:MPU6050_ReadGyroscope	1
+../Core/Src/mpu6050.c:273:10:MPU6050_ReadAccelerometer	1

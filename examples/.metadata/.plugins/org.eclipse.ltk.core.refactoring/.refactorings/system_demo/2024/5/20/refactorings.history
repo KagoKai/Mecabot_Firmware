@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;system_demo/Core/Inc/mecabot_hardware&apos; to &apos;mecabot_hardware.h&apos;" description="Rename resource &apos;mecabot_hardware&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Inc/mecabot_hardware" name="mecabot_hardware.h" stamp="1715758928149" updateReferences="true"/>
+</session>

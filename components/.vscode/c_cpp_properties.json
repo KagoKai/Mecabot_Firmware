@@ -4,8 +4,12 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/common/include",
+                "${workspaceFolder}/pid/include",
+                "${workspaceFolder}/filter/include",
+                "${workspaceFolder}/dc_motor/include",
+                "${workspaceFolder}/encoder/include",
                 "${workspaceFolder}/mpu6050/include",
-                "${workspaceFolder}/madgwick_imu/include",
+                "${workspaceFolder}/madgwick_filter/include",
                 "${workspaceFolder}/rosserial/**",
                 "${workspaceFolder}/../stm32/**"
             ],

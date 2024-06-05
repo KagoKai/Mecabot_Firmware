@@ -1,0 +1,35 @@
+/*
+ * mecabot_ros_config.h
+ *
+ *  Created on: May 25, 2024
+ *      Author: ADMIN
+ */
+
+#ifndef INC_MECABOT_ROS_CONFIG_H_
+#define INC_MECABOT_ROS_CONFIG_H_
+
+#include "ros.h"
+#include "ros/time.h"
+#include "std_msgs/UInt8.h"
+#include "std_msgs/UInt32.h"
+#include "std_msgs/Float64.h"
+#include "geometry_msgs/Twist.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#define MOTOR_CONTROL_FREQUENCY		    100
+#define MOTOR_FEEDBACK_FREQUENCY        5
+#define IMU_PUBLISH_FREQUENCY           10
+
+/* CALLBACK FUNCTIONS START */
+void motorVelCallback(const std_msgs::UInt8& motor_speed_msg);
+void commandVelocityCallback(const geometry_msgs::Twist& cmd_vel_msg);
+/* CALLBACK FUNCTIONS END */
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* INC_MECABOT_ROS_CONFIG_H_ */
