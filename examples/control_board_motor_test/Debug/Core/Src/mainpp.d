@@ -41,7 +41,9 @@ Core/Src/mainpp.o: ../Core/Src/mainpp.cpp ../Core/Inc/mainpp.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
  ../../../components/rosserial/include/std_msgs/UInt8.h \
+ ../../../components/rosserial/include/std_msgs/Int16.h \
  ../../../components/rosserial/include/std_msgs/UInt32.h \
+ ../../../components/rosserial/include/std_msgs/Float32.h \
  ../../../components/rosserial/include/std_msgs/Float64.h \
  ../../../components/encoder/include/encoder.h \
  ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h \
@@ -93,7 +95,9 @@ Core/Src/mainpp.o: ../Core/Src/mainpp.cpp ../Core/Inc/mainpp.h \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
 ../../../components/rosserial/include/std_msgs/UInt8.h:
+../../../components/rosserial/include/std_msgs/Int16.h:
 ../../../components/rosserial/include/std_msgs/UInt32.h:
+../../../components/rosserial/include/std_msgs/Float32.h:
 ../../../components/rosserial/include/std_msgs/Float64.h:
 ../../../components/encoder/include/encoder.h:
 ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h:

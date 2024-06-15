@@ -16,7 +16,7 @@ OBJS += \
 
 # Each subdirectory must supply rules for building sources it contributes
 Core/Startup/%.o: ../Core/Startup/%.s Core/Startup/subdir.mk
-	arm-none-eabi-gcc -mcpu=cortex-m3 -g3 -DDEBUG -c -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/common/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/dc_motor/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/encoder/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/filter/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include" -x assembler-with-cpp -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m3 -g3 -DDEBUG -c -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/common/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/dc_motor/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/encoder/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/filter/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/pid/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/mpu6050/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include" -x assembler-with-cpp -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@" "$<"
 
 clean: clean-Core-2f-Startup
 

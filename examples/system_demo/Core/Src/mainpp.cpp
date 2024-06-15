@@ -51,12 +51,6 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 }
 
 /* CALLBACK FUNCTIONS START */
-void motorVelCallback(const std_msgs::UInt8& motor_speed_msg)
-{
-	// TODO: Implement speed callback
-	return;
-}
-
 void commandVelocityCallback(const geometry_msgs::Twist& cmd_vel_msg)
 {
 	goal_vel[linear_x] = cmd_vel_msg.linear.x;
@@ -70,9 +64,12 @@ void ros_setup()
 	nh.initNode();
 
 	nh.subscribe(sub_cmd_vel);
+
 	nh.advertise(pub_imu);
-	nh.advertise(pub_joint_states);
     nh.advertise(pub_odom);
+	nh.advertise(pub_joint_states);
+
+	tf_broadcaster
 
 	initOdom();
 	initJointStates();
@@ -145,8 +142,8 @@ void initOdom(void)
         odom_vel[i]  = 0.0;
     }
 
-	odom_msg.header.frame_id = "/odom";
-	odom_msg.child_frame_id = "/base_link";
+	odom_msg.header.frame_id = odom_frame_id;
+	odom_msg.child_frame_id = base_frame_id;
 
     odom_msg.pose.pose.position.x = 0.0;
     odom_msg.pose.pose.position.y = 0.0;
@@ -155,7 +152,7 @@ void initOdom(void)
     odom_msg.pose.pose.orientation.x = 0.0;
     odom_msg.pose.pose.orientation.y = 0.0;
     odom_msg.pose.pose.orientation.z = 0.0;
-    odom_msg.pose.pose.orientation.w = 0.0;
+    odom_msg.pose.pose.orientation.w = 1.0;
 
     odom_msg.twist.twist.linear.x  = 0.0;
 	odom_msg.twist.twist.linear.y  = 0.0;
@@ -167,7 +164,7 @@ void initJointStates(void)
 	                {"front_left_wheel_joint", "front_right_wheel_joint",
 	                 "back_left_wheel_joint" , "back_right_wheel_joint"};
 
-	joint_states_msg.header.frame_id = "/joint_states";
+	joint_states_msg.header.frame_id = "joint_states";
 	joint_states_msg.name = joint_states_name;
 
 	joint_states_msg.name_length 	 = NUM_OF_MOTOR;
@@ -177,17 +174,17 @@ void initJointStates(void)
 }
 void initTF(void)
 {
-	odom_tf_msg.header.frame_id = "/odom";
-	odom_tf_msg.child_frame_id = "/base_link";
+	odom_tf_msg.header.frame_id = odom_msg.header.frame_id;
+	odom_tf_msg.child_frame_id = odom_msg.child_frame_id;
 
 	odom_tf_msg.transform.translation.x = 0;
 	odom_tf_msg.transform.translation.y = 0;
 	odom_tf_msg.transform.translation.z = 0;
 
 	odom_tf_msg.transform.rotation.w = 1;
-	odom_tf_msg.transform.rotation.w = 0;
-	odom_tf_msg.transform.rotation.w = 0;
-	odom_tf_msg.transform.rotation.w = 0;
+	odom_tf_msg.transform.rotation.x = 0;
+	odom_tf_msg.transform.rotation.y = 0;
+	odom_tf_msg.transform.rotation.z = 0;
 }
 /* MSG INITIALIZATION FUNCTIONS END */
 
@@ -242,7 +239,6 @@ void updateImu(void)
     imu_msg.orientation_covariance[6] = 0;
     imu_msg.orientation_covariance[7] = 0;
     imu_msg.orientation_covariance[8] = 0.0025;
-
 }
 void updateJointStates(void)
 {

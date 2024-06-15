@@ -1,3 +1,12 @@
-my_mpu->gyro_scaled
-my_mpu->accel_scaled
-my_mpu
+my_mpu.accel_scaled.x
+my_mpu.accel_scaled.y
+my_mpu.accel_scaled.z
+my_mpu.gyro_scaled.x
+my_mpu.gyro_scaled.y
+my_mpu.gyro_scaled.z
+my_mpu.Ax
+my_mpu.Ay
+my_mpu.Az
+my_mpu.Gx
+my_mpu.Gy
+my_mpu.Gz

@@ -1,10 +1,8 @@
-goal_vel
-wheel_angular_vel[0]
-mecabot_motor[0]->pwm_duty
-wheel_angular_vel[1]
-mecabot_motor[1]->pwm_duty
-wheel_angular_vel[2]
-mecabot_motor[2]->pwm_duty
-wheel_angular_vel[3]
-mecabot_motor[3]->pwm_duty
-mecabot_motor
+meas_wheel_angular_vel[front_left]
+encoder[front_left]->tick
+t
+t_previous[wheel_velocity_feedback_event]
+prev_tick[front_left]
+encoder[front_left]->tick < prev_tick[front_left]
+encoder[front_left]->tick > prev_tick[front_left]
+d_tick

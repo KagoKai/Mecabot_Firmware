@@ -1,4 +1,6 @@
-Core/Src/mpu6050.o: ../Core/Src/mpu6050.c ../Core/Inc/mpu6050.h \
+Core/Src/mpu6050.o: \
+ C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/mpu6050/mpu6050.c \
+ C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/mpu6050/examples/mpu_test/../../include/mpu6050.h \
  ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h \
  ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h \
  ../Drivers/CMSIS/Include/core_cm3.h \
@@ -23,7 +25,7 @@ Core/Src/mpu6050.o: ../Core/Src/mpu6050.c ../Core/Inc/mpu6050.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Core/Inc/operation_status.h
-../Core/Inc/mpu6050.h:
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/mpu6050/examples/mpu_test/../../include/mpu6050.h:
 ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:
 ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h:
 ../Drivers/CMSIS/Include/core_cm3.h:

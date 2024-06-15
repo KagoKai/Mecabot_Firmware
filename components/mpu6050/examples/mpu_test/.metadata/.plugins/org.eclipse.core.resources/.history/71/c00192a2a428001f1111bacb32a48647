@@ -1,0 +1,13 @@
+/*
+ * mpu_6050.h
+ *
+ *  Created on: Jun 12, 2024
+ *      Author: ADMIN
+ */
+
+#ifndef INC_MPU_6050_H_
+#define INC_MPU_6050_H_
+
+
+
+#endif /* INC_MPU_6050_H_ */

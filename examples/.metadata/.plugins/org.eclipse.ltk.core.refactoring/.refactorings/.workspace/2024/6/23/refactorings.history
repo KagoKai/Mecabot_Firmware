@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;control_board_system_test/Core/Src/IIR_filter.c&apos;" deleteContents="false" description="Delete resource &apos;control_board_system_test/Core/Src/IIR_filter.c&apos;" element1="/control_board_system_test/Core/Src/IIR_filter.c" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1717838984189"/>
+</session>

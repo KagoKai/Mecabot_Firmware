@@ -28,5 +28,23 @@
 		<nature>com.st.stm32cube.ide.mcu.MCURootProjectNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
+		<nature>org.eclipse.cdt.core.ccnature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>Core/Inc/mpu6050.h</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/include/mpu6050.h</locationURI>
+		</link>
+		<link>
+			<name>Core/Src/madgwick_filter.c</name>
+			<type>1</type>
+			<locationURI>PARENT-4-PROJECT_LOC/madgwick_filter/madgwick_filter.c</locationURI>
+		</link>
+		<link>
+			<name>Core/Src/mpu6050.c</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/mpu6050.c</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>

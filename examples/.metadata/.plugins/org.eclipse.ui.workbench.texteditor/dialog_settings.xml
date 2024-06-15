@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="57600"/>
+		<item key="selection" value="calculateOdometry"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
-		<item key="wholeword" value="false"/>
+		<item key="wholeword" value="true"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="calculateOdometry"/>
+			<item value="calculateOdom"/>
+			<item value="odom_pose"/>
+			<item value="motor_duty"/>
+			<item value="yaw"/>
+			<item value="diff_tick"/>
+			<item value="115200"/>
+			<item value="quat_buffer"/>
+			<item value="publish"/>
+			<item value="duty_pwm"/>
+			<item value="uint8"/>
+			<item value="dt"/>
+			<item value="publish funct"/>
 			<item value="57600"/>
 			<item value="systick"/>
-			<item value="sys"/>
-			<item value="t"/>
-			<item value="rpm"/>
-			<item value="15"/>
-			<item value="115200"/>
-			<item value="t_motor_control_prev"/>
-			<item value="MOTOR_CONTROL_FREQUENCY"/>
-			<item value="UInt32"/>
-			<item value="new_yaw"/>
-			<item value="ros::Time"/>
-			<item value="mecabot_mpu_init"/>
-			<item value="joint_states_name"/>
-			<item value="joint_states"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="933"/>
-		<item key="DIALOG_Y_ORIGIN" value="224"/>
+		<item key="DIALOG_X_ORIGIN" value="1016"/>
+		<item key="DIALOG_Y_ORIGIN" value="451"/>
 		<item key="DIALOG_WIDTH" value="414"/>
 		<item key="DIALOG_HEIGHT" value="454"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>

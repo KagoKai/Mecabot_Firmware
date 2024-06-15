@@ -22,16 +22,17 @@ extern "C" {
 #include "operation_status.h"
 
 //#define DEFAULT_CLOCK_FREQ       8000000U
-#define DEFAULT_CLOCK_FREQ       32000000U
+#define DEFAULT_CLOCK_FREQ       8000000U
 #define DIRECTION_FORWARD        (int8_t)1
+#define DIRECTION_STOP           (int8_t)0
 #define DIRECTION_BACKWARD       (int8_t)(-1)
 
 extern TIM_HandleTypeDef htim_motor;
 
 typedef struct 
 {
-    /* data */
     int8_t direction;
+
     uint8_t pwm_duty;
 
      /* Motor pin setting */
@@ -64,7 +65,7 @@ Motor_t* Motor_Init(Motor_Handle_t handle);
 
 status_t Motor_Set_PWM_Frequency(uint32_t freq);
 
-status_t Motor_Set_PWM_Duty(Motor_t *motor, uint8_t duty);
+status_t Motor_Set_PWM_Duty(Motor_t *motor, int16_t duty);
 
 status_t Motor_Start(Motor_t *motor);
 

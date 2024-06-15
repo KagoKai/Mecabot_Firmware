@@ -12,15 +12,17 @@ extern "C" {
 #include <stm32f1xx_hal_i2c.h>
 #include "operation_status.h"
 
-#define G 9.81
+#define G           9.81f
+#define PI          3.14159265f
+#define DEG2RAD     (PI / 180.0f)
 
 // Offset values calculated from the calibrate function
-#define MPU6050_OFFSET_GX           79
-#define MPU6050_OFFSET_GY           106
-#define MPU6050_OFFSET_GZ           99
-#define MPU6050_OFFSET_AX          -893
-#define MPU6050_OFFSET_AY          -129
-#define MPU6050_OFFSET_AZ          -19155
+#define MPU6050_OFFSET_GX           670
+#define MPU6050_OFFSET_GY           59
+#define MPU6050_OFFSET_GZ           133
+#define MPU6050_OFFSET_AX          -1223
+#define MPU6050_OFFSET_AY           241
+#define MPU6050_OFFSET_AZ          -16389
 
 #define MPU6050_DEFAULT_TIMEOUT     1000
 
@@ -126,7 +128,7 @@ typedef struct
 
     float temp_raw;
 
-    MPU6050_DataScaled_t gyro_scaled;       /*!> Actual angular velocity values (deg/s)*/
+    MPU6050_DataScaled_t gyro_scaled;       /*!> Actual angular velocity values (rad/s)*/
     MPU6050_DataScaled_t accel_scaled;      /*!> Actual linear acceleration values (m/s^2)*/
 
 }MPU6050_t;

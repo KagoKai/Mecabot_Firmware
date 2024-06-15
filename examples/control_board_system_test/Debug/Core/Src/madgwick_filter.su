@@ -1,0 +1,13 @@
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:50:21:quat_mult	40	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:62:21:quat_scalar	24	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:73:21:quat_add	40	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:85:21:quat_sub	40	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:97:21:quat_conjugate	16	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:106:14:quat_Norm	32	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:112:13:quat_Normalize	24	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:121:14:quat_getYaw	40	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/madgwick_filter/madgwick_filter.c:3:10:MadgwickFilter_Init	24	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/madgwick_filter/madgwick_filter.c:16:10:MadgwickFilter_SetBeta	16	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/madgwick_filter/madgwick_filter.c:23:10:MadgwickFilter_SetSampleRate	16	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/madgwick_filter/madgwick_filter.c:30:10:MadgwickFilter_Update_IMU	224	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/madgwick_filter/madgwick_filter.c:121:10:MadgwickFilter_Update_MARG	24	static

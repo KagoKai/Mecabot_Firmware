@@ -1,7 +1,7 @@
 clc, clearvars, close all, format compact
 
 % Load in data
-data = readtable("Motor_Vel_Log_50Hz.csv");
+data = readtable("./data/Motor_Vel_Log_10Hz.csv");
 
 time = data.time;
 rpm = data.rpm_data;

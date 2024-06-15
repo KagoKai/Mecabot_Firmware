@@ -9,7 +9,16 @@
 
 Motor mecabot_motor[4] = { NULL, NULL, NULL, NULL };
 Encoder encoder[4] = { NULL, NULL, NULL, NULL };
-FO_IIR_Filter_t *filter[4] = { NULL, NULL, NULL, NULL };
+FO_IIR_Filter_t *encoder_filter[4] = { NULL, NULL, NULL, NULL };
+PID_t *controller[4] = { NULL, NULL, NULL, NULL };
+
+MPU6050_t my_mpu = { .address = MPU6050_ADDR_LOW };
+float gyro_buffer[3] = { 0.0f };					// Buffer to hold scaled gyro measurement.
+float accel_buffer[3] = { 0.0f };					// Buffer to hold scaled accelerometer measurement.
+float encoder_yaw = 0.0f, imu_yaw = 0.0f;			// Orientation (in radians);
+Quaternion_t quat_buffer = { .q0 = 1, .q1 = 0,
+							.q2 = 0, .q3 = 0 };		// Buffer to hold orientation (Quaternion).
+MadgwickFilter_t my_madgwick;
 
 uint32_t millis(void)
 {
@@ -68,17 +77,47 @@ status_t mecabot_encoder_init(void)
     handle_encoder.tick_read_channel = TIM_CHANNEL_2;
     encoder[back_right] = Encoder_Init(handle_encoder);
 
-    // Initialize the rpm filter
-    float b_coeff[] = { 0.7548f, 0.7548f };
-    float a_coeff[] = {    1.0f, 0.5095f };
-    for (int i = 0; i < NUM_OF_MOTOR; i++)
-    {
-    	filter[i] = reinterpret_cast<FO_IIR_Filter_t*>(calloc(1, sizeof(FO_IIR_Filter_t)));
-    	FO_IIR_Init(filter[i], b_coeff, a_coeff);
-    }
-
+    // Initialize the encoder Low-pass Filter
+    float b_coeff[] = { 0.2452,	0.2452 };
+    float a_coeff[] = {    1.0, -0.5095 };
+	for (int i = 0; i < NUM_OF_MOTOR; i++)
+	{
+		encoder_filter[i] = new FO_IIR_Filter_t;
+		FO_IIR_Init(encoder_filter[i], b_coeff, a_coeff);
+	}
     // TODO: Check if all encoders were initialized correctly
     return STATUS_OK;
+}
+
+status_t mecabot_pid_init(void)
+{
+	for (int i = 0; i < NUM_OF_MOTOR; i++)
+	{
+		controller[i] = PID_Init(kp, ki, kd);
+	}
+}
+
+status_t mecabot_mpu_init(void)
+{
+    MPU6050_Handle_t mpu_handle =
+    {
+        .rate_div = Rate_1KHz_Div,
+        .gyro_range = Gyro_Range_250s,
+        .accel_range = Accel_Range_2g
+    };
+
+    return MPU6050_Init(&hi2c1, &my_mpu, mpu_handle, 0);
+}
+
+status_t mecabot_madgwick_init(void)
+{
+    MadgwickFilter_Handle_t filter_handle =
+    {
+        .beta = BETA,
+        .sample_rate = 1000/100
+    };
+
+    return MadgwickFilter_Init(&my_madgwick, filter_handle);
 }
 
 status_t mecabot_motor_start(Motor motor)
@@ -91,16 +130,68 @@ status_t mecabot_motor_stop(Motor motor)
     return Motor_Stop(motor);
 }
 
-status_t mecabot_motor_set_angular_velocity(Motor motor, float velocity)
+status_t mecabot_encoder_start(Encoder encoder)
 {
-    int8_t direction = (velocity > 0) ? DIRECTION_FORWARD : DIRECTION_BACKWARD;
-    if (direction != motor->direction)
-    {
-        Motor_SetDirection(motor, direction);
-    }
+	return Encoder_Start(encoder);
+}
 
-    uint8_t duty = (uint8_t)(255 * fabs(velocity) / WHEEL_MAX_ANGULAR_VELOCITY);
-    Motor_Set_PWM_Duty(motor, duty);
+uint16_t mecabot_encoder_read(Encoder encoder)
+{
+	return encoder->tick;
+}
+
+status_t mecabot_imu_read_gyro(float *gyro_buffer)
+{
+    MPU6050_ReadGyroscope(&hi2c1, &my_mpu);
+
+    gyro_buffer[0] = my_mpu.gyro_scaled.x;
+    gyro_buffer[1] = my_mpu.gyro_scaled.y;
+    gyro_buffer[2] = my_mpu.gyro_scaled.z;
 
     return STATUS_OK;
+}
+
+status_t mecabot_imu_read_accel(float *accel_buffer)
+{
+    MPU6050_ReadAccelerometer(&hi2c1, &my_mpu);
+
+    accel_buffer[0] = my_mpu.accel_scaled.x;
+    accel_buffer[1] = my_mpu.accel_scaled.y;
+    accel_buffer[2] = my_mpu.accel_scaled.z;
+
+    return STATUS_OK;
+}
+
+status_t mecabot_imu_get_quaternion(Quaternion_t *quat_buffer)
+{
+    MPU6050_ReadAccelerometer(&hi2c1, &my_mpu);
+	MPU6050_ReadGyroscope(&hi2c1, &my_mpu);
+
+	float 	gx = my_mpu.gyro_scaled.x,
+			gy = my_mpu.gyro_scaled.y,
+			gz = my_mpu.gyro_scaled.z,
+			ax = my_mpu.accel_scaled.x,
+			ay = my_mpu.accel_scaled.y,
+			az = my_mpu.accel_scaled.z;
+
+	MadgwickFilter_Update_IMU(&my_madgwick, gx, gy, gz, ax, ay, az);
+
+    quat_buffer->q0 = my_madgwick.q.q0;
+    quat_buffer->q1 = my_madgwick.q.q1;
+    quat_buffer->q2 = my_madgwick.q.q2;
+    quat_buffer->q3 = my_madgwick.q.q3;
+}
+status_t mecabot_imu_get_quaternion(Quaternion_t *quat_buffer, const float *gyro_buffer, const float *accel_buffer)
+{
+	float 	gx = gyro_buffer[0],
+			gy = gyro_buffer[1],
+			gz = gyro_buffer[2],
+			ax = accel_buffer[0],
+			ay = accel_buffer[1],
+			az = accel_buffer[2];
+
+	quat_buffer->q0 = cos(encoder_yaw/2);
+	quat_buffer->q1 = 0;
+	quat_buffer->q2 = 0;
+	quat_buffer->q3 = sin(encoder_yaw/2);
 }

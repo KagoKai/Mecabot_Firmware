@@ -24,12 +24,16 @@ Core/Src/mecabot_hardware.o: ../Core/Src/mecabot_hardware.cpp \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
+ ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
  C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/encoder/include/encoder.h \
- C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/filter/include/IIR_filter.h
+ C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/filter/include/IIR_filter.h \
+ C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/pid/include/pid.h \
+ C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/mpu6050/include/mpu6050.h \
+ C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h
 ../Core/Inc/mecabot_hardware.h:
 C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/common/include/operation_status.h:
 C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/dc_motor/include/dc_motor.h:
@@ -55,9 +59,13 @@ C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/dc_motor/inc
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
 C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/encoder/include/encoder.h:
 C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/filter/include/IIR_filter.h:
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/pid/include/pid.h:
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/mpu6050/include/mpu6050.h:
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:

@@ -26,17 +26,18 @@ typedef struct
  * 
  * @return Void.
 */
-void FO_IIR_Init(FO_IIR_Filter_t *instance, const float (&b_coefficient)[2], const float (&a_cofficient)[2]);
+void Mecabot_FO_IIR_Init(FO_IIR_Filter_t *instance, const float (&b_coefficient)[2], const float (&a_coefficient)[2]);
 
 /**
  * @brief Compute the filtered value from the newest raw encoder inputs.
  * 
  * @param instance The pointer to the filter instance.
  * @param input The raw filter input data.
+ * @param output_buffer The buffer that hold the filtered value.
  * 
- * @return The filtered data.
+ * @return Void.
 */
-float FO_IIR_Compute(FO_IIR_Filter_t *instance, float (&input)[NUM_OF_MOTOR]);
+void Mecabot_FO_IIR_Compute(FO_IIR_Filter_t *instance, const float (&input)[NUM_OF_MOTOR], float (&output_buffer)[NUM_OF_MOTOR]);
 
 #ifdef __cplusplus
 }

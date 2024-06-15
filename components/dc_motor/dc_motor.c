@@ -37,12 +37,57 @@ status_t Motor_Set_PWM_Frequency(uint32_t freq)
     return STATUS_OK;
 }
 
-status_t Motor_Set_PWM_Duty(Motor_t *motor, uint8_t duty)
+status_t Motor_Set_PWM_Duty(Motor_t *motor, int16_t duty)
 {
-    motor->pwm_duty = (motor->direction == DIRECTION_FORWARD) ? duty :
-                      (motor->direction == DIRECTION_BACKWARD) ? (255-duty) : 0;
+    if (duty == 0)
+    {
+        Motor_SetDirection(motor, DIRECTION_STOP);
+        motor->pwm_duty = 0;
+    }
+    else
+    {
+        switch (motor->direction)
+        {
+            case DIRECTION_FORWARD:
+                {
+                    if (duty > 0)          motor->pwm_duty = duty;            // duty: 0 - Min, 255 - Max
+                    else if (duty < 0)      
+                    {
+                        Motor_SetDirection(motor, DIRECTION_STOP);
+                        motor->pwm_duty = 0;    
+                    }  
+                }
+                break;
+            case DIRECTION_BACKWARD:
+                {
+                    if (duty > 0)
+                    {
+                        Motor_SetDirection(motor, DIRECTION_STOP);
+                        motor->pwm_duty = 0; 
+                    }
+                    else if (duty < 0)      motor->pwm_duty = 255 - abs(duty);
+                }
+                break;
+            case DIRECTION_STOP:
+                {
+                    if (duty > 0)
+                    {
+                        Motor_SetDirection(motor, DIRECTION_FORWARD);
+                        motor->pwm_duty = duty;
+                    }
+                    else if (duty < 0)
+                    {
+                        Motor_SetDirection(motor, DIRECTION_BACKWARD);
+                        motor->pwm_duty = 255 + duty;
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+    }
 
-    float duty_percentage = duty / 255.0f;
+    float duty_percentage = motor->pwm_duty / 255.0f;
 
     uint32_t tim_arr_val = __HAL_TIM_GET_AUTORELOAD(&htim_motor);
     uint32_t tim_ccr_val = (uint32_t)(duty_percentage * tim_arr_val);
@@ -67,6 +112,7 @@ status_t Motor_Stop(Motor_t *motor)
     HAL_StatusTypeDef ret = HAL_TIM_PWM_Stop(&htim_motor, motor->pwm_channel);
 
     motor->pwm_duty = 0;
+    Motor_SetDirection(motor, DIRECTION_STOP);
     Motor_Set_PWM_Duty(motor, 0);
 
     if (ret != HAL_OK) return STATUS_FAIL;
@@ -77,10 +123,19 @@ status_t Motor_Stop(Motor_t *motor)
 status_t Motor_SetDirection(Motor_t *motor, int8_t direction)
 {
     motor->direction = direction;
-    if (direction == DIRECTION_FORWARD)
+
+    switch (direction)
+    {
+    case DIRECTION_FORWARD:
+    case DIRECTION_STOP:
         HAL_GPIO_WritePin(motor->direction_port, motor->direction_pin, GPIO_PIN_RESET);
-    if (direction == DIRECTION_BACKWARD)
+        break;
+    case DIRECTION_BACKWARD:
         HAL_GPIO_WritePin(motor->direction_port, motor->direction_pin, GPIO_PIN_SET);
+        break;
+    default:
+        break;
+    }
 
     return STATUS_OK;
 }

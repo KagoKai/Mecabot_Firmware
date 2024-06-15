@@ -13,6 +13,9 @@
 #include "dc_motor.h"
 #include "encoder.h"
 #include "IIR_filter.h"
+#include "pid.h"
+#include "mpu6050.h"
+#include "madgwick_filter.h"
 
 #define PI      3.14159265359f
 
@@ -22,7 +25,21 @@
 /* Convert constant */
 #define DEG2RAD(x)      ((x) * PI / 180.0f)                     /*!< Convert from degree to radian (PI/180) */
 #define RAD2DEG(x)      ((x) * 180.0f / PI)                     /*!< Convert from radian to degree (180/PI) */
-#define TICK2RAD(x)     ((x) / ENCODER_RESOLUTION * 2 * PI)     /*!< Convert from encoder tick to radians */
+#define TICK2RAD(x)     (static_cast<float>((x)) / ENCODER_RESOLUTION * 2 * PI)     /*!< Convert from encoder tick to radians */
+
+/*
+ * PID controller parameters
+ */
+#define kp		0.915
+#define ki		2.7
+#define kd 		0.0055
+
+/*
+* Madgwick filter parameters
+*/
+#define GYRO_MEAN_ERROR     PI * (5.0f / 180.0f) // 5 deg/s gyroscope measurement error (in rad/s)  *from paper*
+#define BETA                sqrt(3.0f/4.0f) * GYRO_MEAN_ERROR    //*from paper*
+#define FILTER_RATE         100
 
 /*
 * Robot chassis parameters
@@ -32,7 +49,7 @@
 #define WHEEL_SEPARATION_X      0.115
 #define WHEEL_SEPARATION_Y      0.138
 
-#define WHEEL_MAX_ANGULAR_VELOCITY     2 * PI                                          /*!< Wheel angular velocity rad/s */
+#define WHEEL_MAX_ANGULAR_VELOCITY     (4 * 2 * PI)                                      /*!< Wheel angular velocity rad/s */
 #define WHEEL_MIN_ANGULAR_VELOCITY     -WHEEL_MAX_ANGULAR_VELOCITY
 #define WHEEL_MAX_LINEAR_VELOCITY      (WHEEL_RADIUS * WHEEL_MAX_ANGULAR_VELOCITY)     /*!< Wheel linear velocity m/s */
 #define WHEEL_MIN_LINEAR_VELOCITY      -WHEEL_MAX_LINEAR_VELOCITY
@@ -71,6 +88,29 @@ status_t mecabot_motor_init(void);
 status_t mecabot_encoder_init(void);
 
 /**
+* @brief Initialize the robot's controllers for each wheel.
+*        Modified according to the robot structure and the MCU used.
+*
+* @return Operation status.
+*/
+status_t mecabot_pid_init(void);
+
+/**
+* @brief Initialize the robot's MPU.
+*        Modified according to the robot structure and the sensor used.
+*
+* @return Operation status.
+*/
+status_t mecabot_mpu_init(void);
+
+/**
+* @brief Initialize the madgwick filter to get orientation from MPU.
+*
+* @return Operation status.
+*/
+status_t mecabot_madgwick_init(void);
+
+/**
 * @brief Start a robot motor.
 *
 * @param motor The motor object.
@@ -89,13 +129,52 @@ status_t mecabot_motor_start(Motor motor);
 status_t mecabot_motor_stop(Motor motor);
 
 /**
-* @brief Set a motor angular velocity (rad/s).
+* @brief Start a robot encoder.
 *
-* @param motor The motor object.
-* @param speed The angular velocity value (rad/s).
+* @param encoder The encoder object.
 *
 * @return Operation status.
 */
-status_t mecabot_motor_set_angular_velocity(Motor motor, float velocity);
+status_t mecabot_encoder_start(Encoder encoder);
+
+/**
+ * @brief Return the tick value read by the encoder.
+ *
+ * @param encoder The encoder object.
+ *
+ * @return The tick value.
+ */
+uint16_t mecabot_encoder_read(Encoder encoder);
+
+
+/**
+ * @brief Read the angular velocities (in rad/s) from the IMU.
+ *
+ * @param gyro_buffer The pointer to the buffer used to stored the data.
+ *
+ * @return Operation status.
+*/
+status_t mecabot_imu_read_gyro(float *gyro_buffer);
+
+/**
+ * @brief Read the linear acceleration (in m/s^2) from the IMU.
+ *
+ * @param accel_buffer The pointer to the buffer used to stored the data.
+ *
+ * @return Operation status.
+*/
+status_t mecabot_imu_read_accel(float *accel_buffer);
+
+/**
+ * @brief Calculate the robot orientation (as quaternion) using the IMU measurement.
+ *
+ * @param quat_buffer The pointer to the buffer used to stored the data.
+ * @param gyro_buffer The buffer that hold the gyro reading		(Optional).
+ * @param accel_buffer The buffer that hold the accel reading	{Optional).
+ *
+ * @return Operation status.
+*/
+status_t mecabot_imu_get_quaternion(Quaternion_t *quat_buffer);
+status_t mecabot_imu_get_quaternion(Quaternion_t *quat_buffer, const float *gyro_buffer, const float *accel_buffer);
 
 #endif /* INC_MECABOT_HARDWARE_H_ */

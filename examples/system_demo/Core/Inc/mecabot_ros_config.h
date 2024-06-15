@@ -28,14 +28,13 @@ extern "C" {
 
 #define NUM_OF_MOTOR                4
 
-#define MOTOR_CONTROL_FREQUENCY		    100
-#define VEL_FEEDBACK_FREQUENCY        5
+#define MOTOR_CONTROL_FREQUENCY		    20
+#define VEL_FEEDBACK_FREQUENCY        	5
 #define IMU_PUBLISH_FREQUENCY           10
 #define ROBOT_INFO_PUBLISH_FREQUENCY    5
 #define RPM_PUBLISH_FREQUENCY		    5
 
 /* CALLBACK FUNCTIONS START */
-void motorVelCallback(const std_msgs::UInt8& motor_speed_msg);
 void commandVelocityCallback(const geometry_msgs::Twist& cmd_vel_msg);
 /* CALLBACK FUNCTIONS END */
 
@@ -80,6 +79,10 @@ ros::NodeHandle nh;
  */
 char *joint_states_name[NUM_OF_MOTOR] {"front_left_wheel_joint", "front_right_wheel_joint",
                  	 	 	 	 	   "back_left_wheel_joint" , "back_right_wheel_joint"};
+const char* base_frame_id = "base_link";
+const char* odom_frame_id = "odom";
+const char* imu_frame_id = "imu";
+const char* joint_states_frame_id = "joint_states"
 
 /*
  * Subscribers
@@ -91,15 +94,17 @@ ros::Subscriber<geometry_msgs::Twist> sub_cmd_vel("/cmd_vel", &commandVelocityCa
  */
 sensor_msgs::Imu imu_msg;
 ros::Publisher pub_imu("/imu", &imu_msg);
+
 sensor_msgs::JointState joint_states_msg;
 ros::Publisher pub_joint_states("/joint_states", &joint_states_msg);
+
 nav_msgs::Odometry odom_msg;
 ros::Publisher pub_odom("/odom", &odom_msg);
 
 /*
 * TF broadcaster
 */
-geometry_msgs::TransformStamped odom_tf_msg; // tf information between "/odom" and "/baselink"
+geometry_msgs::TransformStamped odom_tf_msg; // tf information between "odom" and "base_link"
 tf::TransformBroadcaster tf_broadcaster;
 
 /*
@@ -114,7 +119,7 @@ typedef enum
 // Calculated from odometry
 float odom_pose[3] = { 0.0 };
 float odom_vel[3] = { 0.0 };
-// Receive from cmd_vel
+// Received from cmd_vel
 float goal_vel[3] = { 0.0 };
 // Actual motor speed measurement
 

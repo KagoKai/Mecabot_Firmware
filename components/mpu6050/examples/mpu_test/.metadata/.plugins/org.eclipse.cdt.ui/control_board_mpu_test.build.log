@@ -1,10 +1,10 @@
-16:35:05 **** Incremental Build of configuration Debug for project control_board_mpu_test ****
+18:03:24 **** Incremental Build of configuration Debug for project control_board_mpu_test ****
 make -j8 all 
 arm-none-eabi-size  control_board_mpu_test.elf 
    text	   data	    bss	    dec	    hex	filename
-  11784	     84	   1652	  13520	   34d0	control_board_mpu_test.elf
+  14904	     84	   1692	  16680	   4128	control_board_mpu_test.elf
 Finished building: default.size.stdout
  
 
-16:35:05 Build Finished. 0 errors, 0 warnings. (took 328ms)
+18:03:25 Build Finished. 0 errors, 0 warnings. (took 861ms)
 
