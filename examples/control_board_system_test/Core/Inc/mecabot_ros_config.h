@@ -12,8 +12,8 @@
 #include "ros.h"
 #include "ros/time.h"
 #include "std_msgs/UInt8.h"
-#include "std_msgs/Int16.h"
-#include "std_msgs/Float32.h";
+#include "std_msgs/Int8.h"
+#include "std_msgs/Float32.h"
 #include "sensor_msgs/Imu.h"
 #include "sensor_msgs/JointState.h"
 #include "geometry_msgs/Twist.h"
@@ -30,11 +30,17 @@ extern "C" {
 
 #define MOTOR_CONTROL_FREQUENCY		    10
 #define VEL_FEEDBACK_FREQUENCY        	10
-#define IMU_PUBLISH_FREQUENCY			50
-#define ODOM_PUBLISH_FREQUENCY			10
+#define IMU_PUBLISH_FREQUENCY			20
+#define ODOM_PUBLISH_FREQUENCY			20
 
 /* CALLBACK FUNCTIONS START */
 void commandVelocityCallback(const geometry_msgs::Twist& cmd_vel_msg);
+void enablePidCallback(const std_msgs::UInt8& use_pid_msg);
+void kpTuneCallback(const std_msgs::Float32& kp_msg);
+void kiTuneCallback(const std_msgs::Float32& ki_msg);
+void kdTuneCallback(const std_msgs::Float32& kd_msg);
+void testIdCallback(const std_msgs::Int8& test_id_msg);
+void odomResetCallback(const std_msgs::UInt8& odom_reset_msg);
 /* CALLBACK FUNCTIONS END */
 
 /* SETUP FUNCTIONS START */
@@ -51,7 +57,7 @@ void initJointStates(void);			// Initialize the joint states (for </robot_state_
 void updateImu(void);				// Update the IMU sensor data.
 void updateYaw(float gz, float dt);	// Update the yaw angle.
 void updateOdom(void);				// Update the Odometry message.
-void updateOdomTF(void);			// Update the Odom frame transformation.
+//void updateOdomTF(void);			// Update the Odom frame transformation.
 void updateJointStates(void);		// Update the Joint States data.
 /* MSG UPDATE FUNCTIONS END */
 
@@ -89,21 +95,20 @@ const char* imu_frame_id = "imu_frame";
  * Subscribers
  */
 ros::Subscriber<geometry_msgs::Twist> sub_cmd_vel("/cmd_vel", &commandVelocityCallback);
-
+ros::Subscriber<std_msgs::UInt8> sub_use_pid("/use_pid", &enablePidCallback);
+ros::Subscriber<std_msgs::Float32> sub_kp("/kp", &kpTuneCallback);
+ros::Subscriber<std_msgs::Float32> sub_ki("/ki", &kiTuneCallback);
+ros::Subscriber<std_msgs::Float32> sub_kd("/kd", &kdTuneCallback);
+ros::Subscriber<std_msgs::Int8> sub_test_id("/test_id", &testIdCallback);
+ros::Subscriber<std_msgs::UInt8> sub_odom_reset("/odom_reset", &odomResetCallback);
 /*
  * Publishers
  */
-std_msgs::Float32 rpm_msg[NUM_OF_MOTOR];
-ros::Publisher pub_FL_rpm("/FL_rpm", &rpm_msg[front_left]);
-ros::Publisher pub_FR_rpm("/FR_rpm", &rpm_msg[front_right]);
-ros::Publisher pub_BL_rpm("/BL_rpm", &rpm_msg[back_left]);
-ros::Publisher pub_BR_rpm("/BR_rpm", &rpm_msg[back_right]);
-
 sensor_msgs::Imu imu_msg;
-ros::Publisher pub_imu("/imu", &imu_msg);
+ros::Publisher pub_imu("/imu/data", &imu_msg);
 
 nav_msgs::Odometry odom_msg;
-ros::Publisher pub_odom("/odom", &odom_msg);
+ros::Publisher pub_odom("/encoder/odom", &odom_msg);	// Encoder odometry
 
 sensor_msgs::JointState joint_states_msg;
 ros::Publisher pub_joint_states("/joint_states", &joint_states_msg);
@@ -111,8 +116,6 @@ ros::Publisher pub_joint_states("/joint_states", &joint_states_msg);
 /*
 * TF broadcaster
 */
-geometry_msgs::TransformStamped odom_tf_msg; // tf information between "odom" and "base_link"
-tf::TransformBroadcaster tf_broadcaster;
 
 /*
 * Control variables
@@ -144,8 +147,8 @@ float meas_theta[NUM_OF_MOTOR] = {0.0f };
 /*
  * Joint states variable
  */
-float joint_states_pos[NUM_OF_MOTOR] = { 0.0 };
-float joint_states_vel[NUM_OF_MOTOR] = { 0.0 };
+double joint_states_pos[NUM_OF_MOTOR] = { 0.0 };
+double joint_states_vel[NUM_OF_MOTOR] = { 0.0 };
 
 /*
 * Time-related variables

@@ -18,7 +18,7 @@
 
 #define KP		0.915
 #define KI		2.7
-#define KD 		0.0055
+#define KD 		0.525
 
 #define PI		3.14159265359
 #define WHEEL_MAX_ANGULAR_VELOCITY     240                             /*!< Wheel angular velocity rpm */

@@ -12,14 +12,17 @@ extern "C" {
 #include <stm32f1xx_hal_i2c.h>
 #include "operation_status.h"
 
-#define G 9.81
+#define G           9.81f
+#define PI          3.14159265f
+#define DEG2RAD     (PI / 180.0f)
 
-#define MPU6050_OFFSET_GX           79
-#define MPU6050_OFFSET_GY           106
-#define MPU6050_OFFSET_GZ           99
-#define MPU6050_OFFSET_AX          -893
-#define MPU6050_OFFSET_AY          -129
-#define MPU6050_OFFSET_AZ          -19155
+// Offset values calculated from the calibrate function
+#define MPU6050_OFFSET_GX           281
+#define MPU6050_OFFSET_GY           193
+#define MPU6050_OFFSET_GZ          -486
+#define MPU6050_OFFSET_AX          -149
+#define MPU6050_OFFSET_AY           385
+#define MPU6050_OFFSET_AZ          -17840
 
 #define MPU6050_DEFAULT_TIMEOUT     1000
 
@@ -29,6 +32,7 @@ extern "C" {
 #define MPU6050_ADDR_HIGH           0x69
 
 #define MPU6050_REG_SMPRT_DIV       0x19
+#define MPU6050_REG_CONFIG          0x1A
 #define MPU6050_REG_GYRO_CONFIG     0x1B
 #define MPU6050_REG_ACCEL_CONFIG    0x1C
 
@@ -52,7 +56,9 @@ extern "C" {
 #define MPU6050_REG_PWR_MGMT_1      0x6B
 #define MPU6050_REG_WHO_AM_I        0x75
 
-extern const int buffer_size;
+extern I2C_HandleTypeDef hi2c1;
+
+extern const int mpu_calib_buffer_size;
 extern const int discard_value;
 extern const int gyro_deadzone;
 extern const int accel_deadzone;
@@ -92,6 +98,17 @@ typedef enum
     Accel_Range_16g = 0x03
 }MPU6050_AccelerometerRange_t;
 
+typedef enum
+{
+	DLPF_260A_256G_Hz   = 0x00,
+	DLPF_184A_188G_Hz   = 0x01,
+	DLPF_94A_98G_Hz     = 0x02,
+	DLPF_44A_42G_Hz 	= 0x03,
+	DLPF_21A_20G_Hz 	= 0x04,
+	DLPF_10_Hz 			= 0x05,
+	DLPF_5_Hz 			= 0x06
+}MPU6050_DLFP_t;
+
 typedef struct
 {
     int16_t x;
@@ -108,6 +125,8 @@ typedef struct
 
 typedef struct
 {
+    I2C_HandleTypeDef *i2c_interface;
+
     uint8_t address;
 
     float gyro_scaling_factor;
@@ -121,8 +140,8 @@ typedef struct
 
     float temp_raw;
 
-    MPU6050_DataScaled_t gyro_scaled;
-    MPU6050_DataScaled_t accel_scaled;
+    MPU6050_DataScaled_t gyro_scaled;       /*!> Actual angular velocity values (rad/s)*/
+    MPU6050_DataScaled_t accel_scaled;      /*!> Actual linear acceleration values (m/s^2)*/
 
 }MPU6050_t;
 
@@ -131,6 +150,7 @@ typedef struct
     MPU6050_SampleRateDiv_t rate_div;
     MPU6050_GyroscopeRange_t gyro_range;
     MPU6050_AccelerometerRange_t accel_range;
+    MPU6050_DLFP_t filter_bandwidth;
 }MPU6050_Handle_t;
 
 /** @brief Read the address value within the WHO_AM_I register (at address 0x75).
@@ -195,6 +215,16 @@ status_t MPU6050_ConfigGyroscope(I2C_HandleTypeDef *hi2c, MPU6050_t *mpu, MPU605
  * @return Operation status.
 */
 status_t MPU6050_ConfigAccelerometer(I2C_HandleTypeDef *hi2c, MPU6050_t *mpu, MPU6050_AccelerometerRange_t accel_range);
+
+/** @brief Set the internal DLPF bandwidth.
+ *
+ * @param hi2c The pointer to the I2C structure connected to the device.
+ * @param mpu The pointer to the MPU structure.
+ * @param filter_bandwidth The filter bandwidth.
+ *
+ * @return Operation status.
+*/
+status_t MPU6050_ConfigDLFP(I2C_HandleTypeDef *hi2c, MPU6050_t *mpu, MPU6050_DLFP_t filter_bandwidth);
 
 /** @brief Calculate the offset that would be hard coded into the device later
  *
@@ -262,6 +292,9 @@ status_t MPU6050_ReadGyroscope(I2C_HandleTypeDef *hi2c, MPU6050_t *mpu);
  * @return Operation status.
 */
 status_t MPU6050_ReadAccelerometer(I2C_HandleTypeDef *hi2c, MPU6050_t *mpu);
+
+
+status_t MPU6050_Init_DMP(I2C_HandleTypeDef *hi2c, MPU6050_t *mpu);
 
 #ifdef __cplusplus
 }

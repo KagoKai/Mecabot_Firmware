@@ -2685,6 +2685,7 @@ HAL_StatusTypeDef HAL_I2C_Mem_Read(I2C_HandleTypeDef *hi2c, uint16_t DevAddress,
   __IO uint32_t count = 0U;
 
   /* Init tickstart for timeout management*/
+
   uint32_t tickstart = HAL_GetTick();
 
   /* Check the parameters */

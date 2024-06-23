@@ -1,8 +1,3 @@
-meas_wheel_angular_vel[front_left]
-encoder[front_left]->tick
-t
-t_previous[wheel_velocity_feedback_event]
-prev_tick[front_left]
-encoder[front_left]->tick < prev_tick[front_left]
-encoder[front_left]->tick > prev_tick[front_left]
-d_tick
+duty[0]
+wheel_angular_vel[0]
+goal_vel

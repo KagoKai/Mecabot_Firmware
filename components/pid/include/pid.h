@@ -9,13 +9,14 @@ extern "C" {
 #define MIN_INTEGRAL   -MAX_INTEGRAL
 
 #define MAX_PID_OUTPUT          255          // The controller output is the PWM signal: Limited to [0, 255]
-#define MIN_PID_OUTPUT          -255
+#define MIN_PID_OUTPUT         -255
 
 #include <stdlib.h>
 
 typedef struct
 {
     double set_point;
+    double error;
     double kp, ki, kd;
     double P, I, D;
     double integral_sum;

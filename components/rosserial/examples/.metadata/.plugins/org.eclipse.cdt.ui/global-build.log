@@ -92,3 +92,45 @@ Finished building: default.size.stdout
  
 Finished building: control_board_chatter.list
  
+16:23:27 **** Build of configuration Debug for project control_board_uart ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xE -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "control_board_uart.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\components\rosserial\examples\control_board_uart\STM32F103RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="control_board_uart.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: control_board_uart.elf
+ 
+arm-none-eabi-size  control_board_uart.elf 
+arm-none-eabi-objdump -h -S control_board_uart.elf  > "control_board_uart.list"
+   text	   data	    bss	    dec	    hex	filename
+   6200	     28	   1644	   7872	   1ec0	control_board_uart.elf
+Finished building: default.size.stdout
+ 
+Finished building: control_board_uart.list
+ 
+17:04:01 **** Build of configuration Debug for project control_board_chatter ****
+make -j8 all 
+arm-none-eabi-size  control_board_chatter.elf 
+   text	   data	    bss	    dec	    hex	filename
+  21164	     92	  35108	  56364	   dc2c	control_board_chatter.elf
+Finished building: default.size.stdout
+ 
+17:37:35 **** Incremental Build of configuration Debug for project control_board_chatter ****
+make -j8 all 
+arm-none-eabi-size  control_board_chatter.elf 
+   text	   data	    bss	    dec	    hex	filename
+  21164	     92	  35108	  56364	   dc2c	control_board_chatter.elf
+Finished building: default.size.stdout
+ 
+15:12:50 **** Build of configuration Debug for project control_board_uart ****
+make -j8 all 
+arm-none-eabi-size  control_board_uart.elf 
+   text	   data	    bss	    dec	    hex	filename
+   6200	     28	   1644	   7872	   1ec0	control_board_uart.elf
+Finished building: default.size.stdout
+ 
+15:14:51 **** Incremental Build of configuration Debug for project control_board_chatter ****
+make -j8 all 
+arm-none-eabi-size  control_board_chatter.elf 
+   text	   data	    bss	    dec	    hex	filename
+  21164	     92	  35108	  56364	   dc2c	control_board_chatter.elf
+Finished building: default.size.stdout
+ 

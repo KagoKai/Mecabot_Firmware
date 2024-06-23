@@ -1,7 +1,7 @@
 Core/Src/mainpp.o: ../Core/Src/mainpp.cpp ../Core/Inc/mainpp.h \
  ../Core/Inc/mecabot_hardware.h \
  C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/common/include/operation_status.h \
- C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/dc_motor/include/dc_motor.h \
+ ../Core/Inc/dc_motor_2.h \
  ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h \
  ../Drivers/CMSIS/Include/core_cm3.h \
  ../Drivers/CMSIS/Include/cmsis_version.h \
@@ -33,7 +33,6 @@ Core/Src/mainpp.o: ../Core/Src/mainpp.cpp ../Core/Inc/mainpp.h \
  C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/filter/include/IIR_filter.h \
  C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/pid/include/pid.h \
  C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/mpu6050/include/mpu6050.h \
- C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h \
  ../Core/Inc/mecabot_ros_config.h \
  C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/ros.h \
  C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/ros/node_handle.h \
@@ -52,7 +51,7 @@ Core/Src/mainpp.o: ../Core/Src/mainpp.cpp ../Core/Inc/mainpp.h \
  C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/STM32Hardware.h \
  C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/SerialComm.h \
  C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/std_msgs/UInt8.h \
- C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/std_msgs/Int16.h \
+ C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/std_msgs/Int8.h \
  C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/std_msgs/Float32.h \
  C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/sensor_msgs/Imu.h \
  C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/std_msgs/Header.h \
@@ -73,7 +72,7 @@ Core/Src/mainpp.o: ../Core/Src/mainpp.cpp ../Core/Inc/mainpp.h \
 ../Core/Inc/mainpp.h:
 ../Core/Inc/mecabot_hardware.h:
 C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/common/include/operation_status.h:
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/dc_motor/include/dc_motor.h:
+../Core/Inc/dc_motor_2.h:
 ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h:
 ../Drivers/CMSIS/Include/core_cm3.h:
 ../Drivers/CMSIS/Include/cmsis_version.h:
@@ -105,7 +104,6 @@ C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/encoder/incl
 C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/filter/include/IIR_filter.h:
 C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/pid/include/pid.h:
 C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/mpu6050/include/mpu6050.h:
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:
 ../Core/Inc/mecabot_ros_config.h:
 C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/ros.h:
 C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/ros/node_handle.h:
@@ -124,7 +122,7 @@ C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/in
 C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/STM32Hardware.h:
 C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/SerialComm.h:
 C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/std_msgs/UInt8.h:
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/std_msgs/Int16.h:
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/std_msgs/Int8.h:
 C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/std_msgs/Float32.h:
 C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/sensor_msgs/Imu.h:
 C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/std_msgs/Header.h:

@@ -10,51 +10,39 @@
 
 #include <math.h>
 #include "operation_status.h"
-#include "dc_motor.h"
+#include "dc_motor_2.h"
 #include "encoder.h"
 #include "IIR_filter.h"
 #include "pid.h"
 #include "mpu6050.h"
-#include "madgwick_filter.h"
-
-#define PI      3.14159265359f
 
 #define NUM_OF_MOTOR        4
 #define ENCODER_RESOLUTION  20
 
 /* Convert constant */
-#define DEG2RAD(x)      ((x) * PI / 180.0f)                     /*!< Convert from degree to radian (PI/180) */
-#define RAD2DEG(x)      ((x) * 180.0f / PI)                     /*!< Convert from radian to degree (180/PI) */
 #define TICK2RAD(x)     (static_cast<float>((x)) / ENCODER_RESOLUTION * 2 * PI)     /*!< Convert from encoder tick to radians */
 
 /*
  * PID controller parameters
  */
-#define kp		0.915
-#define ki		2.7
-#define kd 		0.0055
-
-/*
-* Madgwick filter parameters
-*/
-#define GYRO_MEAN_ERROR     PI * (5.0f / 180.0f) // 5 deg/s gyroscope measurement error (in rad/s)  *from paper*
-#define BETA                sqrt(3.0f/4.0f) * GYRO_MEAN_ERROR    //*from paper*
-#define FILTER_RATE         100
+#define KP		8
+#define KI		20
+#define KD 		0
 
 /*
 * Robot chassis parameters
 */
-#define WHEEL_RADIUS            0.03
+#define WHEEL_RADIUS            0.029
 #define INV_WHEEL_RADIUS        (1 / WHEEL_RADIUS)
 #define WHEEL_SEPARATION_X      0.115
 #define WHEEL_SEPARATION_Y      0.138
 
-#define WHEEL_MAX_ANGULAR_VELOCITY     (4 * 2 * PI)                                      /*!< Wheel angular velocity rad/s */
-#define WHEEL_MIN_ANGULAR_VELOCITY     -WHEEL_MAX_ANGULAR_VELOCITY
-#define WHEEL_MAX_LINEAR_VELOCITY      (WHEEL_RADIUS * WHEEL_MAX_ANGULAR_VELOCITY)     /*!< Wheel linear velocity m/s */
-#define WHEEL_MIN_LINEAR_VELOCITY      -WHEEL_MAX_LINEAR_VELOCITY
+#define WHEEL_MAX_ANGULAR_VELOCITY     	(6 * 2 * PI)    	/*!< Wheel angular velocity rad/s */
+#define WHEEL_MIN_ANGULAR_VELOCITY		(PI / 2)			/*!< Slowest motor velocity. If set lower the motor will stop */
 
 #define MOTOR_PWM_FREQUENCY     1000
+
+extern I2C_HandleTypeDef hi2c1;
 
 typedef enum
 {
@@ -164,17 +152,4 @@ status_t mecabot_imu_read_gyro(float *gyro_buffer);
  * @return Operation status.
 */
 status_t mecabot_imu_read_accel(float *accel_buffer);
-
-/**
- * @brief Calculate the robot orientation (as quaternion) using the IMU measurement.
- *
- * @param quat_buffer The pointer to the buffer used to stored the data.
- * @param gyro_buffer The buffer that hold the gyro reading		(Optional).
- * @param accel_buffer The buffer that hold the accel reading	{Optional).
- *
- * @return Operation status.
-*/
-status_t mecabot_imu_get_quaternion(Quaternion_t *quat_buffer);
-status_t mecabot_imu_get_quaternion(Quaternion_t *quat_buffer, const float *gyro_buffer, const float *accel_buffer);
-
 #endif /* INC_MECABOT_HARDWARE_H_ */

@@ -1,5 +1,4 @@
-Core/Src/encoder.o: \
- C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/encoder/encoder.c \
+Core/Src/encoder.o: ../Core/Src/encoder.c \
  C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/encoder/include/encoder.h \
  ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h \
  ../Drivers/CMSIS/Include/core_cm3.h \

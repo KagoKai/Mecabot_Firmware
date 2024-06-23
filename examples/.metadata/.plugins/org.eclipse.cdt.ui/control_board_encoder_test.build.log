@@ -1,0 +1,50 @@
+15:19:47 **** Incremental Build of configuration Debug for project control_board_encoder_test ****
+make -j8 all 
+arm-none-eabi-g++ "../Core/Src/mainpp.cpp" -mcpu=cortex-m3 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xE -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../../../components/dc_motor/include -I../../../components/common/include -I../../../components/encoder/include -I../../../components/filter/include -I../../../components/pid/include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mainpp.d" -MT"Core/Src/mainpp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mainpp.o"
+In file included from ../Core/Src/mainpp.cpp:13:
+../Core/Inc/dc_motor_2.h:43:17: error: redeclaration of C++ built-in type 'bool' [-fpermissive]
+   43 | typedef uint8_t bool;
+      |                 ^~~~
+../Core/Src/mainpp.cpp:42:1: warning: 'typedef' was ignored in this declaration
+   42 | typedef enum
+      | ^~~~~~~
+../Core/Src/mainpp.cpp: In function 'status_t mecabot_pid_init()':
+../Core/Src/mainpp.cpp:151:1: warning: no return statement in function returning non-void [-Wreturn-type]
+  151 | }
+      | ^
+../Core/Src/mainpp.cpp: In function 'void loop()':
+../Core/Src/mainpp.cpp:220:29: error: 'use_pid' was not declared in this scope; did you mean 'is_pid'?
+  220 |                         if (use_pid) { duty[i] = PID_Compute(controller[i], filtered_vel_data[i], dt[motor_control_event]); }
+      |                             ^~~~~~~
+      |                             is_pid
+../Core/Src/mainpp.cpp:220:40: error: 'duty' was not declared in this scope
+  220 |                         if (use_pid) { duty[i] = PID_Compute(controller[i], filtered_vel_data[i], dt[motor_control_event]); }
+      |                                        ^~~~
+../Core/Src/mainpp.cpp:220:62: error: 'controller' was not declared in this scope; did you mean 'my_controller'?
+  220 |                         if (use_pid) { duty[i] = PID_Compute(controller[i], filtered_vel_data[i], dt[motor_control_event]); }
+      |                                                              ^~~~~~~~~~
+      |                                                              my_controller
+../Core/Src/mainpp.cpp:220:102: error: 'motor_control_event' was not declared in this scope; did you mean 't_motor_control_prev'?
+  220 |                         if (use_pid) { duty[i] = PID_Compute(controller[i], filtered_vel_data[i], dt[motor_control_event]); }
+      |                                                                                                      ^~~~~~~~~~~~~~~~~~~
+      |                                                                                                      t_motor_control_prev
+../Core/Src/mainpp.cpp:221:44: error: 'duty' was not declared in this scope
+  221 |                         else             { duty[i] = wheel_angular_vel[i]/WHEEL_MAX_ANGULAR_VELOCITY * 255; }
+      |                                            ^~~~
+../Core/Src/mainpp.cpp:221:54: error: 'wheel_angular_vel' was not declared in this scope
+  221 |                         else             { duty[i] = wheel_angular_vel[i]/WHEEL_MAX_ANGULAR_VELOCITY * 255; }
+      |                                                      ^~~~~~~~~~~~~~~~~
+../Core/Src/mainpp.cpp:224:37: error: 'NUM_OF_MOTOR' was not declared in this scope
+  224 |                 for (int i = 0; i < NUM_OF_MOTOR; i++)
+      |                                     ^~~~~~~~~~~~
+../Core/Src/mainpp.cpp:226:62: error: 'duty' was not declared in this scope
+  226 |                         Motor_Set_PWM_Duty(mecabot_motor[i], duty[i]);
+      |                                                              ^~~~
+../Core/Src/mainpp.cpp:209:24: warning: unused variable 'direction' [-Wunused-variable]
+  209 |                 int8_t direction;
+      |                        ^~~~~~~~~
+make: *** [Core/Src/subdir.mk:61: Core/Src/mainpp.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+
+15:19:47 Build Failed. 10 errors, 3 warnings. (took 746ms)
+

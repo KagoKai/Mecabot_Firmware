@@ -31,19 +31,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>Core/Inc/mpu6050.h</name>
-			<type>1</type>
-			<location>C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/mpu6050/examples/mpu_test/mpu_test/Core/Inc/mpu6050.h</location>
-		</link>
-		<link>
 			<name>Core/Inc/operation_status.h</name>
 			<type>1</type>
 			<location>C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/mpu6050/examples/mpu_test/mpu_test/Core/Inc/operation_status.h</location>
-		</link>
-		<link>
-			<name>Core/Src/mpu6050.c</name>
-			<type>1</type>
-			<location>C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/mpu6050/examples/mpu_test/mpu_test/Core/Src/mpu6050.c</location>
 		</link>
 	</linkedResources>
 </projectDescription>

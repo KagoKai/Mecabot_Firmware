@@ -1,85 +1,10 @@
-20:18:12 **** Incremental Build of configuration Debug for project control_board_system_test ****
+19:31:14 **** Incremental Build of configuration Debug for project control_board_system_test ****
 make -j8 all 
-arm-none-eabi-g++ "../Core/Src/mainpp.cpp" -mcpu=cortex-m3 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xE -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/common/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/dc_motor/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/encoder/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/filter/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/pid/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/mpu6050/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mainpp.d" -MT"Core/Src/mainpp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mainpp.o"
-In file included from ../Core/Src/mainpp.cpp:9:
-../Core/Inc/mecabot_hardware.h:20: warning: "PI" redefined
-   20 | #define PI      3.14159265359f
-      | 
-In file included from ../Core/Inc/mecabot_hardware.h:17:
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/mpu6050/include/mpu6050.h:16: note: this is the location of the previous definition
-   16 | #define PI          3.14159265f
-      | 
-../Core/Inc/mecabot_hardware.h:26: warning: "DEG2RAD" redefined
-   26 | #define DEG2RAD(x)      ((x) * PI / 180.0f)                     /*!< Convert from degree to radian (PI/180) */
-      | 
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/mpu6050/include/mpu6050.h:17: note: this is the location of the previous definition
-   17 | #define DEG2RAD     (PI / 180.0f)
-      | 
-In file included from ../Core/Src/mainpp.cpp:10:
-../Core/Inc/mecabot_ros_config.h:16:30: warning: extra tokens at end of #include directive
-   16 | #include "std_msgs/Float32.h";
-      |                              ^
-../Core/Inc/mecabot_ros_config.h:74:1: warning: "/*" within comment [-Wcomment]
-   74 | /* GLOBAL VARIABLES START */
-      |  
-In file included from C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/tf/transform_broadcaster.h:39,
-                 from ../Core/Inc/mecabot_ros_config.h:23:
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/tf/tfMessage.h: In member function 'virtual int tf::tfMessage::deserialize(unsigned char*)':
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/tf/tfMessage.h:49:69: warning: 'void* realloc(void*, size_t)' moving an object of non-trivially copyable type 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'}; use 'new' and 'delete' instead [-Wclass-memaccess]
-   49 |         this->transforms = (geometry_msgs::TransformStamped*)realloc(this->transforms, transforms_lengthT * sizeof(geometry_msgs::TransformStamped));
-      |                                                              ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In file included from ../Core/Inc/mecabot_ros_config.h:20:
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/geometry_msgs/TransformStamped.h:14:9: note: 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'} declared here
-   14 |   class TransformStamped : public ros::Msg
-      |         ^~~~~~~~~~~~~~~~
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/tf/tfMessage.h:53:15: warning: 'void* memcpy(void*, const void*, size_t)' writing to an object of type 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'} with no trivial copy-assignment; use copy-assignment or copy-initialization instead [-Wclass-memaccess]
-   53 |         memcpy( &(this->transforms[i]), &(this->st_transforms), sizeof(geometry_msgs::TransformStamped));
-      |         ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/geometry_msgs/TransformStamped.h:14:9: note: 'tf::tfMessage::_transforms_type' {aka 'class geometry_msgs::TransformStamped'} declared here
-   14 |   class TransformStamped : public ros::Msg
-      |         ^~~~~~~~~~~~~~~~
-../Core/Src/mainpp.cpp: In function 'void calculateOdometry()':
-../Core/Src/mainpp.cpp:342:24: warning: unused variable 'diff_yaw' [-Wunused-variable]
-  342 |         float new_yaw, diff_yaw;
-      |                        ^~~~~~~~
-../Core/Src/mainpp.cpp: In function 'void publishRobotState()':
-../Core/Src/mainpp.cpp:399:19: warning: variable 'now' set but not used [-Wunused-but-set-variable]
-  399 |         ros::Time now = nh.now();
-      |                   ^~~
-In file included from ../Core/Inc/mecabot_hardware.h:18:
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h: At global scope:
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:121:14: warning: 'float quat_getYaw(Quaternion_t)' defined but not used [-Wunused-function]
-  121 | static float quat_getYaw(Quaternion_t q)
-      |              ^~~~~~~~~~~
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:112:13: warning: 'void quat_Normalize(Quaternion_t*)' defined but not used [-Wunused-function]
-  112 | static void quat_Normalize(Quaternion_t *q)
-      |             ^~~~~~~~~~~~~~
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:97:21: warning: 'Quaternion_t quat_conjugate(Quaternion_t)' defined but not used [-Wunused-function]
-   97 | static Quaternion_t quat_conjugate(Quaternion_t q)
-      |                     ^~~~~~~~~~~~~~
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:85:21: warning: 'Quaternion_t quat_sub(Quaternion_t, Quaternion_t)' defined but not used [-Wunused-function]
-   85 | static Quaternion_t quat_sub(Quaternion_t L, Quaternion_t R)
-      |                     ^~~~~~~~
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:73:21: warning: 'Quaternion_t quat_add(Quaternion_t, Quaternion_t)' defined but not used [-Wunused-function]
-   73 | static Quaternion_t quat_add(Quaternion_t L, Quaternion_t R)
-      |                     ^~~~~~~~
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:62:21: warning: 'Quaternion_t quat_scalar(Quaternion_t, float)' defined but not used [-Wunused-function]
-   62 | static Quaternion_t quat_scalar(Quaternion_t q, float scalar)
-      |                     ^~~~~~~~~~~
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:50:21: warning: 'Quaternion_t quat_mult(Quaternion_t, Quaternion_t)' defined but not used [-Wunused-function]
-   50 | static Quaternion_t quat_mult(Quaternion_t L, Quaternion_t R)
-      |                     ^~~~~~~~~
-arm-none-eabi-g++ -o "control_board_system_test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\examples\control_board_system_test\STM32F103RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="control_board_system_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: control_board_system_test.elf
- 
 arm-none-eabi-size  control_board_system_test.elf 
-arm-none-eabi-objdump -h -S control_board_system_test.elf  > "control_board_system_test.list"
    text	   data	    bss	    dec	    hex	filename
-  70248	    132	  37296	 107676	  1a49c	control_board_system_test.elf
+  71304	    140	  37120	 108564	  1a814	control_board_system_test.elf
 Finished building: default.size.stdout
  
-Finished building: control_board_system_test.list
- 
 
-20:18:17 Build Finished. 0 errors, 15 warnings. (took 4s.830ms)
+19:31:15 Build Finished. 0 errors, 0 warnings. (took 381ms)
 

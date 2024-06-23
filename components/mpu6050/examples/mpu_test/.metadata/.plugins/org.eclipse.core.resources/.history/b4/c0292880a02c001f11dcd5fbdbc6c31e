@@ -1,0 +1,62 @@
+/*
+ * mainpp.cpp
+ *
+ *  Created on: Jun 17, 2024
+ *      Author: ADMIN
+ */
+
+#include <stdint.h>
+#include "main.h"
+#include "stm32f1xx_hal.h"
+#include "MPU6050.h"
+#include "MPU6050_6Axis_MotionApps20.h"
+
+extern I2C_HandleTypeDef hi2c1;
+
+/* Private function prototypes -----------------------------------------------*/
+uint8_t pData[50];
+uint16_t packetSize;
+uint8_t fifoBuffer[64];
+uint8_t mpuIntStatus;
+uint16_t fifoCount;
+
+// orientation/motion variables
+Quaternion q;
+VectorFloat gravity;    // [x, y, z]            gravity vector
+VectorInt16 aa;         // [x, y, z]            accel sensor measurements
+VectorInt16 aaReal; // [x, y, z]            gravity-free accel sensor measurements
+VectorInt16 aaWorld; // [x, y, z]            world-frame accel sensor measurements
+float euler[3];         // [psi, theta, phi]    Euler angle container
+float ypr[3]; // [yaw, pitch, roll]   yaw/pitch/roll container and gravity vector
+
+uint32_t millis()
+{
+	return HAL_GetTick();
+}
+
+void setup()
+{
+  HAL_Delay(200);
+  MPU6050 mpu = MPU6050();
+
+  mpu.setXGyroOffset(220);
+  mpu.setYGyroOffset(76);
+  mpu.setZGyroOffset(-85);
+  mpu.setZAccelOffset(1788); // 1688 factory default for my test chip
+  mpu.initialize();
+  mpu.dmpInitialize();
+  mpu.setDMPEnabled(true);
+
+  // get expected DMP packet size for later comparison
+  packetSize = mpu.dmpGetFIFOPacketSize();
+}
+
+uint32_t t=0, t_prev=0, dt = 100;
+void loop()
+{
+	t = millis();
+	if ((t-t_prev) > dt)
+	{
+		t_prev = t;
+	}
+}

@@ -21,8 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "mpu_6050.h"
-//#include "MadgwickAHRS.h"
+#include "mpu6050.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -32,7 +31,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define PI 3.14159265
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -43,14 +42,10 @@
 /* Private variables ---------------------------------------------------------*/
 I2C_HandleTypeDef hi2c1;
 
-UART_HandleTypeDef huart1;
-
 /* USER CODE BEGIN PV */
-/*MPU6050_t my_mpu = {
+MPU6050_t my_mpu = {
 		.address = MPU6050_ADDR_LOW
-};*/
-MPU6050_t my_mpu;
-//extern volatile float q0, q1, q2, q3;
+};
 float roll, pitch, yaw;
 float ax, ay, az, gx, gy, gz;
 /* USER CODE END PV */
@@ -59,7 +54,6 @@ float ax, ay, az, gx, gy, gz;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_I2C1_Init(void);
-static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -98,24 +92,35 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_I2C1_Init();
-  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  //while (MPU6050_Init(&hi2c1, &my_mpu, handle, 0) != STATUS_OK);'
-  while(MPU6050_Init(&hi2c1) != 0);
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
-  // MPU6050_Calibrate(&hi2c1, &my_mpu);
+   MPU6050_Handle_t handle = {
+ 		  .rate_div = Rate_1KHz_Div,
+ 		  .gyro_range = Gyro_Range_250s,
+ 		  .accel_range = Accel_Range_2g
+   };
+   while (MPU6050_Init(&hi2c1, &my_mpu, handle, 0) != STATUS_OK);
+   // MPU6050_Calibrate(&hi2c1, &my_mpu);
+   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
+   uint32_t freq = 100;
+   uint32_t t = 0, dt = 1000 / freq , prev_time = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
-  while (1)
-  {
+   while (1)
+   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  MPU6050_Read_All(&hi2c1, &my_mpu);
-  }
+	  MPU6050_ReadAccelerometer(&hi2c1, &my_mpu);
+	  ax = my_mpu.accel_scaled.x;
+	  ay = my_mpu.accel_scaled.y;
+	  az = my_mpu.accel_scaled.z;
+	  MPU6050_ReadGyroscope(&hi2c1, &my_mpu);
+	  gx = my_mpu.gyro_scaled.x;
+	  gy = my_mpu.gyro_scaled.y;
+	  gz = my_mpu.gyro_scaled.z;
+   }
   /* USER CODE END 3 */
 }
 
@@ -186,39 +191,6 @@ static void MX_I2C1_Init(void)
   /* USER CODE BEGIN I2C1_Init 2 */
 
   /* USER CODE END I2C1_Init 2 */
-
-}
-
-/**
-  * @brief USART1 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_USART1_UART_Init(void)
-{
-
-  /* USER CODE BEGIN USART1_Init 0 */
-
-  /* USER CODE END USART1_Init 0 */
-
-  /* USER CODE BEGIN USART1_Init 1 */
-
-  /* USER CODE END USART1_Init 1 */
-  huart1.Instance = USART1;
-  huart1.Init.BaudRate = 115200;
-  huart1.Init.WordLength = UART_WORDLENGTH_8B;
-  huart1.Init.StopBits = UART_STOPBITS_1;
-  huart1.Init.Parity = UART_PARITY_NONE;
-  huart1.Init.Mode = UART_MODE_TX_RX;
-  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
-  if (HAL_UART_Init(&huart1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN USART1_Init 2 */
-
-  /* USER CODE END USART1_Init 2 */
 
 }
 

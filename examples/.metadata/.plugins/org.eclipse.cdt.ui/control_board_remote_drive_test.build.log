@@ -1,10 +1,35 @@
-16:14:51 **** Incremental Build of configuration Debug for project control_board_remote_drive_test ****
+15:14:16 **** Build of configuration Debug for project control_board_remote_drive_test ****
 make -j8 all 
-arm-none-eabi-size  control_board_remote_drive_test.elf 
-   text	   data	    bss	    dec	    hex	filename
-  33508	    100	  35488	  69096	  10de8	control_board_remote_drive_test.elf
-Finished building: default.size.stdout
- 
+arm-none-eabi-gcc "../Core/Src/IIR_filter.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xE -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/common/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/dc_motor/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/encoder/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/filter/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/pid/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/IIR_filter.d" -MT"Core/Src/IIR_filter.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/IIR_filter.o"
+arm-none-eabi-gcc "../Core/Src/dc_motor.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xE -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/common/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/dc_motor/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/encoder/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/filter/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/pid/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/dc_motor.d" -MT"Core/Src/dc_motor.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/dc_motor.o"
+arm-none-eabi-g++ "../Core/Src/mainpp.cpp" -mcpu=cortex-m3 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xE -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/common/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/dc_motor/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/encoder/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/filter/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/pid/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mainpp.d" -MT"Core/Src/mainpp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mainpp.o"
+arm-none-eabi-g++ "../Core/Src/mecabot_hardware.cpp" -mcpu=cortex-m3 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xE -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/common/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/dc_motor/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/encoder/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/filter/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/pid/include" -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mecabot_hardware.d" -MT"Core/Src/mecabot_hardware.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mecabot_hardware.o"
+In file included from ../Core/Src/IIR_filter.c:1:
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/filter/include/IIR_filter.h:27:58: error: expected ')' before '&' token
+   27 | void FO_IIR_Init(FO_IIR_Filter_t *instance, const float (&b_coefficient)[2], const float (&a_coefficient)[2]);
+      |                                                          ^
+      |                                                          )
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/filter/include/IIR_filter.h:27:78: error: expected ';', ',' or ')' before 'const'
+   27 | void FO_IIR_Init(FO_IIR_Filter_t *instance, const float (&b_coefficient)[2], const float (&a_coefficient)[2]);
+      |                                                                              ^~~~~
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/filter/include/IIR_filter.h:56:58: error: expected ')' before '&' token
+   56 | void SO_IIR_Init(SO_IIR_Filter_t *instance, const float (&b_coefficient)[3], const float (&a_coefficient)[3]);
+      |                                                          ^
+      |                                                          )
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/filter/include/IIR_filter.h:56:78: error: expected ';', ',' or ')' before 'const'
+   56 | void SO_IIR_Init(SO_IIR_Filter_t *instance, const float (&b_coefficient)[3], const float (&a_coefficient)[3]);
+      |                                                                              ^~~~~
+make: *** [Core/Src/subdir.mk:59: Core/Src/IIR_filter.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Core/Src/dc_motor.c:40:10: error: conflicting types for 'Motor_Set_PWM_Duty'; have 'status_t(Motor_t *, uint8_t)' {aka 'long unsigned int(Motor_t *, unsigned char)'}
+   40 | status_t Motor_Set_PWM_Duty(Motor_t *motor, uint8_t duty)
+      |          ^~~~~~~~~~~~~~~~~~
+In file included from ../Core/Src/dc_motor.c:1:
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/dc_motor/include/dc_motor.h:73:10: note: previous declaration of 'Motor_Set_PWM_Duty' with type 'status_t(Motor_t *, int16_t)' {aka 'long unsigned int(Motor_t *, short int)'}
+   73 | status_t Motor_Set_PWM_Duty(Motor_t *motor, int16_t duty);
+      |          ^~~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:59: Core/Src/dc_motor.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
 
-16:14:52 Build Finished. 0 errors, 0 warnings. (took 631ms)
+15:14:17 Build Failed. 8 errors, 0 warnings. (took 1s.443ms)
 

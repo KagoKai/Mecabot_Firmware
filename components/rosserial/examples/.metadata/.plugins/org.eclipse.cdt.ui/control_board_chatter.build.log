@@ -1,17 +1,10 @@
-16:54:36 **** Incremental Build of configuration Debug for project control_board_chatter ****
+15:14:51 **** Incremental Build of configuration Debug for project control_board_chatter ****
 make -j8 all 
-arm-none-eabi-g++ "../Core/Src/mainpp.cpp" -mcpu=cortex-m3 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xE -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/rosserial/examples../../include" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mainpp.d" -MT"Core/Src/mainpp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mainpp.o"
-arm-none-eabi-g++ -o "control_board_chatter.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\ADMIN\Desktop\DATN\Mecabot_Firmware\components\rosserial\examples\control_board_chatter\STM32F103RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="control_board_chatter.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: control_board_chatter.elf
- 
 arm-none-eabi-size  control_board_chatter.elf 
-arm-none-eabi-objdump -h -S control_board_chatter.elf  > "control_board_chatter.list"
    text	   data	    bss	    dec	    hex	filename
   21164	     92	  35108	  56364	   dc2c	control_board_chatter.elf
 Finished building: default.size.stdout
  
-Finished building: control_board_chatter.list
- 
 
-16:54:37 Build Finished. 0 errors, 0 warnings. (took 1s.769ms)
+15:14:52 Build Finished. 0 errors, 0 warnings. (took 546ms)
 

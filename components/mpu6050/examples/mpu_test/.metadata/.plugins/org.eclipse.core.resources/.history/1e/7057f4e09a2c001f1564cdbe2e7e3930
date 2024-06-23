@@ -1,0 +1,29 @@
+/*
+ * mainpp.cpp
+ *
+ *  Created on: Jun 17, 2024
+ *      Author: ADMIN
+ */
+
+#include "main.h"
+#include "stm32f1xx_hal.h"
+
+extern I2C_HandleTypeDef hi2c1;
+
+/* Private function prototypes -----------------------------------------------*/
+FILE * uart_bt;
+uint8_t pData[50];
+uint16_t packetSize;
+uint8_t fifoBuffer[64];
+uint8_t mpuIntStatus;
+uint16_t fifoCount;
+
+// orientation/motion variables
+Quaternion q;
+VectorFloat gravity;    // [x, y, z]            gravity vector
+VectorInt16 aa;         // [x, y, z]            accel sensor measurements
+VectorInt16 aaReal; // [x, y, z]            gravity-free accel sensor measurements
+VectorInt16 aaWorld; // [x, y, z]            world-frame accel sensor measurements
+float euler[3];         // [psi, theta, phi]    Euler angle container
+float ypr[3]; // [yaw, pitch, roll]   yaw/pitch/roll container and gravity vector
+

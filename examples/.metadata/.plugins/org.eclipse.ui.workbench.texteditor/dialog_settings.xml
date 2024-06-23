@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="calculateOdometry"/>
+		<item key="selection" value="57600"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
-		<item key="wholeword" value="true"/>
+		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="calculateOdometry"/>
-			<item value="calculateOdom"/>
-			<item value="odom_pose"/>
-			<item value="motor_duty"/>
-			<item value="yaw"/>
-			<item value="diff_tick"/>
-			<item value="115200"/>
-			<item value="quat_buffer"/>
-			<item value="publish"/>
-			<item value="duty_pwm"/>
-			<item value="uint8"/>
-			<item value="dt"/>
-			<item value="publish funct"/>
 			<item value="57600"/>
-			<item value="systick"/>
+			<item value="encoder_yaw"/>
+			<item value="sub_"/>
+			<item value="use_pid"/>
+			<item value="115200"/>
+			<item value="updateJointStates"/>
+			<item value="NUM_OF_MOTOR"/>
+			<item value="NUM"/>
+			<item value="constraint"/>
+			<item value="front_left"/>
+			<item value="wheel_angular_vel"/>
+			<item value="Float32"/>
+			<item value="Int16"/>
+			<item value="publishRpm"/>
+			<item value="meas_wheel_angular_vel"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1016"/>
-		<item key="DIALOG_Y_ORIGIN" value="451"/>
+		<item key="DIALOG_X_ORIGIN" value="1114"/>
+		<item key="DIALOG_Y_ORIGIN" value="575"/>
 		<item key="DIALOG_WIDTH" value="414"/>
 		<item key="DIALOG_HEIGHT" value="454"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>

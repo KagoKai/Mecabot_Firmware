@@ -1,25 +1,11 @@
-C:\ST\STM32CubeIDE_1.12.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/c++/12.3.1/cmath:184:3:constexpr float std::cos(float)	1
-C:\ST\STM32CubeIDE_1.12.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/c++/12.3.1/cmath:425:3:constexpr float std::sin(float)	1
-C:\ST\STM32CubeIDE_1.12.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/c++/12.3.1/cmath:463:3:constexpr float std::sqrt(float)	1
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:50:21:Quaternion_t quat_mult(Quaternion_t, Quaternion_t)	1
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:62:21:Quaternion_t quat_scalar(Quaternion_t, float)	1
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:73:21:Quaternion_t quat_add(Quaternion_t, Quaternion_t)	1
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:85:21:Quaternion_t quat_sub(Quaternion_t, Quaternion_t)	1
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:97:21:Quaternion_t quat_conjugate(Quaternion_t)	1
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:106:14:float quat_Norm(Quaternion_t)	1
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:112:13:void quat_Normalize(Quaternion_t*)	1
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/madgwick_filter/include/madgwick_filter.h:121:14:float quat_getYaw(Quaternion_t)	1
 ../Core/Src/mecabot_hardware.cpp:23:10:uint32_t millis()	1
 ../Core/Src/mecabot_hardware.cpp:28:10:status_t mecabot_motor_init()	1
 ../Core/Src/mecabot_hardware.cpp:60:10:status_t mecabot_encoder_init()	2
 ../Core/Src/mecabot_hardware.cpp:92:10:status_t mecabot_pid_init()	2
-../Core/Src/mecabot_hardware.cpp:100:10:status_t mecabot_mpu_init()	1
-../Core/Src/mecabot_hardware.cpp:112:10:status_t mecabot_madgwick_init()	1
-../Core/Src/mecabot_hardware.cpp:123:10:status_t mecabot_motor_start(Motor)	1
-../Core/Src/mecabot_hardware.cpp:128:10:status_t mecabot_motor_stop(Motor)	1
-../Core/Src/mecabot_hardware.cpp:133:10:status_t mecabot_encoder_start(Encoder)	1
-../Core/Src/mecabot_hardware.cpp:138:10:uint16_t mecabot_encoder_read(Encoder)	1
-../Core/Src/mecabot_hardware.cpp:143:10:status_t mecabot_imu_read_gyro(float*)	1
-../Core/Src/mecabot_hardware.cpp:154:10:status_t mecabot_imu_read_accel(float*)	1
-../Core/Src/mecabot_hardware.cpp:165:10:status_t mecabot_imu_get_quaternion(Quaternion_t*)	1
-../Core/Src/mecabot_hardware.cpp:184:10:status_t mecabot_imu_get_quaternion(Quaternion_t*, const float*, const float*)	1
+../Core/Src/mecabot_hardware.cpp:102:10:status_t mecabot_mpu_init()	1
+../Core/Src/mecabot_hardware.cpp:115:10:status_t mecabot_motor_start(Motor)	1
+../Core/Src/mecabot_hardware.cpp:120:10:status_t mecabot_motor_stop(Motor)	1
+../Core/Src/mecabot_hardware.cpp:125:10:status_t mecabot_encoder_start(Encoder)	1
+../Core/Src/mecabot_hardware.cpp:130:10:uint16_t mecabot_encoder_read(Encoder)	1
+../Core/Src/mecabot_hardware.cpp:135:10:status_t mecabot_imu_read_gyro(float*)	1
+../Core/Src/mecabot_hardware.cpp:146:10:status_t mecabot_imu_read_accel(float*)	1

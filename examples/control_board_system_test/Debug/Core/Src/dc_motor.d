@@ -1,6 +1,4 @@
-Core/Src/dc_motor.o: \
- C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/dc_motor/dc_motor.c \
- C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/dc_motor/include/dc_motor.h \
+Core/Src/dc_motor.o: ../Core/Src/dc_motor.c ../Core/Inc/dc_motor_2.h \
  ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h \
  ../Drivers/CMSIS/Include/core_cm3.h \
  ../Drivers/CMSIS/Include/cmsis_version.h \
@@ -29,7 +27,7 @@ Core/Src/dc_motor.o: \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
  C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/common/include/operation_status.h
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/dc_motor/include/dc_motor.h:
+../Core/Inc/dc_motor_2.h:
 ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h:
 ../Drivers/CMSIS/Include/core_cm3.h:
 ../Drivers/CMSIS/Include/cmsis_version.h:

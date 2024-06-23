@@ -32,44 +32,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>Core/Src/IIR_filter.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/components/filter/IIR_filter.cpp</locationURI>
-		</link>
-		<link>
-			<name>Core/Src/dc_motor.c</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/components/dc_motor/dc_motor.c</locationURI>
-		</link>
-		<link>
 			<name>Core/Src/duration.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/components/rosserial/duration.cpp</locationURI>
-		</link>
-		<link>
-			<name>Core/Src/encoder.c</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/components/encoder/encoder.c</locationURI>
-		</link>
-		<link>
-			<name>Core/Src/madgwick_filter.c</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/components/madgwick_filter/madgwick_filter.c</locationURI>
-		</link>
-		<link>
-			<name>Core/Src/moving_avg_filter.c</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/components/filter/moving_avg_filter.c</locationURI>
-		</link>
-		<link>
-			<name>Core/Src/mpu6050.c</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/components/mpu6050/mpu6050.c</locationURI>
-		</link>
-		<link>
-			<name>Core/Src/pid.c</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/components/pid/pid.c</locationURI>
 		</link>
 		<link>
 			<name>Core/Src/time.cpp</name>

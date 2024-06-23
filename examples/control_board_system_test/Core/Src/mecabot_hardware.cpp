@@ -11,14 +11,14 @@ Motor mecabot_motor[4] = { NULL, NULL, NULL, NULL };
 Encoder encoder[4] = { NULL, NULL, NULL, NULL };
 FO_IIR_Filter_t *encoder_filter[4] = { NULL, NULL, NULL, NULL };
 PID_t *controller[4] = { NULL, NULL, NULL, NULL };
+int16_t duty[NUM_OF_MOTOR] = { 0 };
 
 MPU6050_t my_mpu = { .address = MPU6050_ADDR_LOW };
 float gyro_buffer[3] = { 0.0f };					// Buffer to hold scaled gyro measurement.
 float accel_buffer[3] = { 0.0f };					// Buffer to hold scaled accelerometer measurement.
 float encoder_yaw = 0.0f, imu_yaw = 0.0f;			// Orientation (in radians);
-Quaternion_t quat_buffer = { .q0 = 1, .q1 = 0,
-							.q2 = 0, .q3 = 0 };		// Buffer to hold orientation (Quaternion).
-MadgwickFilter_t my_madgwick;
+bool use_pid = true;
+float kp = 5.0, ki = 0.0, kd = 0;
 
 uint32_t millis(void)
 {
@@ -95,6 +95,8 @@ status_t mecabot_pid_init(void)
 	{
 		controller[i] = PID_Init(kp, ki, kd);
 	}
+
+	return STATUS_OK;
 }
 
 status_t mecabot_mpu_init(void)
@@ -103,21 +105,11 @@ status_t mecabot_mpu_init(void)
     {
         .rate_div = Rate_1KHz_Div,
         .gyro_range = Gyro_Range_250s,
-        .accel_range = Accel_Range_2g
+        .accel_range = Accel_Range_2g,
+		.filter_bandwidth = DLPF_21A_20G_Hz
     };
 
     return MPU6050_Init(&hi2c1, &my_mpu, mpu_handle, 0);
-}
-
-status_t mecabot_madgwick_init(void)
-{
-    MadgwickFilter_Handle_t filter_handle =
-    {
-        .beta = BETA,
-        .sample_rate = 1000/100
-    };
-
-    return MadgwickFilter_Init(&my_madgwick, filter_handle);
 }
 
 status_t mecabot_motor_start(Motor motor)
@@ -160,38 +152,4 @@ status_t mecabot_imu_read_accel(float *accel_buffer)
     accel_buffer[2] = my_mpu.accel_scaled.z;
 
     return STATUS_OK;
-}
-
-status_t mecabot_imu_get_quaternion(Quaternion_t *quat_buffer)
-{
-    MPU6050_ReadAccelerometer(&hi2c1, &my_mpu);
-	MPU6050_ReadGyroscope(&hi2c1, &my_mpu);
-
-	float 	gx = my_mpu.gyro_scaled.x,
-			gy = my_mpu.gyro_scaled.y,
-			gz = my_mpu.gyro_scaled.z,
-			ax = my_mpu.accel_scaled.x,
-			ay = my_mpu.accel_scaled.y,
-			az = my_mpu.accel_scaled.z;
-
-	MadgwickFilter_Update_IMU(&my_madgwick, gx, gy, gz, ax, ay, az);
-
-    quat_buffer->q0 = my_madgwick.q.q0;
-    quat_buffer->q1 = my_madgwick.q.q1;
-    quat_buffer->q2 = my_madgwick.q.q2;
-    quat_buffer->q3 = my_madgwick.q.q3;
-}
-status_t mecabot_imu_get_quaternion(Quaternion_t *quat_buffer, const float *gyro_buffer, const float *accel_buffer)
-{
-	float 	gx = gyro_buffer[0],
-			gy = gyro_buffer[1],
-			gz = gyro_buffer[2],
-			ax = accel_buffer[0],
-			ay = accel_buffer[1],
-			az = accel_buffer[2];
-
-	quat_buffer->q0 = cos(encoder_yaw/2);
-	quat_buffer->q1 = 0;
-	quat_buffer->q2 = 0;
-	quat_buffer->q3 = sin(encoder_yaw/2);
 }

@@ -22,10 +22,15 @@ extern "C" {
 #include "operation_status.h"
 
 //#define DEFAULT_CLOCK_FREQ       8000000U
-#define DEFAULT_CLOCK_FREQ       8000000U
+#define DEFAULT_CLOCK_FREQ       32000000U
 #define DIRECTION_FORWARD        (int8_t)1
 #define DIRECTION_STOP           (int8_t)0
 #define DIRECTION_BACKWARD       (int8_t)(-1)
+
+#define MIN_DUTY				  0
+
+#define DEG2RAD(x)      ((x) * PI / 180.0f)                     /*!< Convert from degree to radian (PI/180) */
+#define RAD2DEG(x)      ((x) * 180.0f / PI)                     /*!< Convert from radian to degree (180/PI) */
 
 extern TIM_HandleTypeDef htim_motor;
 

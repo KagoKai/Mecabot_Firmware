@@ -8,6 +8,8 @@
         "iir_filter.h": "c",
         "pid.h": "c",
         "stm32f103xb.h": "c",
-        "stm32f103xe.h": "c"
+        "stm32f103xe.h": "c",
+        "dc_motor_2.h": "c",
+        "stm32f1xx_hal_tim.h": "c"
     }
 }

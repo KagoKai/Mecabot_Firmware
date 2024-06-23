@@ -1,7 +1,7 @@
 clc, clearvars, close all;
-data = readtable("./data/Motor_Vel_Log_10Hz.csv");
+data = readtable("./data/IMU_Gyro_Log_20Hz.csv");
 t = data.time;
-amp = data.rpm_data;
+amp = data.gz;
 
 % t = t(1:3:end);
 % amp = amp(1:3:end);
@@ -24,5 +24,5 @@ plot(Fs/L*(-L/2:L/2-1),abs(fftshift(Y/L)),"LineWidth",3)
 xlabel("f (Hz)")
 ylabel("|P1(f)|")
 
-xlim([0 10])
+xlim([-200 200])
 %ylim([0 50]) 

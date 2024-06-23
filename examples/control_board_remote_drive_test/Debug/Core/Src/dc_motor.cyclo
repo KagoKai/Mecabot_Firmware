@@ -1,7 +1,0 @@
-../Core/Src/dc_motor.c:5:10:Motor_Init	1
-../Core/Src/dc_motor.c:26:10:Motor_Set_PWM_Frequency	1
-../Core/Src/dc_motor.c:40:10:Motor_Set_PWM_Duty	6
-../Core/Src/dc_motor.c:55:10:Motor_Start	2
-../Core/Src/dc_motor.c:65:10:Motor_Stop	2
-../Core/Src/dc_motor.c:77:10:Motor_SetDirection	3
-../Core/Src/dc_motor.c:88:10:Motor_Destroy	1

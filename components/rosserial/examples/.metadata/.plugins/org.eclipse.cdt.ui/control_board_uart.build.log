@@ -1,4 +1,4 @@
-16:00:11 **** Incremental Build of configuration Debug for project control_board_uart ****
+15:12:50 **** Build of configuration Debug for project control_board_uart ****
 make -j8 all 
 arm-none-eabi-size  control_board_uart.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size  control_board_uart.elf
 Finished building: default.size.stdout
  
 
-16:00:12 Build Finished. 0 errors, 0 warnings. (took 390ms)
+15:12:51 Build Finished. 0 errors, 0 warnings. (took 857ms)
 

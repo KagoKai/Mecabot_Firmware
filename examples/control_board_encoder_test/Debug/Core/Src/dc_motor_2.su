@@ -1,0 +1,8 @@
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/dc_motor/dc_motor_2.c:5:10:Motor_Init	40	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/dc_motor/dc_motor_2.c:27:10:Motor_Set_PWM_Frequency	24	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/dc_motor/dc_motor_2.c:41:10:Motor_Set_PWM_Duty	32	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/dc_motor/dc_motor_2.c:103:10:Motor_Start	24	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/dc_motor/dc_motor_2.c:113:10:Motor_Stop	24	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/dc_motor/dc_motor_2.c:126:10:Motor_ChangeState	16	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/dc_motor/dc_motor_2.c:138:10:Motor_SetDirection	16	static
+C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/components/dc_motor/dc_motor_2.c:160:10:Motor_Destroy	16	static
