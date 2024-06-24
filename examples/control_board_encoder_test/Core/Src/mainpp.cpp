@@ -51,9 +51,9 @@ typedef enum
 
 Encoder_t *encoder[4] = { NULL };
 Motor_t *mecabot_motor[4] = { NULL };
-
 FO_IIR_Filter_t *encoder_filter[4] = { NULL };
 PID_t *my_controller[4] = { NULL };
+int16_t duty[4] = { 0 };
 
 uint16_t dt[2] = { 1000 / VEL_FEEDBACK_FREQUENCY, 1000 / MOTOR_CONTROL_FREQUENCY }; // Time interval between events (in millisec).
 
@@ -150,6 +150,8 @@ status_t mecabot_pid_init(void)
 		my_controller[i] = PID_Init(KP, KI, KD);
 		my_controller[i]->set_point = vel_setpoint;
 	}
+
+	return STATUS_OK;
 }
 
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
@@ -178,21 +180,6 @@ uint32_t millis()
 }
 
 void updateRpm(void);
-
-void ros_setup()
-{
-	nh.initNode();
-
-	nh.subscribe(sub_cmd_vel);
-	nh.advertise(pub_imu);
-    nh.advertise(pub_odom);
-	nh.advertise(pub_joint_states);
-
-	tf_broadcaster.init(nh);
-
-	initOdom();
-	initJointStates();
-}
 
 void setup()
 {
@@ -234,11 +221,11 @@ void loop()
 				}
 			}
 
-			if (use_pid) { duty[i] = PID_Compute(controller[i], filtered_vel_data[i], dt[motor_control_event]); }
-			else		 { duty[i] = wheel_angular_vel[i]/WHEEL_MAX_ANGULAR_VELOCITY * 255; }
+			if (use_pid) { duty[i] = PID_Compute(my_controller[i], filtered_vel_data[i], dt[1]); }
+			else		 { duty[i] = filtered_vel_data[i]/WHEEL_MAX_ANGULAR_VELOCITY * 255; }
 		}
 
-		for (int i = 0; i < NUM_OF_MOTOR; i++)
+		for (int i = 0; i < 4; i++)
 		{
 			Motor_Set_PWM_Duty(mecabot_motor[i], duty[i]);
 		}

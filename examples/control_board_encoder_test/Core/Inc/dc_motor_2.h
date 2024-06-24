@@ -40,8 +40,6 @@ extern "C" {
 
 extern TIM_HandleTypeDef htim_motor;
 
-typedef uint8_t bool;
-
 typedef struct 
 {
     int8_t state;

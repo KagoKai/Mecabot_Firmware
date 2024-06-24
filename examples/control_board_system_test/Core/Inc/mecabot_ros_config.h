@@ -20,7 +20,6 @@
 #include "geometry_msgs/TransformStamped.h"
 #include "nav_msgs/Odometry.h"
 #include <tf/tf.h>
-#include <tf/transform_broadcaster.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -31,7 +30,7 @@ extern "C" {
 #define MOTOR_CONTROL_FREQUENCY		    10
 #define VEL_FEEDBACK_FREQUENCY        	10
 #define IMU_PUBLISH_FREQUENCY			20
-#define ODOM_PUBLISH_FREQUENCY			20
+#define ODOM_PUBLISH_FREQUENCY			10
 
 /* CALLBACK FUNCTIONS START */
 void commandVelocityCallback(const geometry_msgs::Twist& cmd_vel_msg);
@@ -40,7 +39,6 @@ void kpTuneCallback(const std_msgs::Float32& kp_msg);
 void kiTuneCallback(const std_msgs::Float32& ki_msg);
 void kdTuneCallback(const std_msgs::Float32& kd_msg);
 void testIdCallback(const std_msgs::Int8& test_id_msg);
-void odomResetCallback(const std_msgs::UInt8& odom_reset_msg);
 /* CALLBACK FUNCTIONS END */
 
 /* SETUP FUNCTIONS START */
@@ -49,7 +47,6 @@ void ros_setup(void);
 
 /* MSG INITIALIZATION FUNCTIONS START */
 void initOdom(void);				// Initialize the Odometry message.
-void initOdomTF(void);				// Initialize the transformation between Odom and Base_Link.
 void initJointStates(void);			// Initialize the joint states (for </robot_state_publisher>).
 /* MSG INITIALIZATION FUNCTIONS END */
 
@@ -57,7 +54,6 @@ void initJointStates(void);			// Initialize the joint states (for </robot_state_
 void updateImu(void);				// Update the IMU sensor data.
 void updateYaw(float gz, float dt);	// Update the yaw angle.
 void updateOdom(void);				// Update the Odometry message.
-//void updateOdomTF(void);			// Update the Odom frame transformation.
 void updateJointStates(void);		// Update the Joint States data.
 /* MSG UPDATE FUNCTIONS END */
 
@@ -68,14 +64,13 @@ void calculateWheelVelocity(void);	// Calculate individual wheel velocity (rad/s
 /* DATA HANDLE FUNCTION END */
 
 /* PUBLISHING FUNCTIONS START */
-void publishRpm(void);				// Publish the motor rpm.
 void publishImu(void);				// Publish the IMU message.
 void publishRobotState(void);		// Publish the Odometry, Odom TF, and Joint States.
 /* PUBLISHING FUNCTIONS END */
 
 /* CONTROL FUNCTIONS START */
 void controlMotors(void);
-/* CONTROL FUNCTIONS START *
+/* CONTROL FUNCTIONS START */
 
 /* GLOBAL VARIABLES START */
 
@@ -100,7 +95,7 @@ ros::Subscriber<std_msgs::Float32> sub_kp("/kp", &kpTuneCallback);
 ros::Subscriber<std_msgs::Float32> sub_ki("/ki", &kiTuneCallback);
 ros::Subscriber<std_msgs::Float32> sub_kd("/kd", &kdTuneCallback);
 ros::Subscriber<std_msgs::Int8> sub_test_id("/test_id", &testIdCallback);
-ros::Subscriber<std_msgs::UInt8> sub_odom_reset("/odom_reset", &odomResetCallback);
+
 /*
  * Publishers
  */
@@ -138,10 +133,8 @@ float goal_vel[3] = { 0.0 };							// Goal velocity received from </cmd_vel>
  * Wheel velocity (rad/s) variables
  */
 uint16_t prev_tick[NUM_OF_MOTOR] = { 0 };				// Last read encoder tick (to calculate diff tick)
-uint16_t diff_tick[NUM_OF_MOTOR] = { 0 };
 float wheel_angular_vel[NUM_OF_MOTOR] = { 0.0f };      	// Calculated from goal velocity (rad/s). Used as set points.
 float meas_wheel_angular_vel[NUM_OF_MOTOR] = { 0.0f }; 	// Actual speed calculated from encoder ticks (rad/s)
-float meas_rpm[NUM_OF_MOTOR] = { 0.0f };				// Actual speed calculated from encoder ticks (rpm)
 float meas_theta[NUM_OF_MOTOR] = {0.0f };
 
 /*

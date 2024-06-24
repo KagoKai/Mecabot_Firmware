@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="57600"/>
+		<item key="selection" value="WHEEL_MIN_ANGULAR_VELOCITY"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="WHEEL_MIN_ANGULAR_VELOCITY"/>
+			<item value="is_testing"/>
+			<item value="is_pid"/>
+			<item value="meas_theta"/>
+			<item value="meas_rpm"/>
+			<item value="diff_tick"/>
+			<item value="TransformStamped"/>
+			<item value="KP"/>
+			<item value="meas_wheel_angular_vel"/>
+			<item value="sub"/>
 			<item value="57600"/>
 			<item value="encoder_yaw"/>
 			<item value="sub_"/>
 			<item value="use_pid"/>
 			<item value="115200"/>
-			<item value="updateJointStates"/>
-			<item value="NUM_OF_MOTOR"/>
-			<item value="NUM"/>
-			<item value="constraint"/>
-			<item value="front_left"/>
-			<item value="wheel_angular_vel"/>
-			<item value="Float32"/>
-			<item value="Int16"/>
-			<item value="publishRpm"/>
-			<item value="meas_wheel_angular_vel"/>
 		</list>
 		<list key="replacehistory">
 		</list>

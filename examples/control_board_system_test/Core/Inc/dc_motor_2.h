@@ -36,7 +36,7 @@ extern "C" {
 #define TRUE    1
 #define FALSE   0
 
-#define MIN_DUTY				  40
+#define MIN_DUTY				  50
 
 extern TIM_HandleTypeDef htim_motor;
 

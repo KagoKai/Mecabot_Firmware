@@ -1,0 +1,8 @@
+../Core/Src/mainpp.cpp:82:10:status_t mecabot_motor_init()	1
+../Core/Src/mainpp.cpp:114:10:status_t mecabot_encoder_init()	2
+../Core/Src/mainpp.cpp:146:10:status_t mecabot_pid_init()	2
+../Core/Src/mainpp.cpp:157:6:void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef*)	5
+../Core/Src/mainpp.cpp:177:10:uint32_t millis()	1
+../Core/Src/mainpp.cpp:184:6:void setup()	2
+../Core/Src/mainpp.cpp:199:6:void loop()	22
+../Core/Src/mainpp.cpp:281:6:void updateRpm()	8

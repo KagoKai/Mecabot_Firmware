@@ -32,13 +32,13 @@
 /*
 * Robot chassis parameters
 */
-#define WHEEL_RADIUS            0.029
+#define WHEEL_RADIUS            0.028
 #define INV_WHEEL_RADIUS        (1 / WHEEL_RADIUS)
 #define WHEEL_SEPARATION_X      0.115
 #define WHEEL_SEPARATION_Y      0.138
 
-#define WHEEL_MAX_ANGULAR_VELOCITY     	(6 * 2 * PI)    	/*!< Wheel angular velocity rad/s */
-#define WHEEL_MIN_ANGULAR_VELOCITY		(PI / 2)			/*!< Slowest motor velocity. If set lower the motor will stop */
+#define WHEEL_MAX_ANGULAR_VELOCITY     	(5 * 2 * PI)    	/*!< Wheel angular velocity rad/s */
+#define WHEEL_MIN_ANGULAR_VELOCITY		(PI / 6)			/*!< Slowest motor velocity. If set lower the motor will stop */
 
 #define MOTOR_PWM_FREQUENCY     1000
 
@@ -51,6 +51,19 @@ typedef enum
     back_left   = 2,
     back_right  = 3
 }motor_id_t;
+
+extern Motor mecabot_motor[4];
+extern Encoder encoder[4];
+extern FO_IIR_Filter_t *encoder_filter[4];
+extern PID_t *controller[4];
+extern int16_t duty[NUM_OF_MOTOR];
+
+extern MPU6050_t my_mpu;
+extern float gyro_buffer[3];					// Buffer to hold scaled gyro measurement.
+extern float accel_buffer[3];					// Buffer to hold scaled accelerometer measurement.
+extern float encoder_yaw, imu_yaw;			// Orientation (in radians);
+extern bool use_pid;
+extern float kp, ki, kd;
 
 /**
 * @brief Return the elapsed time (in miliseconds) since the MCU starts.

@@ -21,21 +21,6 @@ float constraint(float var, float min, float max)
 
 uint32_t t = 0; // Elapsed system time
 
-extern Motor mecabot_motor[NUM_OF_MOTOR];
-extern Encoder encoder[NUM_OF_MOTOR];
-extern FO_IIR_Filter_t *encoder_filter[NUM_OF_MOTOR];
-extern PID_t *controller[NUM_OF_MOTOR];
-extern bool use_pid;
-extern float kp, ki, kd;
-
-extern int16_t duty[NUM_OF_MOTOR];
-
-extern I2C_HandleTypeDef hi2c1;
-
-extern MPU6050_t my_mpu;
-extern float gyro_buffer[3], accel_buffer[3];
-extern float encoder_yaw, imu_yaw;
-
 uint16_t d_tick = 0;
 
 /* DEBUG PARAMETERS START */
@@ -49,7 +34,7 @@ const float odom_test[9][3] =
 		{ 0.28284, 0.28284, 0.0}, 	// Di cheo trai
 		{ 0.28284, -0.28284, 0.0}, 	// Di cheo phai
 		{ 0.0, 0.0, PI * 0.4 }, 	// Quay CCW
-		{ 0.0, 0.0, - PI * 0.4 }, 	// Quay CW
+		{ 0.0, 0.0, - PI * 0.4 } 	// Quay CW
 };
 bool is_testing = false;
 uint32_t test_start_time = 0;
@@ -144,22 +129,6 @@ void testIdCallback(const std_msgs::Int8& test_id_msg)
 		is_testing = false;
 	}
 }
-void odomResetCallback(const std_msgs::UInt8& odom_reset_msg)
-{
-	if (odom_reset_msg.data)
-	{
-		odom_pose[linear_x] = 0;
-		odom_pose[linear_y] = 0;
-		odom_pose[angular_z] = 0;
-
-		encoder_yaw = 0;
-
-		for (int i = 0; i < NUM_OF_MOTOR; i++)
-		{
-			joint_states_pos[i] = 0.0;
-		}
-	}
-}
 /* CALLBACK FUNCTIONS END */
 
 void ros_setup()
@@ -172,7 +141,6 @@ void ros_setup()
 	nh.subscribe(sub_ki);
 	nh.subscribe(sub_kd);
 	nh.subscribe(sub_test_id);
-	nh.subscribe(sub_odom_reset);
 
 	//nh.advertise(pub_imu);
     nh.advertise(pub_odom);
@@ -189,6 +157,7 @@ void setup()
 	mecabot_motor_init();
 	mecabot_encoder_init();
 	mecabot_pid_init();
+
 	//while (mecabot_mpu_init() != STATUS_OK);
 	//MPU6050_Calibrate(&hi2c1, &my_mpu);
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
@@ -208,7 +177,6 @@ void loop()
     if ((t - t_previous[wheel_velocity_feedback_event]) >= dt[wheel_velocity_feedback_event])
 	{
     	calculateRpm();
-    	publishRpm();
 		t_previous[wheel_velocity_feedback_event] = t;
 	}
 	/* Motor control */
@@ -239,7 +207,7 @@ void loop()
     /* Odom navigation testing */
     if (is_testing)
     {
-    	if ((t - test_start_time) >= 5000) // Run the test for 4 seconds
+    	if ((t - test_start_time) >= 5200) // Run the test for 5 seconds
     	{
     		goal_vel[linear_x] = 0;
     		goal_vel[linear_y] = 0;
@@ -380,7 +348,7 @@ void calculateRpm(void)
 
 		// Apply Low Pass filter
 		meas_wheel_angular_vel[i] = mecabot_motor[i]->direction * FO_IIR_Compute(encoder_filter[i], meas_wheel_angular_vel[i]);
-		if ((meas_wheel_angular_vel[i] > (-0.03*PI)) && (meas_wheel_angular_vel[i] < (0.03*PI)))	meas_wheel_angular_vel[i] = 0;
+		if ((meas_wheel_angular_vel[i] > -0.001f) && (meas_wheel_angular_vel[i] < 0.001f))	meas_wheel_angular_vel[i] = 0;
 
 		meas_theta[i] += meas_wheel_angular_vel[i] * (float)dt[wheel_velocity_feedback_event] / 1000.0f;
 	}
@@ -429,10 +397,6 @@ void calculateWheelVelocity(void)
 /* DATA HANDLE FUNCTIONS END */
 
 /* PUBLISH FUNCTIONS START */
-void publishRpm(void)
-{
-
-}
 void publishImu(void)
 {
 	imu_msg.header.frame_id = imu_frame_id;

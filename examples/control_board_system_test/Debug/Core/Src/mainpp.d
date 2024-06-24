@@ -66,9 +66,7 @@ Core/Src/mainpp.o: ../Core/Src/mainpp.cpp ../Core/Inc/mainpp.h \
  C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/geometry_msgs/Pose.h \
  C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/geometry_msgs/Point.h \
  C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/geometry_msgs/TwistWithCovariance.h \
- C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/tf/tf.h \
- C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/tf/transform_broadcaster.h \
- C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/tf/tfMessage.h
+ C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/tf/tf.h
 ../Core/Inc/mainpp.h:
 ../Core/Inc/mecabot_hardware.h:
 C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/common/include/operation_status.h:
@@ -138,5 +136,3 @@ C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/in
 C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/geometry_msgs/Point.h:
 C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/geometry_msgs/TwistWithCovariance.h:
 C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/tf/tf.h:
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/tf/transform_broadcaster.h:
-C:/Users/ADMIN/Desktop/DATN/Mecabot_Firmware/examples/../components/rosserial/include/tf/tfMessage.h:

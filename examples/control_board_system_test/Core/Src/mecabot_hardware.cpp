@@ -18,7 +18,7 @@ float gyro_buffer[3] = { 0.0f };					// Buffer to hold scaled gyro measurement.
 float accel_buffer[3] = { 0.0f };					// Buffer to hold scaled accelerometer measurement.
 float encoder_yaw = 0.0f, imu_yaw = 0.0f;			// Orientation (in radians);
 bool use_pid = true;
-float kp = 5.0, ki = 0.0, kd = 0;
+float kp = 7.3, ki = 16.0, kd = 0;
 
 uint32_t millis(void)
 {
